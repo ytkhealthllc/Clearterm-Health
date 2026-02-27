@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearTerm Health — Maternal Complication Resources</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c96b6b;
+    --rose-light: #f0d0d0;
+    --rose-pale: #fdf6f6;
+    --mauve: #8b5e6b;
+    --warm-dark: #3d2645;
+    --warm-mid: #6b4a6e;
+    --cream: #faf5f0;
+    --sage: #6b8b78;
+    --gold: #c49a5a;
+    --text: #3a2830;
+    --text-muted: #7a6068;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--warm-dark);
+    padding: 0 5vw;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 20px rgba(44,30,36,0.4);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--rose-light);
+    letter-spacing: 0.04em;
+  }
+
+  .logo span { color: var(--rose); font-style: italic; }
+
+  nav { display: flex; gap: 1.2rem; align-items: center; }
+
+  nav a {
+    color: rgba(240,208,208,0.75);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--rose-light); }
+
+  .btn-nav {
+    background: var(--rose);
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .btn-nav:hover { background: #b55c5c !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 88vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 8vw;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -10vw;
+    top: -10vh;
+    width: 70vw;
+    height: 110vh;
+    background: radial-gradient(ellipse at 60% 40%, rgba(201,107,107,0.12) 0%, rgba(139,94,107,0.06) 50%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--rose);
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--rose);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--warm-dark);
+    margin-bottom: 1.6rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 460px;
+    margin-bottom: 2.4rem;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--warm-dark);
+    color: var(--cream);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--mauve); transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1.5px solid var(--rose-light);
+    color: var(--warm-mid);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--rose); background: var(--rose-pale); }
+
+  /* Hero illustration area */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-card-stack {
+    position: relative;
+    width: 340px;
+    height: 420px;
+  }
+
+  .hero-card {
+    position: absolute;
+    border-radius: 20px;
+    padding: 1.8rem;
+    box-shadow: 0 8px 40px rgba(44,30,36,0.12);
+  }
+
+  .hc1 {
+    background: white;
+    width: 300px;
+    top: 30px;
+    left: 20px;
+    transform: rotate(-3deg);
+    animation: float1 6s ease-in-out infinite;
+  }
+
+  .hc2 {
+    background: var(--warm-dark);
+    color: var(--rose-light);
+    width: 280px;
+    top: 120px;
+    left: 40px;
+    transform: rotate(2deg);
+    animation: float2 7s ease-in-out infinite;
+  }
+
+  .hc3 {
+    background: var(--rose);
+    color: white;
+    width: 220px;
+    top: 240px;
+    left: 60px;
+    transform: rotate(-1deg);
+    animation: float1 5s ease-in-out infinite;
+  }
+
+  @keyframes float1 {
+    0%,100% { transform: rotate(-3deg) translateY(0); }
+    50% { transform: rotate(-3deg) translateY(-8px); }
+  }
+
+  @keyframes float2 {
+    0%,100% { transform: rotate(2deg) translateY(0); }
+    50% { transform: rotate(2deg) translateY(-6px); }
+  }
+
+  .hc1 .card-tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .hc1 h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--warm-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .hc1 p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+  .hc2 .stat { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--rose-light); }
+  .hc2 .stat-label { font-size: 0.78rem; color: rgba(240,208,208,0.65); margin-top: 0.2rem; }
+
+  .hc3 .icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .hc3 p { font-size: 0.78rem; color: rgba(255,255,255,0.88); line-height: 1.4; }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--warm-dark);
+    padding: 2.4rem 8vw;
+    display: flex;
+    gap: 0;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat-item { text-align: center; flex: 1; position: relative; }
+
+  .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 10%; height: 80%;
+    width: 1px;
+    background: rgba(240,208,208,0.15);
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--rose-light);
+    line-height: 1;
+  }
+
+  .stat-desc {
+    font-size: 0.78rem;
+    color: rgba(240,208,208,0.55);
+    margin-top: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── CONDITIONS SECTION ── */
+  .section {
+    padding: 6rem 8vw;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
+    max-width: 600px;
+  }
+
+  .section-tag {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--rose);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    color: var(--warm-dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-size: 1rem;
+  }
+
+  /* Condition cards */
+  .condition-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .condition-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(44,30,36,0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .condition-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(44,30,36,0.13);
+  }
+
+  .condition-card-top {
+    padding: 2.2rem 2.4rem 1.6rem;
+    border-bottom: 1px solid var(--rose-pale);
+  }
+
+  .condition-pill {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .pill-previa { background: rgba(201,107,107,0.12); color: var(--rose); }
+  .pill-accreta { background: rgba(139,94,107,0.12); color: var(--mauve); }
+
+  .condition-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--warm-dark);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .condition-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .condition-card-bottom {
+    padding: 1.4rem 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .risk-badge {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .risk-dots { display: flex; gap: 3px; }
+  .risk-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rose-pale); }
+  .risk-dot.active { background: var(--rose); }
+
+  .card-link {
+    font-size: 0.82rem;
+    color: var(--rose);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: gap 0.2s;
+  }
+
+  .card-link:hover { gap: 0.6rem; }
+
+  /* Symptom / info tabs */
+  .info-tabs {
+    margin-top: 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 24px rgba(44,30,36,0.07);
+  }
+
+  .tab-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .tab-row + .tab-row {
+    border-top: 1px solid var(--border);
+    padding-top: 0.6rem;
+    margin-top: 0.6rem;
+  }
+  .tab-row-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-right: 0.25rem;
+    white-space: nowrap;
+  }
+  .pill-previa-label {
+    background: rgba(196,154,108,0.15);
+    color: var(--gold);
+    border: 1px solid rgba(196,154,108,0.3);
+  }
+  .pill-accreta-label {
+    background: rgba(160,80,74,0.12);
+    color: var(--rose);
+    border: 1px solid rgba(160,80,74,0.25);
+  }
+
+  .tab-header {
+    display: flex;
+    background: var(--rose-pale);
+    border-bottom: 1px solid var(--rose-light);
+  }
+
+  .tab-btn {
+    padding: 1rem 1.8rem;
+    border: none;
+    background: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+
+  .tab-btn.active {
+    color: var(--rose);
+    border-bottom-color: var(--rose);
+    background: white;
+  }
+
+  .tab-content { display: none; padding: 2.4rem; }
+  .tab-content.active { display: block; }
+
+  .symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .symptom-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.8rem 1rem;
+    background: var(--rose-pale);
+    border-radius: 10px;
+    border-left: 3px solid var(--rose);
+  }
+
+  .symptom-item .sym-icon { font-size: 1rem; margin-top: 1px; }
+  .symptom-item p { font-size: 0.85rem; color: var(--text); line-height: 1.4; }
+
+  /* ── RESOURCES SECTION ── */
+  .resources-bg {
+    background: var(--rose-pale);
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+    margin-top: 0;
+  }
+
+  .resource-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.8rem;
+    box-shadow: 0 2px 12px rgba(44,30,36,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(44,30,36,0.12);
+  }
+
+  .resource-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .type-org { background: rgba(107,139,120,0.12); color: var(--sage); }
+  .type-guide { background: rgba(201,107,107,0.12); color: var(--rose); }
+  .type-research { background: rgba(196,154,90,0.12); color: var(--gold); }
+  .type-support { background: rgba(139,94,107,0.12); color: var(--mauve); }
+
+  .resource-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--warm-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .resource-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .resource-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .resource-link {
+    color: var(--rose);
+    font-weight: 500;
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+
+  /* ── ACCRETA TYPES ── */
+  .types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .type-card {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .type-visual {
+    padding: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+  }
+  .uterus-diagram {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    height: 100px;
+  }
+  .uterus-wall {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .uterus-layer {
+    font-size: 0.6rem;
+    padding: 0 6px;
+    display: flex;
+    align-items: center;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+  }
+  .layer-endometrium { background: rgba(196,154,108,0.25); height: 24px; }
+  .layer-myometrium  { background: rgba(160,80,74,0.3);   height: 38px; }
+  .layer-serosa      { background: rgba(100,60,60,0.35);  height: 22px; }
+  .placenta-block {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 48%;
+    border-radius: 8px 8px 0 0;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-align: center;
+    padding-top: 6px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .placenta-accreta  { background: rgba(139,100,140,0.75); height: 42px; border: 1px solid rgba(180,140,180,0.4); }
+  .placenta-increta  { background: rgba(106,74,138,0.8);   height: 60px; border: 1px solid rgba(150,110,190,0.4); }
+  .placenta-percreta { background: rgba(74,42,106,0.85);   height: 84px; border: 1px solid rgba(120,80,160,0.5); }
+  .placenta-roots {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2px;
+  }
+  .placenta-roots::before,
+  .placenta-roots::after {
+    content: '';
+    display: block;
+    border-radius: 0 0 3px 3px;
+    background: rgba(255,255,255,0.3);
+    width: 4px;
+  }
+  .roots-accreta::before, .roots-accreta::after  { height: 8px; }
+  .roots-increta::before, .roots-increta::after  { height: 20px; }
+  .roots-percreta::before, .roots-percreta::after { height: 40px; }
+  .placenta-roots::before { margin-right: 4px; }
+
+  .type-body { padding: 1rem 1.1rem 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+  .type-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  .badge-accreta  { background: rgba(139,100,140,0.2); color: #c9a0cc; border: 1px solid rgba(139,100,140,0.3); }
+  .badge-increta  { background: rgba(192,96,112,0.15); color: #e08090; border: 1px solid rgba(192,96,112,0.3); }
+  .badge-percreta { background: rgba(122,74,106,0.18); color: #c090b0; border: 1px solid rgba(122,74,106,0.4); }
+  .type-body h4 { font-size: 0.95rem; color: var(--text-main); margin: 0; }
+  .type-body p  { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin: 0; flex: 1; }
+  .type-stat { font-size: 0.78rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.3rem; }
+  .type-stat span { font-weight: 700; color: var(--text-main); font-size: 0.95rem; }
+  @media (max-width: 768px) { .types-grid { grid-template-columns: 1fr; } }
+
+  /* ── CONDITION PANELS ── */
+  .condition-panel {
+    display: none;
+    margin-top: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    animation: panelIn 0.25s ease;
+  }
+  .condition-panel.open { display: block; }
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .condition-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--warm-dark);
+  }
+  .panel-close {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .panel-close:hover { color: var(--text-main); border-color: var(--text-muted); }
+  .condition-panel .info-tabs { border-radius: 0; border: none; }
+  .card-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--rose);
+    font-weight: 600;
+    padding: 0;
+    transition: opacity 0.2s;
+  }
+  .card-link:hover { opacity: 0.7; }
+
+  /* ── EMERGENCY BANNER ── */
+  .emergency-banner {
+    background: linear-gradient(135deg, var(--warm-dark), #4a1a24);
+    padding: 3rem 8vw;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    border-radius: 0;
+  }
+
+  .emergency-icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.2);
+  }
+
+  .emergency-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--rose-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .emergency-content p {
+    color: rgba(240,208,208,0.65);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  .emergency-actions {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .btn-emergency {
+    background: var(--rose);
+    color: white;
+    padding: 0.85rem 1.8rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .btn-emergency:hover { background: #b55c5c; }
+
+  .btn-emergency-outline {
+    border: 1.5px solid rgba(240,208,208,0.3);
+    color: var(--rose-light);
+    padding: 0.85rem 1.8rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-align: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-emergency-outline:hover {
+    border-color: rgba(240,208,208,0.6);
+    background: rgba(240,208,208,0.05);
+  }
+
+  /* ── SPECIALIST SECTION ── */
+  .specialist-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem;
+  }
+
+  .specialist-card {
+    border: 1.5px solid var(--rose-light);
+    border-radius: 16px;
+    padding: 1.8rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .specialist-card:hover {
+    border-color: var(--rose);
+    box-shadow: 0 4px 20px rgba(201,107,107,0.12);
+  }
+
+  .spec-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .spec-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--rose-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .spec-info h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--warm-dark);
+  }
+
+  .spec-info span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .specialist-card p {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .spec-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .spec-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 100px;
+    background: var(--rose-pale);
+    color: var(--rose);
+    font-weight: 500;
+  }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; gap: 0.8rem; max-width: 780px; }
+
+  .faq-item {
+    border: 1.5px solid var(--rose-light);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 1.2rem 1.6rem;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--warm-dark);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.2s;
+  }
+
+  .faq-question:hover { background: var(--rose-pale); }
+  .faq-question.open { background: var(--rose-pale); color: var(--rose); }
+
+  .faq-chevron { font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-question.open .faq-chevron { transform: rotate(180deg); }
+
+  .faq-answer {
+    display: none;
+    padding: 0 1.6rem 1.4rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    border-top: 1px solid var(--rose-light);
+    background: var(--rose-pale);
+  }
+
+  .faq-answer.open { display: block; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: var(--warm-dark);
+    padding: 1.5rem 8vw;
+    text-align: center;
+    font-size: 0.76rem;
+    color: rgba(240,208,208,0.45);
+    line-height: 1.6;
+  }
+
+  .disclaimer strong { color: rgba(240,208,208,0.7); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #271830;
+    padding: 3.5rem 8vw 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--rose-light);
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-logo span { color: var(--rose); font-style: italic; }
+  .footer-desc { font-size: 0.82rem; color: rgba(240,208,208,0.45); line-height: 1.7; }
+
+  .footer-col h5 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: rgba(240,208,208,0.6);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+  .footer-col a {
+    font-size: 0.82rem;
+    color: rgba(240,208,208,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--rose-light); }
+
+  .footer-bottom {
+    background: #271830;
+    padding: 1.2rem 8vw;
+    border-top: 1px solid rgba(240,208,208,0.08);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: rgba(240,208,208,0.3);
+  }
+
+  /* ── SEARCH BAR ── */
+  .search-wrap {
+    max-width: 560px;
+    margin-bottom: 3rem;
+  }
+
+  .search-inner {
+    display: flex;
+    background: white;
+    border: 1.5px solid var(--rose-light);
+    border-radius: 100px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(44,30,36,0.07);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .search-inner:focus-within {
+    border-color: var(--rose);
+    box-shadow: 0 4px 20px rgba(201,107,107,0.15);
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 0.9rem 1.4rem;
+    border: none;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    color: var(--text);
+    background: none;
+  }
+
+  .search-btn {
+    background: var(--rose);
+    border: none;
+    padding: 0 1.6rem;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .search-btn:hover { background: #b55c5c; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 4rem 6vw; min-height: auto; }
+    .hero-visual { display: none; }
+    .condition-grid { grid-template-columns: 1fr; }
+    .resources-grid { grid-template-columns: 1fr 1fr; }
+    .specialist-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .stats-strip { flex-wrap: wrap; gap: 2rem; }
+    .emergency-banner { flex-direction: column; gap: 1.5rem; }
+    .emergency-actions { margin-left: 0; flex-direction: row; }
+    nav { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .resources-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .emergency-actions { flex-direction: column; }
+
+    /* Condition panels */
+    .tab-content { padding: 1.2rem; }
+    .symptom-grid { grid-template-columns: 1fr; }
+    .types-grid { grid-template-columns: 1fr !important; }
+    .info-tabs { border-radius: 12px; }
+    .tab-btn { font-size: 0.75rem; padding: 0.7rem 0.8rem; }
+    .condition-panel { margin-top: 1rem; border-radius: 12px; }
+    .condition-panel-header { padding: 0.8rem 1rem; flex-wrap: wrap; gap: 0.5rem; }
+    .tab-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .tab-bar::-webkit-scrollbar { display: none; }
+    .condition-grid { gap: 1rem; }
+    .condition-card { padding: 1.4rem; }
+    .type-card { border-radius: 10px; }
+    .type-body { padding: 1rem; }
+    .diagnostic-grid { grid-template-columns: 1fr; }
+    .management-list { grid-template-columns: 1fr; }
+  }
+
+  /* Scroll animation */
+  .fade-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.animate {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .fade-up.animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo"><span>Clear</span>Term Health</div>
+
+  <nav>
+    <a href="#conditions">Conditions</a>
+    <a href="clearterm-resources.html">Resources</a>
+    <a href="specialists.html">Specialists</a>
+    <a href="recovery.html">Recovery</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a href="#emergency" class="btn-nav">Emergency Signs</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-label">Maternal Health Resource Center</div>
+    <h1>Understanding <em>placental</em> complications in pregnancy</h1>
+    <p>Trusted, evidence-based resources for women navigating placenta previa, placenta accreta spectrum, and related maternal complications. Know your options, understand your risks, and connect with specialists.</p>
+    <div class="hero-ctas">
+      <a href="#conditions" class="btn-primary">Explore Conditions →</a>
+      <a href="clearterm-resources.html" class="btn-outline">Find Resources</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="hero-card hc1">
+        <div class="card-tag">Placenta Previa</div>
+        <h3>What to expect after diagnosis</h3>
+        <p>Understanding monitoring, activity restrictions, and delivery planning with your care team.</p>
+      </div>
+      <div class="hero-card hc2">
+        <div class="stat">1 in 200</div>
+        <div class="stat-label">pregnancies affected by placenta previa</div>
+      </div>
+      <div class="hero-card hc3">
+        <div class="icon">🩺</div>
+        <p>Specialist-reviewed content updated regularly</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-number">1 in 200</div>
+    <div class="stat-desc">Placenta Previa prevalence</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">1 in 300–500</div>
+    <div class="stat-desc">Placenta Accreta incidence</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">~90%</div>
+    <div class="stat-desc">Low-lying placentas resolve by term</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">3x</div>
+    <div class="stat-desc">Increase in accreta since the 1980s</div>
+  </div>
+</div>
+
+<!-- CONDITIONS -->
+<section class="section" id="conditions">
+  <div class="section-header">
+    <div class="section-tag">Conditions</div>
+    <h2>Placental complications explained</h2>
+    <p>Learn about the two primary placental complications, their symptoms, diagnosis methods, and management strategies recommended by maternal-fetal medicine specialists.</p>
+  </div>
+
+  <div class="condition-grid">
+    <!-- Previa Card -->
+    <div class="condition-card">
+      <div class="condition-card-top">
+        <div class="condition-pill pill-previa">Placenta Previa</div>
+        <h3>Placenta Previa</h3>
+        <p>A condition where the placenta partially or completely covers the cervical opening (os). This can cause painless vaginal bleeding, particularly in the third trimester, and typically requires cesarean delivery.</p>
+      </div>
+      <div class="condition-card-bottom">
+        <div class="risk-badge">
+          Risk level:
+          <div class="risk-dots">
+            <div class="risk-dot active"></div>
+            <div class="risk-dot active"></div>
+            <div class="risk-dot active"></div>
+            <div class="risk-dot"></div>
+          </div>
+        </div>
+        <button class="card-link" onclick="toggleConditionPanel('previa-panel')">Learn more →</button>
+      </div>
+    </div>
+
+    <!-- Accreta Card -->
+    <div class="condition-card">
+      <div class="condition-card-top">
+        <div class="condition-pill pill-accreta">Placenta Accreta Spectrum</div>
+        <h3>Placenta Accreta Spectrum</h3>
+        <p>A group of conditions (accreta, increta, percreta) where the placenta abnormally attaches too deeply into the uterine wall. Often associated with prior C-sections, it carries a higher risk of major hemorrhage.</p>
+      </div>
+      <div class="condition-card-bottom">
+        <div class="risk-badge">
+          Risk level:
+          <div class="risk-dots">
+            <div class="risk-dot active"></div>
+            <div class="risk-dot active"></div>
+            <div class="risk-dot active"></div>
+            <div class="risk-dot active"></div>
+          </div>
+        </div>
+        <button class="card-link" onclick="toggleConditionPanel('accreta-panel')">Learn more →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Previa Panel -->
+  <div class="condition-panel" id="previa-panel">
+    <div class="condition-panel-header">
+      <span class="condition-pill pill-previa">Placenta Previa</span>
+      <button class="panel-close" onclick="toggleConditionPanel('previa-panel')">✕ Close</button>
+    </div>
+    <div class="info-tabs">
+      <div class="tab-header">
+        <button class="tab-btn active" onclick="switchTab(this, 'symptoms-previa')">Symptoms</button>
+        <button class="tab-btn" onclick="switchTab(this, 'diagnosis-previa')">Diagnosis</button>
+        <button class="tab-btn" onclick="switchTab(this, 'management-previa')">Management</button>
+      </div>
+      <div class="tab-content active" id="symptoms-previa">
+        <p style="margin-bottom:1.4rem; font-size:0.9rem; color:var(--text-muted); line-height:1.7;">Placenta previa often has no symptoms early on, but key warning signs include:</p>
+        <div class="symptom-grid">
+          <div class="symptom-item"><p><strong>Painless vaginal bleeding</strong> — especially in 2nd or 3rd trimester</p></div>
+          <div class="symptom-item"><p><strong>Bright red bleeding</strong> — can begin suddenly without warning</p></div>
+          <div class="symptom-item"><p><strong>Uterine cramping</strong> — especially after bleeding episodes</p></div>
+          <div class="symptom-item"><p><strong>Breech or transverse position</strong> — baby may not be head-down</p></div>
+          <div class="symptom-item"><p><strong>Recurring bleeding</strong> — episodes may stop and restart</p></div>
+          <div class="symptom-item"><p><strong>Large uterus for gestational age</strong> — less common indicator</p></div>
+        </div>
+        <p style="margin-top:1.4rem; font-size:0.82rem; color:var(--text-muted);"><strong>Note:</strong> Some women have no bleeding at all. Previa is often diagnosed via routine ultrasound.</p>
+      </div>
+      <div class="tab-content" id="diagnosis-previa">
+        <p style="margin-bottom:1.4rem; font-size:0.9rem; color:var(--text-muted); line-height:1.7;">Placenta previa is diagnosed using imaging. The standard diagnostic pathway involves:</p>
+        <div class="symptom-grid">
+          <div class="symptom-item"><p><strong>Transvaginal ultrasound</strong> — most accurate method for placental localization</p></div>
+          <div class="symptom-item"><p><strong>Transabdominal ultrasound</strong> — often used first; may miss low-lying placenta</p></div>
+          <div class="symptom-item"><p><strong>MRI</strong> — used when ultrasound is inconclusive or accreta is suspected</p></div>
+          <div class="symptom-item"><p><strong>Follow-up scans at 32–36 weeks</strong> — ~90% of low-lying placentas resolve by term</p></div>
+        </div>
+      </div>
+      <div class="tab-content" id="management-previa">
+        <p style="margin-bottom:1.4rem; font-size:0.9rem; color:var(--text-muted); line-height:1.7;">Management depends on gestational age, symptoms, and degree of previa:</p>
+        <div class="symptom-grid">
+          <div class="symptom-item"><p><strong>Pelvic rest</strong> — no intercourse, tampons, or pelvic exams</p></div>
+          <div class="symptom-item"><p><strong>Activity restriction</strong> — reduced physical exertion; sometimes bed rest</p></div>
+          <div class="symptom-item"><p><strong>Regular monitoring</strong> — ultrasound every 2–4 weeks in 3rd trimester</p></div>
+          <div class="symptom-item"><p><strong>Corticosteroids</strong> — if preterm delivery is anticipated to mature fetal lungs</p></div>
+          <div class="symptom-item"><p><strong>Hospitalization</strong> — for heavy bleeding or if far from medical care</p></div>
+          <div class="symptom-item"><p><strong>Planned cesarean</strong> — typically at 36–37 weeks; earlier if bleeding persists</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accreta Panel -->
+  <div class="condition-panel" id="accreta-panel">
+    <div class="condition-panel-header">
+      <span class="condition-pill pill-accreta">Placenta Accreta Spectrum</span>
+      <button class="panel-close" onclick="toggleConditionPanel('accreta-panel')">✕ Close</button>
+    </div>
+    <div class="info-tabs">
+      <div class="tab-header">
+        <button class="tab-btn active" onclick="switchTab(this, 'symptoms-accreta')">Symptoms &amp; Risk Factors</button>
+        <button class="tab-btn" onclick="switchTab(this, 'diagnosis-accreta')">Diagnosis</button>
+        <button class="tab-btn" onclick="switchTab(this, 'management-accreta')">Management</button>
+        <button class="tab-btn" onclick="switchTab(this, 'types-accreta')">Types</button>
+      </div>
+      <div class="tab-content active" id="symptoms-accreta">
+        <p style="margin-bottom:1.4rem; font-size:0.9rem; color:var(--text-muted); line-height:1.7;">Placenta accreta spectrum (PAS) is often asymptomatic during pregnancy. Risk factors and signs include:</p>
+        <div class="symptom-grid">
+          <div class="symptom-item"><p><strong>Prior cesarean delivery</strong> — #1 risk factor; risk increases with each C-section</p></div>
+          <div class="symptom-item"><p><strong>Prior uterine surgery</strong> — myomectomy, D&amp;C, endometrial ablation, or any procedure that scars the uterine wall</p></div>
+          <div class="symptom-item"><p><strong>Low-lying or previa placenta</strong> — PAS very common when previa overlies a uterine scar</p></div>
+          <div class="symptom-item"><p><strong>IVF / frozen embryo transfer</strong> — research shows significantly elevated PAS risk, especially with hormone replacement cycles</p></div>
+          <div class="symptom-item"><p><strong>Abnormal 3rd trimester bleeding</strong> — may indicate partial abruption</p></div>
+          <div class="symptom-item"><p><strong>Difficulty with placental delivery</strong> — often first recognized at time of birth</p></div>
+          <div class="symptom-item"><p><strong>Elevated AFP</strong> — abnormal maternal serum screening result may prompt further workup</p></div>
+        </div>
+      </div>
+      <div class="tab-content" id="diagnosis-accreta">
+        <p style="margin-bottom:1.4rem; font-size:0.9rem; color:var(--text-muted); line-height:1.7;">PAS is often not detected until delivery. When suspected, diagnosis involves:</p>
+        <div class="symptom-grid">
+          <div class="symptom-item"><p><strong>Transvaginal ultrasound</strong> — first-line imaging; looks for loss of clear zone, lacunae (irregular vascular spaces), and abnormal placental blood flow</p></div>
+          <div class="symptom-item"><p><strong>Color Doppler ultrasound</strong> — identifies abnormal vascularity and uterine wall invasion</p></div>
+          <div class="symptom-item"><p><strong>MRI</strong> — used when ultrasound is inconclusive; helps assess depth of invasion and involvement of bladder or surrounding organs</p></div>
+          <div class="symptom-item"><p><strong>Elevated maternal AFP</strong> — abnormal second-trimester serum screening may prompt further imaging workup</p></div>
+          <div class="symptom-item"><p><strong>History review</strong> — prior C-sections, uterine surgeries, IVF, and placenta location are key diagnostic factors</p></div>
+          <div class="symptom-item"><p><strong>Referral to MFM specialist</strong> — formal diagnosis and delivery planning should involve a maternal-fetal medicine specialist at a PAS center</p></div>
+        </div>
+        <p style="margin-top:1.4rem; font-size:0.82rem; color:var(--text-muted);"><strong>Note:</strong> PAS in IVF patients is significantly less likely to be detected prenatally — proactive screening is essential even without classic risk factors.</p>
+      </div>
+      <div class="tab-content" id="management-accreta">
+        <p style="margin-bottom:1.4rem; font-size:0.9rem; color:var(--text-muted); line-height:1.7;">PAS requires a highly specialized, multidisciplinary approach. Management typically involves:</p>
+        <div class="symptom-grid">
+          <div class="symptom-item"><p><strong>Delivery at a PAS Center of Excellence</strong> — hospitals with dedicated multidisciplinary teams</p></div>
+          <div class="symptom-item"><p><strong>MFM + surgical specialists</strong> — OB, urology, vascular surgery, and interventional radiology</p></div>
+          <div class="symptom-item"><p><strong>Cell salvage and transfusion readiness</strong> — large blood loss is expected</p></div>
+          <div class="symptom-item"><p><strong>Planned hysterectomy</strong> — typically recommended to prevent life-threatening hemorrhage</p></div>
+          <div class="symptom-item"><p><strong>Delivery at 34–36 weeks</strong> — planned preterm birth reduces emergency risk</p></div>
+          <div class="symptom-item"><p><strong>Counseling on fertility</strong> — hysterectomy ends future pregnancies; discussion is essential</p></div>
+        </div>
+      </div>
+      <div class="tab-content" id="types-accreta">
+        <p style="margin-bottom:1.6rem; font-size:0.9rem; color:var(--text-muted); line-height:1.7;">The placenta accreta spectrum describes three grades of abnormal placental attachment, defined by how deeply the placenta invades the uterine wall:</p>
+        <div class="types-grid">
+
+          <div class="type-card">
+            <div class="type-visual" style="padding:0;border-radius:8px 8px 0 0;overflow:hidden;">
+              <svg viewBox="0 0 240 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                <rect width="240" height="155" fill="#2a1810"/>
+                <path d="M38 150 Q38 42 120 28 Q202 42 202 150 Z" fill="#3e2a1c" stroke="#c4956a" stroke-width="1.8"/>
+                <path d="M58 146 Q58 56 120 44 Q182 56 182 146 Z" fill="#4a3022"/>
+                <path d="M78 142 Q78 70 120 60 Q162 70 162 142 Z" fill="#563828"/>
+                <text x="65" y="105" font-size="7.5" font-family="sans-serif" fill="rgba(255,255,255,0.35)" font-style="italic">Endometrium</text>
+                <text x="83" y="124" font-size="7" font-family="sans-serif" fill="rgba(255,255,255,0.28)" font-style="italic">Myometrium</text>
+                <ellipse cx="120" cy="62" rx="34" ry="13" fill="#c49a6c" stroke="#e0b880" stroke-width="1.5"/>
+                <text x="120" y="66" font-size="9" font-weight="bold" font-family="sans-serif" fill="white" text-anchor="middle">Placenta</text>
+                <circle cx="105" cy="74" r="3" fill="#e0b880" opacity="0.7"/>
+                <circle cx="120" cy="75" r="3" fill="#e0b880" opacity="0.7"/>
+                <circle cx="135" cy="74" r="3" fill="#e0b880" opacity="0.7"/>
+                <text x="120" y="150" font-size="8" font-family="sans-serif" fill="rgba(255,255,255,0.3)" text-anchor="middle" font-style="italic">surface attachment only</text>
+              </svg>
+            </div>
+            <div class="type-body">
+              <div class="type-badge badge-accreta">Grade 1 — Accreta</div>
+              <h4>Placenta Accreta</h4>
+              <p>Attaches too firmly to the uterine wall but does <em>not</em> penetrate the muscle. The normal separating tissue (decidua) is absent.</p>
+              <div class="type-stat"><span>~75%</span> of all PAS cases</div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-visual" style="padding:0;border-radius:8px 8px 0 0;overflow:hidden;">
+              <svg viewBox="0 0 240 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                <rect width="240" height="155" fill="#2a1810"/>
+                <path d="M38 150 Q38 42 120 28 Q202 42 202 150 Z" fill="#3e2a1c" stroke="#c4956a" stroke-width="1.8"/>
+                <path d="M58 146 Q58 56 120 44 Q182 56 182 146 Z" fill="#4a3022"/>
+                <path d="M78 142 Q78 70 120 60 Q162 70 162 142 Z" fill="#563828"/>
+                <text x="65" y="105" font-size="7.5" font-family="sans-serif" fill="rgba(255,255,255,0.35)" font-style="italic">Endometrium</text>
+                <text x="83" y="124" font-size="7" font-family="sans-serif" fill="rgba(255,255,255,0.28)" font-style="italic">Myometrium</text>
+                <ellipse cx="120" cy="62" rx="34" ry="13" fill="#c06070" stroke="#e08090" stroke-width="1.5"/>
+                <text x="120" y="66" font-size="9" font-weight="bold" font-family="sans-serif" fill="white" text-anchor="middle">Placenta</text>
+                <line x1="105" y1="74" x2="103" y2="106" stroke="#e08090" stroke-width="2.8" stroke-linecap="round"/>
+                <line x1="120" y1="75" x2="120" y2="110" stroke="#e08090" stroke-width="2.8" stroke-linecap="round"/>
+                <line x1="135" y1="74" x2="137" y2="106" stroke="#e08090" stroke-width="2.8" stroke-linecap="round"/>
+                <text x="120" y="150" font-size="8" font-family="sans-serif" fill="rgba(255,255,255,0.3)" text-anchor="middle" font-style="italic">roots into muscle layer</text>
+              </svg>
+            </div>
+            <div class="type-body">
+              <div class="type-badge badge-increta">Grade 2 — Increta</div>
+              <h4>Placenta Increta</h4>
+              <p>Invades into the myometrium (uterine muscle). Separation at delivery is extremely difficult and hemorrhage risk is significantly elevated.</p>
+              <div class="type-stat"><span>~15%</span> of all PAS cases</div>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-visual" style="padding:0;border-radius:8px 8px 0 0;overflow:hidden;">
+              <svg viewBox="0 0 240 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                <rect width="240" height="155" fill="#2a1810"/>
+                <path d="M38 150 Q38 42 120 28 Q202 42 202 150 Z" fill="#3e2a1c" stroke="#c4956a" stroke-width="1.8"/>
+                <path d="M58 146 Q58 56 120 44 Q182 56 182 146 Z" fill="#4a3022"/>
+                <path d="M78 142 Q78 70 120 60 Q162 70 162 142 Z" fill="#563828"/>
+                <text x="65" y="105" font-size="7.5" font-family="sans-serif" fill="rgba(255,255,255,0.35)" font-style="italic">Endometrium</text>
+                <text x="83" y="124" font-size="7" font-family="sans-serif" fill="rgba(255,255,255,0.28)" font-style="italic">Myometrium</text>
+                <ellipse cx="120" cy="62" rx="34" ry="13" fill="#7a4a6a" stroke="#a06a90" stroke-width="1.5"/>
+                <text x="120" y="66" font-size="9" font-weight="bold" font-family="sans-serif" fill="white" text-anchor="middle">Placenta</text>
+                <line x1="105" y1="74" x2="101" y2="144" stroke="#a06a90" stroke-width="2.8" stroke-linecap="round"/>
+                <line x1="120" y1="75" x2="120" y2="146" stroke="#a06a90" stroke-width="2.8" stroke-linecap="round"/>
+                <line x1="135" y1="74" x2="139" y2="144" stroke="#a06a90" stroke-width="2.8" stroke-linecap="round"/>
+                <ellipse cx="120" cy="148" rx="24" ry="6" fill="rgba(100,140,200,0.2)" stroke="#6688bb" stroke-width="1.2" stroke-dasharray="4,3"/>
+                <text x="120" y="151" font-size="6.5" font-family="sans-serif" fill="#7799cc" text-anchor="middle">bladder</text>
+              </svg>
+            </div>
+            <div class="type-body">
+              <div class="type-badge badge-percreta">Grade 3 — Percreta</div>
+              <h4>Placenta Percreta</h4>
+              <p>The most severe form — penetrates entirely through the uterine wall and may invade surrounding organs such as the bladder or bowel.</p>
+              <div class="type-stat"><span>~5–10%</span> of all PAS cases</div>
+            </div>
+          </div>
+
+        </div>
+        <p style="margin-top:1.4rem; font-size:0.82rem; color:var(--text-muted);"><strong>Note:</strong> All three types require delivery at a PAS Center of Excellence. Depth of invasion determines surgical complexity and blood loss risk.</p>
+      </div>    </div>
+  </div>
+
+</section>
+
+<!-- FAQ -->
+<section class="section resources-bg" id="faq">
+  <div class="section-header">
+    <div class="section-tag">FAQ</div>
+    <h2>Frequently asked questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can placenta previa resolve on its own?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">Yes — in many cases, particularly when diagnosed early in the second trimester. As the uterus grows, the placenta can appear to "migrate" upward and away from the cervix. Studies suggest that the majority of low-lying placentas identified at the 20-week anatomy scan will resolve by 36 weeks. However, a complete previa detected late in pregnancy is far less likely to resolve and usually requires cesarean delivery. Follow-up ultrasounds at 32–36 weeks are standard to assess whether resolution has occurred.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What is the difference between placenta accreta, increta, and percreta?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">These three terms describe increasing depths of abnormal placental attachment. In placenta accreta, the placenta attaches too firmly to the uterine wall but does not penetrate the muscle layer. In placenta increta, the placenta grows into the uterine muscle. In placenta percreta — the most severe form — the placenta penetrates entirely through the uterine wall and may attach to adjacent organs such as the bladder or bowel. Together, these are called the Placenta Accreta Spectrum (PAS).</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        If I've had a C-section, am I at higher risk?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">Yes. Uterine scarring from prior cesarean delivery significantly increases the risk of both placenta previa and placenta accreta spectrum in future pregnancies. The risk is cumulative — with one prior C-section, the PAS risk is approximately 0.3%; with two it rises to around 0.6%; with three or more the risk can exceed 2%. Other uterine surgeries — including myomectomy, D&C, and endometrial ablation — also create scar tissue that raises PAS risk, even without a prior C-section. When a low-lying placenta is found in women with any uterine surgical history, MFM evaluation and MRI are typically recommended.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Does IVF increase the risk of placenta accreta?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">Yes — research increasingly shows that IVF pregnancies, particularly those using frozen embryo transfer (FET) in a hormone replacement cycle, carry a significantly elevated risk of placenta accreta spectrum. One large study found that women who underwent IVF had more than 5 times the risk of PAS compared to non-IVF pregnancies. Importantly, PAS in IVF patients is also less likely to be detected before delivery — because these women often lack the traditional risk factors (prior C-sections, placenta previa) that prompt clinicians to screen. If you conceived via IVF, particularly through frozen embryo transfer, speak with your OB or MFM about targeted PAS screening even if you have no prior uterine scars.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I still have a vaginal delivery with placenta previa?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">For complete or major placenta previa, vaginal delivery is not safe and cesarean section is required. For a low-lying placenta where the edge is within 2 cm of the cervical os, vaginal delivery may sometimes be possible under close monitoring, but this depends on individual circumstances and should be thoroughly discussed with your MFM specialist. A marginal previa at the edge of the os is typically still managed with cesarean delivery at most institutions.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What does delivery at a 'Center of Excellence' mean for PAS?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">A PAS Center of Excellence is a hospital that has a dedicated multidisciplinary team experienced in managing placenta accreta spectrum deliveries. These centers have protocols in place for high blood loss, including cell salvage, massive transfusion protocols, interventional radiology support, and surgical specialists. The Accreta Foundation and SMFM both advocate for women with PAS to deliver at such centers, as outcomes are significantly better compared to institutions without this specialized experience.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What questions should I ask my doctor after a previa or PAS diagnosis?
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">Key questions to consider: What type of previa or PAS do I have, and how confident are you in the diagnosis? Should I be referred to a Maternal-Fetal Medicine specialist? Will I need additional imaging (MRI)? What activity restrictions do I need to follow? Where should I deliver, and does that facility have a multidisciplinary PAS team? What are the warning signs I should watch for at home? When would you recommend early delivery, and will my baby need NICU support? If hysterectomy is a possibility, what are my options for discussing fertility preservation?</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" style="background: var(--rose-pale); border-top: 1px solid rgba(201,107,107,0.12);">
+  <div class="section-header" style="text-align:center; align-items:center; display:flex; flex-direction:column;">
+    <div class="section-tag">Get in Touch</div>
+    <h2>Contact Us</h2>
+    <p style="max-width:520px;">Have a question, resource suggestion, or want to share your story? We'd love to hear from you.</p>
+  </div>
+  <div class="fade-up" style="display:flex; justify-content:center; margin-top:2rem;">
+    <div style="background:white; border:1px solid rgba(201,107,107,0.15); border-radius:16px; padding:2.5rem 3rem; text-align:center; max-width:480px; width:100%;">
+      <div style="width:52px; height:52px; background:rgba(201,107,107,0.1); border:1px solid rgba(201,107,107,0.2); border-radius:12px; display:flex; align-items:center; justify-content:center; margin:0 auto 1.2rem;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M2 7l10 7 10-7"/>
+        </svg>
+      </div>
+      <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.7; margin-bottom:1.4rem;">Whether you have questions about the content, want to suggest a resource, or simply want to connect — reach out anytime.</p>
+      <a href="/cdn-cgi/l/email-protection#d9a0adb2b1bcb8b5adb199beb4b8b0b5f7bab6b4" style="display:inline-flex; align-items:center; gap:0.6rem; background:var(--rose); color:white; text-decoration:none; padding:0.75rem 1.8rem; border-radius:100px; font-size:0.88rem; font-weight:500; font-family:'DM Sans',sans-serif; transition:background 0.2s;" onmouseover="this.style.background='#b55c5c'" onmouseout="this.style.background='var(--rose)'">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        <span class="__cf_email__" data-cfemail="e39a97888b86828f978ba3848e828a8fcd808c8e">[email&#160;protected]</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY BANNER -->
+<div class="emergency-banner" id="emergency">
+  <div class="emergency-icon">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer pulse ring -->
+      <circle cx="24" cy="24" r="22" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none"/>
+      <!-- Inner circle background -->
+      <circle cx="24" cy="24" r="17" fill="rgba(255,255,255,0.12)"/>
+      <!-- Cross/plus alert symbol -->
+      <rect x="22" y="12" width="4" height="15" rx="2" fill="white"/>
+      <rect x="22" y="30" width="4" height="4" rx="2" fill="white"/>
+    </svg>
+  </div>
+  <div class="emergency-content">
+    <h3>When to seek emergency care immediately</h3>
+    <p>If you have been diagnosed with placenta previa or are at risk for placenta accreta, go to the nearest emergency room immediately if you experience heavy vaginal bleeding, severe abdominal pain, a rapid drop in fetal movement, signs of shock (dizziness, rapid heartbeat, fainting), or any bleeding that soaks more than one pad per hour.</p>
+  </div>
+  <div class="emergency-actions">
+    <a href="tel:911" class="btn-emergency">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:6px">
+    <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="white"/>
+  </svg>Call 911</a>
+    <a href="https://www.acog.org" target="_blank" class="btn-emergency-outline">Find a Hospital</a>
+  </div>
+</div>
+
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>Medical Disclaimer:</strong> The content on this website is for informational and educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the guidance of your obstetrician, maternal-fetal medicine specialist, or other qualified health provider with any questions you may have regarding your pregnancy or medical condition. In an emergency, call 911 or go to the nearest emergency room immediately.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo"><span>Clear</span>Term Health</div>
+    <p class="footer-desc">Clarity through complication. ClearTerm helps women understand placenta previa, placenta accreta spectrum, and related maternal conditions — so they can reach term with confidence. Evidence-based. Patient-centered.</p>
+  </div>
+  <div class="footer-col">
+    <h5>Conditions</h5>
+    <ul>
+      <li><a href="#conditions">Placenta Previa</a></li>
+      <li><a href="#conditions">Placenta Accreta</a></li>
+      <li><a href="#conditions">Placenta Increta</a></li>
+      <li><a href="#conditions">Placenta Percreta</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Resources</h5>
+    <ul>
+      <li><a href="https://www.acog.org" target="_blank">ACOG</a></li>
+      <li><a href="https://www.smfm.org" target="_blank">SMFM</a></li>
+      <li><a href="https://www.placenta-accreta.org" target="_blank">Accreta Foundation</a></li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed Research</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Support</h5>
+    <ul>
+      <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+      <li><a href="#emergency">Emergency Signs</a></li>
+      <li><a href="specialists.html">Find a Specialist</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 ClearTerm Health. For informational purposes only.</span>
+  <span>Not a medical provider. Always consult your care team.</span>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Tab switching
+  function toggleConditionPanel(panelId) {
+    const panel = document.getElementById(panelId);
+    const isOpen = panel.classList.contains('open');
+    // Close all panels first
+    document.querySelectorAll('.condition-panel').forEach(p => p.classList.remove('open'));
+    // Open clicked panel if it wasn't already open
+    if (!isOpen) {
+      panel.classList.add('open');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  function switchTab(btn, tabId) {
+    const container = btn.closest('.info-tabs');
+    container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    container.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-question.open').forEach(q => {
+      q.classList.remove('open');
+      q.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // Resource filter
+  function filterResources(query) {
+    const q = query.trim().toLowerCase();
+    const cards = document.querySelectorAll('#resources-grid .resource-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const text = (card.innerText + ' ' + (card.dataset.tags || '')).toLowerCase();
+      const match = !q || text.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    let noResults = document.getElementById('no-results-msg');
+    if (!noResults) {
+      noResults = document.createElement('p');
+      noResults.id = 'no-results-msg';
+      noResults.style.cssText = 'color:var(--text-muted);font-size:0.95rem;padding:1.5rem 0;grid-column:1/-1;text-align:center;';
+      noResults.textContent = 'No resources found. Try different keywords.';
+      document.getElementById('resources-grid').appendChild(noResults);
+    }
+    noResults.style.display = (q && visible === 0) ? '' : 'none';
+  }
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

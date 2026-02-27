@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postpartum Recovery — ClearTerm Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c96b6b;
+    --rose-light: #f0d0d0;
+    --rose-pale: #fdf6f6;
+    --mauve: #8b5e6b;
+    --warm-dark: #3d2645;
+    --warm-mid: #6b4a6e;
+    --cream: #faf5f0;
+    --sage: #6b8b78;
+    --gold: #c49a5a;
+    --text: #3a2830;
+    --text-muted: #7a6068;
+    --border: rgba(139,94,107,0.15);
+    --card-bg: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--warm-dark);
+    padding: 0 5vw;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 20px rgba(44,30,36,0.4);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--rose-light); letter-spacing: 0.04em; text-decoration: none; }
+  .logo span { color: var(--rose); font-style: italic; }
+  nav { display: flex; gap: 2rem; align-items: center; }
+  nav a { color: rgba(240,208,208,0.75); text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  nav a:hover { color: var(--rose-light); }
+  .btn-nav { background: var(--rose); color: white !important; padding: 0.5rem 1.2rem; border-radius: 100px; font-weight: 500 !important; transition: background 0.2s !important; }
+  .btn-nav:hover { background: #b55c5c !important; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: var(--warm-dark);
+    padding: 5rem 8vw 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    right: 0; top: 0;
+    width: 55%; height: 100%;
+    background: radial-gradient(ellipse at 80% 40%, rgba(201,107,107,0.12) 0%, transparent 65%);
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    left: -5%; bottom: -20%;
+    width: 30%; height: 60%;
+    background: radial-gradient(ellipse, rgba(139,94,107,0.08) 0%, transparent 70%);
+  }
+  .page-hero-inner { position: relative; max-width: 680px; }
+  .page-tag { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,154,90,0.3); padding: 0.3rem 0.9rem; border-radius: 20px; margin-bottom: 1.2rem; }
+  .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 300; color: var(--rose-light); line-height: 1.2; margin-bottom: 1rem; }
+  .page-hero h1 em { color: var(--rose); font-style: italic; }
+  .page-hero p { font-size: 1rem; color: rgba(240,208,208,0.7); line-height: 1.7; max-width: 560px; }
+
+  /* ── GENTLE NOTE ── */
+  .gentle-note {
+    background: rgba(201,107,107,0.08);
+    border-left: 3px solid var(--rose);
+    padding: 1rem 1.4rem;
+    border-radius: 0 10px 10px 0;
+    margin-top: 2rem;
+    max-width: 560px;
+  }
+  .gentle-note p { font-size: 0.82rem; color: rgba(240,208,208,0.65); line-height: 1.6; }
+  .gentle-note strong { color: var(--rose-light); }
+
+  /* ── SECTIONS ── */
+  .section { padding: 5rem 8vw; }
+  .section-alt { background: #f4ece8; }
+  .section-dark { background: var(--warm-dark); }
+
+  .section-tag { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); border: 1px solid rgba(201,107,107,0.25); padding: 0.3rem 0.9rem; border-radius: 20px; margin-bottom: 0.8rem; }
+  .section-tag-light { color: var(--gold); border-color: rgba(196,154,90,0.3); }
+
+  .section-header { margin-bottom: 3rem; }
+  .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--text); line-height: 1.3; margin-bottom: 0.6rem; }
+  .section-header h2.light { color: var(--rose-light); }
+  .section-header p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; max-width: 620px; }
+  .section-header p.light { color: rgba(240,208,208,0.65); }
+
+  /* ── STAT CARDS ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  .stat-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--stat-color, var(--rose));
+  }
+  .stat-card .big-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--stat-color, var(--rose));
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-card .stat-label { font-size: 0.82rem; color: var(--text); font-weight: 500; margin-bottom: 0.3rem; }
+  .stat-card .stat-source { font-size: 0.72rem; color: var(--text-muted); }
+
+  /* ── TWO COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .two-col-wide { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: start; }
+
+  /* ── CONTENT BLOCKS ── */
+  .content-block h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--text); margin-bottom: 0.8rem; line-height: 1.3; }
+  .content-block h3.light { color: var(--rose-light); }
+  .content-block p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 0.8rem; }
+  .content-block p.light { color: rgba(240,208,208,0.65); }
+
+  /* ── TIMELINE ── */
+  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--rose), var(--mauve), var(--sage)); opacity: 0.3; }
+  .timeline-item { display: flex; gap: 1.4rem; padding: 0 0 2rem 0; position: relative; }
+  .timeline-dot {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--tl-color, var(--rose));
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .timeline-dot span { font-size: 0.7rem; font-weight: 700; color: var(--tl-color, var(--rose)); }
+  .timeline-content { padding-top: 0.5rem; }
+  .timeline-content h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--text); margin-bottom: 0.4rem; }
+  .timeline-content p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+  .timeline-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.15rem 0.6rem; border-radius: 20px; background: var(--tl-bg, rgba(201,107,107,0.1)); color: var(--tl-color, var(--rose)); border: 1px solid var(--tl-border, rgba(201,107,107,0.2)); margin-bottom: 0.4rem; }
+
+  /* ── WARNING CARDS ── */
+  .warning-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .warning-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .warning-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--w-bg, rgba(201,107,107,0.1));
+    border: 1px solid var(--w-border, rgba(201,107,107,0.2));
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .warning-card h4 { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+  .warning-card p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+  .warning-card.urgent { border-color: rgba(201,107,107,0.35); background: rgba(201,107,107,0.03); }
+
+  /* ── PARTNER TIPS ── */
+  .tips-list { display: flex; flex-direction: column; gap: 0.9rem; }
+  .tip-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+  }
+  .tip-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(201,107,107,0.2);
+    border: 1px solid rgba(201,107,107,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--rose-light);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .tip-item h4 { font-size: 0.88rem; font-weight: 500; color: var(--rose-light); margin-bottom: 0.25rem; }
+  .tip-item p { font-size: 0.8rem; color: rgba(240,208,208,0.6); line-height: 1.6; }
+
+  /* ── GRIEF SECTION ── */
+  .grief-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+  .grief-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    position: relative;
+  }
+  .grief-card .gc-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+  .grief-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; color: var(--text); margin-bottom: 0.4rem; }
+  .grief-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* ── QUOTE BLOCK ── */
+  .quote-block {
+    background: rgba(201,107,107,0.06);
+    border: 1px solid rgba(201,107,107,0.15);
+    border-radius: 16px;
+    padding: 2rem 2.4rem;
+    position: relative;
+    margin-top: 2rem;
+  }
+  .quote-block::before { content: '"'; font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: rgba(201,107,107,0.15); position: absolute; top: -0.5rem; left: 1.2rem; line-height: 1; }
+  .quote-block p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--text); line-height: 1.7; position: relative; }
+  .quote-block cite { display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.6rem; font-style: normal; }
+
+  /* ── DISCLAIMER & FOOTER ── */
+  .disclaimer { background: #f0e8e0; border-top: 1px solid rgba(139,94,107,0.12); padding: 1.4rem 8vw; font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+  footer { background: var(--warm-dark); padding: 3rem 8vw; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; color: rgba(240,208,208,0.55); font-size: 0.82rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--rose-light); margin-bottom: 0.8rem; }
+  .footer-logo span { color: var(--rose); font-style: italic; }
+  .footer-desc { line-height: 1.7; max-width: 320px; }
+  footer h5 { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer a { color: rgba(240,208,208,0.55); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--rose-light); }
+  .footer-bottom { background: rgba(0,0,0,0.2); padding: 1rem 8vw; font-size: 0.72rem; color: rgba(240,208,208,0.3); text-align: center; }
+
+  /* ── FADE ── */
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .two-col, .two-col-wide { grid-template-columns: 1fr; gap: 2rem; }
+    footer { grid-template-columns: 1fr; gap: 2rem; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo"><span>Clear</span>Term Health</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#conditions">Conditions</a>
+    <a href="specialists.html">Specialists</a>
+    <a href="recovery.html">Recovery</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="clearterm-resources.html" class="btn-nav">Resources</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-tag">Postpartum Recovery</div>
+    <h1>Your recovery matters <em>as much as your delivery</em></h1>
+    <p>After a high-risk birth involving placenta previa or accreta spectrum, recovery is complex — physically and emotionally. This page is for you, and for the people who love you.</p>
+    <div class="gentle-note">
+      <p><strong>A gentle note:</strong> If you are currently in crisis or having thoughts of self-harm, please reach out to the <strong>988 Suicide & Crisis Lifeline</strong> (call or text 988) or the <strong>Postpartum Support International Helpline</strong> at 1-800-944-4773. You are not alone.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MENTAL HEALTH STATS -->
+<section class="section">
+  <div class="section-header fade-up">
+    <div class="section-tag">Mental Health</div>
+    <h2>The emotional reality of postpartum recovery</h2>
+    <p>The mental health impact of a traumatic or high-risk birth is real, significant, and underreported. These numbers reflect what women actually experience — not what is often acknowledged in clinical follow-up.</p>
+  </div>
+
+  <div class="stats-grid fade-up">
+    <div class="stat-card" style="--stat-color: var(--rose);">
+      <div class="big-num">20–30%</div>
+      <div class="stat-label">Experience clinical depression in year one</div>
+      <div class="stat-source">Higher in women under 40 with unplanned hysterectomy</div>
+    </div>
+    <div class="stat-card" style="--stat-color: #a04060;">
+      <div class="big-num">2x</div>
+      <div class="stat-label">Increased depression risk for women under 40</div>
+      <div class="stat-source">Compared to older women undergoing hysterectomy</div>
+    </div>
+    <div class="stat-card" style="--stat-color: var(--mauve);">
+      <div class="big-num">30–40%</div>
+      <div class="stat-label">Develop PTSD after emergency cesarean hysterectomy</div>
+      <div class="stat-source">Comparable to rates seen after ICU admission</div>
+    </div>
+    <div class="stat-card" style="--stat-color: var(--sage);">
+      <div class="big-num">12–18 mo</div>
+      <div class="stat-label">Typical timeline for significant improvement</div>
+      <div class="stat-source">With appropriate support and intervention</div>
+    </div>
+  </div>
+
+  <div class="two-col fade-up">
+    <div class="content-block">
+      <h3>What PTSD looks like after a traumatic birth</h3>
+      <p>Post-traumatic stress following a high-risk delivery is often misidentified as "baby blues" or general anxiety. True PTSD symptoms include intrusive memories or flashbacks of the delivery, hypervigilance around medical settings, avoidance of anything that triggers memories of the birth, emotional numbness, and difficulty bonding with your baby.</p>
+      <p>Women who underwent an unplanned or emergency cesarean hysterectomy are at highest risk. The sudden, irreversible nature of the procedure — often decided in moments — can leave women feeling a profound loss of control that takes time and support to process.</p>
+      <p>PTSD after childbirth is a recognized clinical diagnosis. It deserves proper treatment, not dismissal.</p>
+    </div>
+    <div>
+      <div class="quote-block">
+        <p>The hardest part wasn't the surgery. It was waking up and realizing my body had changed forever — and no one had told me to prepare for what that would feel like.</p>
+        <cite>— Commonly reported by PAS survivors in peer support communities</cite>
+      </div>
+      <div style="margin-top:1.5rem; background: var(--rose-pale); border: 1px solid rgba(201,107,107,0.15); border-radius:12px; padding:1.2rem 1.4rem;">
+        <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--rose); margin-bottom:0.6rem;">Factors that worsen outcomes</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.4rem;">
+          <li style="font-size:0.82rem; color:var(--text-muted); padding-left:1rem; position:relative;">
+            <span style="position:absolute;left:0;color:var(--rose);">→</span> Unplanned or emergency hysterectomy
+          </li>
+          <li style="font-size:0.82rem; color:var(--text-muted); padding-left:1rem; position:relative;">
+            <span style="position:absolute;left:0;color:var(--rose);">→</span> No preoperative counseling about fertility loss
+          </li>
+          <li style="font-size:0.82rem; color:var(--text-muted); padding-left:1rem; position:relative;">
+            <span style="position:absolute;left:0;color:var(--rose);">→</span> Poor social or partner support
+          </li>
+          <li style="font-size:0.82rem; color:var(--text-muted); padding-left:1rem; position:relative;">
+            <span style="position:absolute;left:0;color:var(--rose);">→</span> Prior mental health history
+          </li>
+          <li style="font-size:0.82rem; color:var(--text-muted); padding-left:1rem; position:relative;">
+            <span style="position:absolute;left:0;color:var(--rose);">→</span> Feeling dismissed or unheard by providers
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRIEF & IDENTITY -->
+<section class="section section-alt">
+  <div class="section-header fade-up">
+    <div class="section-tag">Grief & Identity</div>
+    <h2>Grieving the loss of fertility</h2>
+    <p>Even when a hysterectomy was expected, or even when it saved your life, grief is a natural and valid response. Loss of fertility touches identity, relationships, and a future you may have imagined.</p>
+  </div>
+
+  <div class="grief-cards fade-up">
+    <div class="grief-card">
+      <div class="gc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h4>Grief is not weakness</h4>
+      <p>Mourning the loss of your fertility — even if your family feels complete — is a normal, healthy response. The uterus carries profound symbolic meaning. Allowing yourself to grieve is part of healing.</p>
+    </div>
+    <div class="grief-card">
+      <div class="gc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--mauve)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h4>Grief has no timeline</h4>
+      <p>Grief responses can persist for 1–3 years, often resurfacing around milestones — another pregnancy announcement, a due date, a birthday. This is not a sign that something is wrong with you.</p>
+    </div>
+    <div class="grief-card">
+      <div class="gc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h4>Your feelings affect your relationships</h4>
+      <p>Partners, family, and friends may not understand the depth of fertility grief. You may feel isolated even when surrounded by support. Naming what you're experiencing to those closest to you can help bridge the gap.</p>
+    </div>
+    <div class="grief-card">
+      <div class="gc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h4>Resilience is possible</h4>
+      <p>Many women report the experience ultimately deepening their sense of purpose and strength — but rarely without intentional processing. Therapy, community, and time are the most consistent predictors of resilience.</p>
+    </div>
+    <div class="grief-card">
+      <div class="gc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a04060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h4>Your story deserves to be told</h4>
+      <p>Peer support communities — particularly the NAF support groups — provide a space where women who've lived this experience truly understand each other. Being heard matters.</p>
+    </div>
+    <div class="grief-card">
+      <div class="gc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h4>Women who wanted more children</h4>
+      <p>If your hysterectomy ended a family you hadn't finished building, the grief is compounded. This is a real and significant loss. Women in this situation report higher rates of prolonged grief and benefit most from specialized perinatal loss counseling.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHYSICAL RECOVERY TIMELINE -->
+<section class="section">
+  <div class="section-header fade-up">
+    <div class="section-tag">Physical Recovery</div>
+    <h2>What to expect, and when</h2>
+    <p>Recovery from cesarean hysterectomy is a major undertaking. Understanding the typical timeline helps you set realistic expectations — and recognize when something may need attention.</p>
+  </div>
+
+  <div class="two-col-wide fade-up">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot" style="--tl-color: var(--rose);">
+          <span>Wk 1</span>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-tag" style="--tl-color:var(--rose); --tl-bg:rgba(201,107,107,0.1); --tl-border:rgba(201,107,107,0.2);">Days 1–7</div>
+          <h4>Hospital & immediate post-op</h4>
+          <p>Most women spend 3–5 days inpatient after cesarean hysterectomy. Pain, fatigue, and catheter are expected. Blood transfusion effects may persist. Emotional shock is common — many women describe feeling numb or disconnected in this phase.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="--tl-color: #a04060;">
+          <span>Wk 2–4</span>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-tag" style="--tl-color:#a04060; --tl-bg:rgba(160,64,96,0.1); --tl-border:rgba(160,64,96,0.2);">Weeks 2–4</div>
+          <h4>Early home recovery</h4>
+          <p>Activity is very limited. No lifting, driving, or stairs without clearance. Vaginal discharge (cuff healing) is normal. Fatigue can be severe, particularly after significant blood loss. Emotionally, many women begin to process what happened as the adrenaline fades.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="--tl-color: var(--mauve);">
+          <span>Mo 1–3</span>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-tag" style="--tl-color:var(--mauve); --tl-bg:rgba(139,94,107,0.1); --tl-border:rgba(139,94,107,0.2);">Months 1–3</div>
+          <h4>Healing continues — and the hardest emotional stretch</h4>
+          <p>Physical strength gradually returns but fatigue persists. This is typically identified as the hardest emotional period — once the crisis has passed, grief and PTSD symptoms often peak. Hormonal changes from abrupt surgical menopause (if ovaries were removed) may begin.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="--tl-color: var(--gold);">
+          <span>Mo 3–6</span>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-tag" style="--tl-color:var(--gold); --tl-bg:rgba(196,154,90,0.1); --tl-border:rgba(196,154,90,0.2);">Months 3–6</div>
+          <h4>Return to light activity</h4>
+          <p>Most women are cleared for light exercise by 6–8 weeks, though full recovery takes much longer. Pelvic floor physical therapy is often recommended. Hormonal symptoms (hot flashes, mood shifts, sleep disruption) may become more pronounced if HRT has not been started.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="--tl-color: var(--sage);">
+          <span>Mo 6–18</span>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-tag" style="--tl-color:var(--sage); --tl-bg:rgba(107,139,120,0.1); --tl-border:rgba(107,139,120,0.2);">Months 6–18</div>
+          <h4>Significant improvement with support</h4>
+          <p>Most women with access to therapy, peer support, and good medical follow-up report significant improvement by 12–18 months. Grief may resurface at milestones. Full physical recovery from major blood loss and surgery can take up to a year.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="content-block" style="background:var(--rose-pale); border:1px solid rgba(201,107,107,0.15); border-radius:16px; padding:1.8rem;">
+        <h3>Surgical menopause</h3>
+        <p>If your ovaries were removed along with your uterus, you will enter surgical menopause immediately. Unlike natural menopause, which is gradual, surgical menopause is abrupt and symptoms are often more intense.</p>
+        <p>Symptoms include hot flashes, night sweats, mood changes, sleep disturbances, vaginal dryness, and brain fog. Hormone replacement therapy (HRT) is commonly recommended for women under 50 to manage symptoms and protect long-term bone and cardiovascular health.</p>
+        <p>Talk to your MFM or gynecologist about HRT options early in your recovery — ideally before discharge.</p>
+      </div>
+
+      <div style="margin-top:1.2rem; background:white; border:1px solid var(--border); border-radius:16px; padding:1.8rem;">
+        <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--sage); margin-bottom:0.8rem;">What helps most</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+          <li style="font-size:0.82rem; color:var(--text-muted); display:flex; gap:0.6rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;"><polyline points="20 6 9 17 4 12"/></svg>
+            Pelvic floor physical therapy
+          </li>
+          <li style="font-size:0.82rem; color:var(--text-muted); display:flex; gap:0.6rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;"><polyline points="20 6 9 17 4 12"/></svg>
+            Iron supplementation / dietary support post-blood loss
+          </li>
+          <li style="font-size:0.82rem; color:var(--text-muted); display:flex; gap:0.6rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;"><polyline points="20 6 9 17 4 12"/></svg>
+            Hormone replacement therapy discussion
+          </li>
+          <li style="font-size:0.82rem; color:var(--text-muted); display:flex; gap:0.6rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;"><polyline points="20 6 9 17 4 12"/></svg>
+            Trauma-informed therapy (EMDR, CBT)
+          </li>
+          <li style="font-size:0.82rem; color:var(--text-muted); display:flex; gap:0.6rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;"><polyline points="20 6 9 17 4 12"/></svg>
+            Peer support communities (NAF groups)
+          </li>
+          <li style="font-size:0.82rem; color:var(--text-muted); display:flex; gap:0.6rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;"><polyline points="20 6 9 17 4 12"/></svg>
+            Postpartum Support International
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WARNING SIGNS -->
+<section class="section section-alt">
+  <div class="section-header fade-up">
+    <div class="section-tag">Warning Signs</div>
+    <h2>When to seek help immediately</h2>
+    <p>Some symptoms after cesarean hysterectomy require urgent medical or mental health attention. Do not wait for your next scheduled appointment if you experience any of the following.</p>
+  </div>
+
+  <div class="warning-grid fade-up">
+
+    <div class="warning-card urgent">
+      <div class="warning-icon" style="--w-bg:rgba(201,107,107,0.12); --w-border:rgba(201,107,107,0.3);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div>
+        <h4>Heavy or unusual bleeding</h4>
+        <p>Soaking more than one pad per hour, or passing large clots, can indicate internal bleeding or cuff dehiscence. Call your provider or go to the ER immediately.</p>
+      </div>
+    </div>
+
+    <div class="warning-card urgent">
+      <div class="warning-icon" style="--w-bg:rgba(201,107,107,0.12); --w-border:rgba(201,107,107,0.3);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h4>Signs of infection</h4>
+        <p>Fever over 100.4°F, wound redness/swelling/discharge, foul-smelling vaginal discharge, or increasing abdominal pain are signs of infection requiring prompt treatment.</p>
+      </div>
+    </div>
+
+    <div class="warning-card urgent">
+      <div class="warning-icon" style="--w-bg:rgba(160,64,96,0.1); --w-border:rgba(160,64,96,0.25);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a04060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2l2-6 4 12 3-8 2 4 2-2h3"/></svg>
+      </div>
+      <div>
+        <h4>Thoughts of self-harm or suicide</h4>
+        <p>Call or text 988 immediately. Postpartum psychosis and severe depression are medical emergencies. The Postpartum Support International helpline is also available at 1-800-944-4773.</p>
+      </div>
+    </div>
+
+    <div class="warning-card">
+      <div class="warning-icon" style="--w-bg:rgba(139,94,107,0.1); --w-border:rgba(139,94,107,0.25);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--mauve)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      </div>
+      <div>
+        <h4>Inability to bond with your baby</h4>
+        <p>If you feel detached from your newborn beyond the first few days, speak to your provider. This is a recognized symptom of postpartum depression and PTSD — not a reflection of your love or capability as a parent.</p>
+      </div>
+    </div>
+
+    <div class="warning-card">
+      <div class="warning-icon" style="--w-bg:rgba(196,154,90,0.1); --w-border:rgba(196,154,90,0.25);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div>
+        <h4>Persistent numbness or dissociation</h4>
+        <p>Feeling emotionally detached from yourself, your body, or your surroundings for extended periods is a sign of trauma response that benefits from professional support.</p>
+      </div>
+    </div>
+
+    <div class="warning-card">
+      <div class="warning-icon" style="--w-bg:rgba(107,139,120,0.1); --w-border:rgba(107,139,120,0.25);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 5.99 5.99l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+      </div>
+      <div>
+        <h4>Urinary or bladder issues</h4>
+        <p>Pain with urination, blood in urine, difficulty emptying the bladder, or leakage that doesn't improve may indicate bladder injury complications. Report these to your urologist or MFM.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PARTNER TIPS -->
+<section class="section section-dark">
+  <div class="section-header fade-up">
+    <div class="section-tag section-tag-light">For Partners & Support People</div>
+    <h2 class="light">How to show up for someone you love</h2>
+    <p class="light">Partners, family members, and friends often want to help but don't know how. The needs after a traumatic high-risk birth are specific and sometimes counterintuitive.</p>
+  </div>
+
+  <div class="two-col fade-up">
+    <div class="tips-list">
+      <div class="tip-item">
+        <div class="tip-num">1</div>
+        <div>
+          <h4>Don't say "at least you're both okay"</h4>
+          <p>While well-intentioned, this dismisses real grief. She may be physically alive while grieving deeply. Acknowledge the loss alongside the survival. "I'm so glad you made it through, and I also know this was a lot to go through" lands very differently.</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">2</div>
+        <div>
+          <h4>Ask what she needs — then actually do it</h4>
+          <p>Don't offer a vague "let me know if you need anything." Come with specific offers: "Can I take the baby for two hours so you can sleep?" or "I'm dropping dinner off Thursday — is 6pm okay?"</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">3</div>
+        <div>
+          <h4>Learn the warning signs</h4>
+          <p>Postpartum depression, PTSD, and psychosis can look different in each person. Educate yourself on what to watch for. You may notice changes before she does. If you're concerned, gently raise it — and offer to help find support.</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">4</div>
+        <div>
+          <h4>Understand the grief is real — even if the family feels complete</h4>
+          <p>Partners sometimes struggle to understand grief over fertility loss when "we have the baby we wanted." The loss of reproductive choice and bodily autonomy is profound regardless of family size. Validate this without minimizing it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips-list">
+      <div class="tip-item">
+        <div class="tip-num">5</div>
+        <div>
+          <h4>Don't rush her recovery timeline</h4>
+          <p>Phrases like "you should be feeling better by now" or "it's been three months" are harmful. Recovery — especially emotional recovery — is not linear. Follow her lead, not a calendar.</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">6</div>
+        <div>
+          <h4>Take care of yourself too</h4>
+          <p>Partners who witness traumatic births can also develop PTSD or secondary trauma. Your mental health matters. Seek support through your own therapist or the PSI partner resources if you're struggling.</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">7</div>
+        <div>
+          <h4>Encourage professional support — gently</h4>
+          <p>If she is resistant to therapy or support groups, don't push. Plant seeds: "I read that a lot of women found the NAF support group really helpful — would you ever want to check it out?" Then respect her timing.</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">8</div>
+        <div>
+          <h4>Show up consistently over time</h4>
+          <p>Most support floods in the first two weeks. The 3–6 month window — when emotional recovery is hardest — is often when support has dried up. Check in. Keep showing up. The long game matters.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>Medical Disclaimer:</strong> The content on this page is for informational and educational purposes only and does not constitute medical or mental health advice. If you are experiencing a mental health crisis, please call or text 988 or contact Postpartum Support International at 1-800-944-4773. Always consult your healthcare provider regarding your individual recovery.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo"><span>Clear</span>Term Health</div>
+    <p class="footer-desc">Clarity through complication. ClearTerm helps women understand placenta previa, placenta accreta spectrum, and related maternal conditions — so they can reach term with confidence.</p>
+  </div>
+  <div>
+    <h5>Navigate</h5>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#conditions">Conditions</a></li>
+      <li><a href="specialists.html">Specialists</a></li>
+      <li><a href="recovery.html">Recovery</a></li>
+      <li><a href="clearterm-resources.html">Resources</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+  </div>
+  <div>
+    <h5>Crisis Resources</h5>
+    <ul>
+      <li><a href="tel:988">988 Suicide & Crisis Lifeline</a></li>
+      <li><a href="tel:18009444773">PSI Helpline: 1-800-944-4773</a></li>
+      <li><a href="https://www.postpartum.net" target="_blank">Postpartum Support International</a></li>
+      <li><a href="https://www.preventaccreta.org/support" target="_blank">NAF Support Groups</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2025 ClearTerm Health. For informational purposes only. Not medical advice.</div>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

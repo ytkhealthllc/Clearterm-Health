@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearTerm Health — Your Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c96b6b; --rose-light: #f0d0d0; --rose-pale: #fdf6f6;
+    --mauve: #8b5e6b; --warm-dark: #3d2645; --warm-mid: #6b4a6e;
+    --cream: #faf5f0; --sage: #6b8b78; --gold: #c49a5a; --teal: #4a8a8a;
+    --text: #3a2830; --text-muted: #7a6068;
+    --s1:#c96b6b; --s2:#8b5e6b; --s3:#c49a5a; --s4:#6b8b78; --s5:#4a8a8a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--text); overflow-x:hidden; }
+
+  header { background:var(--warm-dark); padding:0 5vw; position:sticky; top:0; z-index:200; display:flex; align-items:center; justify-content:space-between; height:72px; box-shadow:0 2px 20px rgba(44,30,36,0.4); }
+  .logo { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:var(--rose-light); text-decoration:none; letter-spacing:0.04em; }
+  .logo span { color:var(--rose); font-style:italic; }
+  nav { display:flex; gap:2rem; align-items:center; }
+  nav a { color:rgba(240,208,208,0.7); text-decoration:none; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; transition:color 0.2s; }
+  nav a:hover, nav a.active { color:var(--rose-light); }
+  .btn-nav { background:var(--rose)!important; color:white!important; padding:0.5rem 1.2rem; border-radius:100px; }
+
+  .page-intro { background:var(--warm-dark); padding:4rem 8vw 0; position:relative; overflow:hidden; }
+  .page-intro::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 80% 50%,rgba(201,107,107,0.13) 0%,transparent 65%); pointer-events:none; }
+  .intro-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.16em; color:var(--rose); font-weight:600; margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+  .intro-label::before { content:''; display:inline-block; width:24px; height:1px; background:var(--rose); }
+  .page-intro h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3rem); font-weight:300; color:var(--rose-light); line-height:1.15; max-width:660px; margin-bottom:0.9rem; }
+  .page-intro h1 em { font-style:italic; color:var(--rose); }
+  .page-intro > p { color:rgba(240,208,208,0.55); font-size:0.97rem; line-height:1.75; max-width:560px; margin-bottom:1.6rem; }
+
+  .condition-filter { display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:2.4rem; position:relative; z-index:1; }
+  .cond-pill { display:inline-flex; align-items:center; gap:0.45rem; padding:0.45rem 1rem; border-radius:100px; border:1.5px solid rgba(240,208,208,0.2); background:rgba(255,255,255,0.07); color:rgba(240,208,208,0.6); font-size:0.8rem; font-weight:500; cursor:pointer; transition:all 0.2s; font-family:'DM Sans',sans-serif; }
+  .cond-pill:hover { border-color:rgba(240,208,208,0.5); color:var(--rose-light); }
+  .cond-pill.active { background:white; color:var(--warm-dark); border-color:white; font-weight:600; }
+  .cond-pill .pill-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+  .stage-nav { display:flex; position:relative; z-index:1; }
+  .stage-nav-btn { flex:1; padding:1rem 0.5rem 1.2rem; border:none; background:rgba(255,255,255,0.04); border-top:3px solid transparent; font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:500; color:rgba(240,208,208,0.45); cursor:pointer; transition:all 0.22s; display:flex; flex-direction:column; align-items:center; gap:0.4rem; }
+  .stage-nav-btn:hover { background:rgba(255,255,255,0.07); color:rgba(240,208,208,0.8); }
+  .stage-nav-btn.active { background:var(--cream); color:var(--warm-dark); font-weight:600; }
+  .stage-nav-btn .snb-icon { font-size:1.3rem; }
+  .snb-num { font-family:'Cormorant Garamond',serif; font-size:0.75rem; opacity:0.4; }
+  .stage-nav-btn[data-stage="1"].active{border-top-color:var(--s1)} .stage-nav-btn[data-stage="2"].active{border-top-color:var(--s2)} .stage-nav-btn[data-stage="3"].active{border-top-color:var(--s3)} .stage-nav-btn[data-stage="4"].active{border-top-color:var(--s4)} .stage-nav-btn[data-stage="5"].active{border-top-color:var(--s5)}
+
+  .progress-strip { background:white; border-bottom:1px solid var(--rose-light); padding:0.9rem 8vw; display:flex; align-items:center; gap:0.6rem; font-size:0.78rem; color:var(--text-muted); overflow-x:auto; white-space:nowrap; }
+  .prog-step { display:flex; align-items:center; gap:0.5rem; cursor:pointer; transition:color 0.2s; flex-shrink:0; }
+  .prog-step:hover { color:var(--text); }
+  .prog-step.active { color:var(--rose); font-weight:600; }
+  .prog-step.done { color:var(--sage); }
+  .prog-dot { width:8px; height:8px; border-radius:50%; background:var(--rose-light); flex-shrink:0; transition:background 0.2s,transform 0.2s; }
+  .prog-step.active .prog-dot { background:var(--rose); transform:scale(1.3); }
+  .prog-step.done .prog-dot { background:var(--sage); }
+  .prog-arrow { color:var(--rose-light); font-size:0.7rem; }
+
+  .stage-panel { display:none; padding:4rem 8vw 5rem; animation:fadeSlide 0.35s ease; }
+  .stage-panel.active { display:block; }
+  @keyframes fadeSlide { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+  .stage-header { display:flex; align-items:flex-start; gap:2rem; margin-bottom:3.5rem; padding-bottom:2.5rem; border-bottom:1.5px solid var(--rose-light); }
+  .stage-number { font-family:'Cormorant Garamond',serif; font-size:5rem; font-weight:300; line-height:1; flex-shrink:0; opacity:0.18; }
+  .stage-header-text { flex:1; }
+  .stage-tag { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.14em; font-weight:700; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.5rem; }
+  .stage-tag::before { content:''; display:inline-block; width:18px; height:2px; border-radius:2px; background:currentColor; }
+  .stage-header h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3vw,2.5rem); font-weight:300; color:var(--warm-dark); line-height:1.15; margin-bottom:0.7rem; }
+  .stage-header h2 em { font-style:italic; }
+  .stage-desc { font-size:0.95rem; color:var(--text-muted); line-height:1.75; max-width:620px; }
+  .stage-affirmation { margin-left:auto; flex-shrink:0; max-width:220px; background:white; border-radius:16px; padding:1.4rem; box-shadow:0 4px 20px rgba(44,30,36,0.07); border-left:3px solid; text-align:center; }
+  .stage-affirmation .aff-icon { font-size:1.6rem; margin-bottom:0.5rem; }
+  .stage-affirmation p { font-family:'Cormorant Garamond',serif; font-size:1rem; font-style:italic; color:var(--warm-dark); line-height:1.5; }
+
+  .type-section { margin-bottom:2.8rem; }
+  .type-section-header { display:flex; align-items:center; gap:0.7rem; margin-bottom:1.2rem; }
+  .type-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; font-weight:700; padding:0.28rem 0.8rem; border-radius:100px; }
+  .lbl-video    { background:rgba(196,154,90,0.14);  color:#a07a30; }
+  .lbl-article  { background:rgba(107,139,120,0.12); color:var(--sage); }
+  .lbl-support  { background:rgba(139,94,107,0.12);  color:var(--mauve); }
+  .lbl-research { background:rgba(74,138,138,0.12);  color:var(--teal); }
+  .type-divider { height:1px; background:var(--rose-pale); margin:2.2rem 0; }
+
+  .cards-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:1.1rem; }
+  .res-card { background:white; border-radius:14px; padding:1.4rem; box-shadow:0 2px 10px rgba(44,30,36,0.055); border:1.5px solid transparent; transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:0.6rem; }
+  .res-card:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(44,30,36,0.11); border-color:var(--rose-light); }
+  .res-card.featured { border-color:var(--rose-light); background:linear-gradient(135deg,white 60%,var(--rose-pale)); }
+  .featured-crown { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; color:var(--rose); display:flex; align-items:center; gap:0.3rem; }
+  .card-tags { display:flex; flex-wrap:wrap; gap:0.35rem; }
+  .ctag { font-size:0.63rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:700; padding:0.18rem 0.55rem; border-radius:100px; }
+  .res-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.06rem; font-weight:600; color:var(--warm-dark); line-height:1.3; }
+  .res-card p { font-size:0.81rem; color:var(--text-muted); line-height:1.65; flex:1; }
+  .res-footer { display:flex; align-items:center; justify-content:space-between; padding-top:0.7rem; border-top:1px solid var(--rose-pale); font-size:0.73rem; }
+  .res-source { color:var(--text-muted); font-weight:500; }
+  .res-link { color:var(--rose); font-weight:600; display:flex; align-items:center; gap:0.2rem; transition:gap 0.15s; }
+  .res-card:hover .res-link { gap:0.4rem; }
+
+  .shared-section { margin-top:3rem; padding-top:2rem; border-top:2px dashed var(--rose-light); }
+  .shared-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); font-weight:600; margin-bottom:1.2rem; display:flex; align-items:center; gap:0.8rem; }
+  .shared-label::before,.shared-label::after { content:''; flex:1; height:1px; background:var(--rose-light); }
+
+  .no-results { text-align:center; padding:4rem 2rem; }
+  .no-results h3 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--warm-dark); margin-bottom:0.5rem; }
+  .no-results p { color:var(--text-muted); font-size:0.9rem; }
+
+  .disclaimer { background:var(--warm-dark); padding:1.4rem 8vw; text-align:center; font-size:0.76rem; color:rgba(240,208,208,0.42); line-height:1.6; }
+  .disclaimer strong { color:rgba(240,208,208,0.68); }
+  footer { background:#271830; padding:2.5rem 8vw 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+  .footer-logo { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; color:var(--rose-light); text-decoration:none; }
+  .footer-logo span { color:var(--rose); font-style:italic; }
+  .footer-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
+  .footer-links a { font-size:0.8rem; color:rgba(240,208,208,0.38); text-decoration:none; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--rose-light); }
+  .footer-copy { background:#271830; padding:1rem 8vw; border-top:1px solid rgba(240,208,208,0.12); font-size:0.72rem; color:rgba(240,208,208,0.22); text-align:center; }
+
+  @media(max-width:860px){nav{display:none} .stage-nav-btn{font-size:0.68rem} .stage-header{flex-direction:column;gap:1.2rem} .stage-affirmation{margin-left:0;max-width:100%}}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo"><span>Clear</span>Term Health</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#conditions">Conditions</a>
+    <a href="clearterm-resources.html" class="active">Resources</a>
+    <a href="index.html#specialists">Specialists</a>
+    <a href="index.html#emergency" class="btn-nav">Emergency Signs</a>
+  </nav>
+</header>
+
+<div class="page-intro">
+  <div class="intro-label">Resource Library</div>
+  <h1>Resources for every step of your <em>journey</em></h1>
+  <p>Select your condition and the stage that fits where you are right now. Resources update instantly.</p>
+  <div class="condition-filter" id="conditionFilter"></div>
+  <div class="stage-nav" id="stageNav"></div>
+</div>
+
+<div class="progress-strip" id="progressStrip"></div>
+<div id="stagePanels"></div>
+
+<div class="disclaimer">
+  <strong>Medical Disclaimer:</strong> All resources are for informational purposes only and do not constitute medical advice. ClearTerm does not endorse any specific provider or organization. Always consult your obstetrician or MFM specialist before making care decisions. In an emergency, call 911 immediately.
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo"><span>Clear</span>Term Health</a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#conditions">Conditions</a>
+    <a href="clearterm-resources.html">Resources</a>
+    <a href="index.html#specialists">Specialists</a>
+    <a href="recovery.html">Recovery</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#emergency">Emergency Signs</a>
+  </div>
+</footer>
+<div class="footer-copy">© 2026 ClearTerm Health. For informational purposes only. Not a medical provider.</div>
+
+<script src="conditions-data.js"></script>
+<script>
+const STAGES = [
+  { num:1, icon:"💔", label:"Just Diagnosed",              color:"var(--s1)", aff:{ icon:"🤍", text:"You are not alone. Thousands of women navigate this each year." },              desc:"It's okay to feel overwhelmed. This section gives you the most important information first — what your diagnosis means, what questions to ask, and where to find real human support right now." },
+  { num:2, icon:"🔬", label:"Understanding Your Condition", color:"var(--s2)", aff:{ icon:"📚", text:"Understanding your diagnosis is one of the most empowering things you can do." },    desc:"Now that the initial shock has settled, go deeper. Find clinical guides, peer-reviewed research, and diagnostic resources to help you have informed conversations with your care team." },
+  { num:3, icon:"🏥", label:"Preparing for Delivery",      color:"var(--s3)", aff:{ icon:"🌟", text:"A planned, prepared delivery is a safer delivery. You are advocating for yourself." }, desc:"Preparation is your greatest ally. These resources help you understand your delivery options, find the right hospital, prepare for a C-section, and know what your surgical team will do to keep you safe." },
+  { num:4, icon:"🌱", label:"Postpartum Recovery",          color:"var(--s4)", aff:{ icon:"🌿", text:"Healing isn't linear. Be as gentle with yourself as you would be with anyone you love." }, desc:"Your body has been through something significant. This stage covers physical recovery, mental health support, and how to find professionals to help you heal — body and mind." },
+  { num:5, icon:"🌸", label:"Life After & Fertility",       color:"var(--s5)", aff:{ icon:"🌸", text:"Your story isn't over. It's just beginning a new chapter." },                      desc:"Whether you're grieving fertility loss or exploring new paths to parenthood — you are not alone. These resources address life after hysterectomy, ART options, and moving forward with hope." },
+];
+
+const TYPE_ORDER = ["video","article","support","research"];
+const TYPE_CONFIG = {
+  video:    { label:"▶ Videos & Webinars",       cls:"lbl-video" },
+  article:  { label:"📄 Articles & Guides",      cls:"lbl-article" },
+  support:  { label:"💬 Support Groups",          cls:"lbl-support" },
+  research: { label:"🔬 Peer-Reviewed Research",  cls:"lbl-research" },
+};
+
+const SHARED = {
+  1:[{ type:"support", title:"Postpartum Support International", description:"PSI's helpline supports women experiencing anxiety during high-risk pregnancies — not just postpartum. You don't have to wait until after delivery.", url:"https://www.postpartum.net", source:"Postpartum.net" }],
+  2:[{ type:"article", title:"RadiologyInfo — Obstetric Ultrasound Guide", description:"Patient-facing explanation of obstetric ultrasound and transvaginal scans — what to expect and how placental location is determined.", url:"https://www.radiologyinfo.org/en/info/obstetrical-us", source:"RadiologyInfo.org" }],
+  3:[{ type:"article", title:"Mayo Clinic — What to Expect: C-Section", description:"Step-by-step guide to what happens before, during, and after a cesarean delivery — great for first-time C-section patients.", url:"https://www.mayoclinic.org/tests-procedures/c-section/about/pac-20393655", source:"MayoClinic.org" }],
+  4:[
+    { type:"support", title:"PSI — Find a Perinatal Mental Health Provider", description:"Directory of therapists specializing in perinatal mental health — find someone who understands birth trauma and postpartum mood disorders.", url:"https://www.postpartum.net/professionals/perinatal-mental-health-provider-directory/", source:"Postpartum.net" },
+    { type:"video",   title:"Birth Trauma & PTSD — Therapy Approaches Explained", description:"A clinical psychologist explains evidence-based therapy for birth trauma and perinatal PTSD.", url:"https://www.youtube.com/results?search_query=birth+trauma+PTSD+therapy+perinatal", source:"YouTube / PSI" },
+  ],
+  5:[{ type:"article", title:"CDC — Assisted Reproductive Technology", description:"Overview of ART options including gestational surrogacy — available for women who lost their uterus but retained their ovaries.", url:"https://www.cdc.gov/art/index.html", source:"CDC.gov" }],
+};
+
+let activeConditionId = CONDITIONS[0].id;
+let activeStage = 1;
+
+function init() {
+  renderConditionFilter();
+  renderStageNav();
+  renderProgressStrip();
+  renderAllStages();
+  setActiveStage(1);
+}
+
+function renderConditionFilter() {
+  const c = document.getElementById('conditionFilter');
+  c.appendChild(makePill("all","All Conditions","#f0d0d0", activeConditionId==="all"));
+  CONDITIONS.forEach(cond => c.appendChild(makePill(cond.id, cond.name, cond.color, activeConditionId===cond.id)));
+}
+
+function makePill(id, name, color, active) {
+  const btn = document.createElement('button');
+  btn.className = 'cond-pill'+(active?' active':'');
+  btn.dataset.id = id;
+  btn.innerHTML = `<span class="pill-dot" style="background:${color}"></span>${name}`;
+  btn.onclick = () => {
+    activeConditionId = id;
+    document.querySelectorAll('.cond-pill').forEach(p => p.classList.toggle('active', p.dataset.id===id));
+    renderAllStages();
+  };
+  return btn;
+}
+
+function renderStageNav() {
+  const nav = document.getElementById('stageNav');
+  STAGES.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'stage-nav-btn';
+    btn.dataset.stage = s.num;
+    btn.innerHTML = `<span class="snb-icon">${s.icon}</span>${s.label}<span class="snb-num">0${s.num}</span>`;
+    btn.onclick = () => setActiveStage(s.num);
+    nav.appendChild(btn);
+  });
+}
+
+function renderProgressStrip() {
+  const strip = document.getElementById('progressStrip');
+  STAGES.forEach((s,i) => {
+    const step = document.createElement('div');
+    step.className = 'prog-step';
+    step.dataset.stage = s.num;
+    step.innerHTML = `<span class="prog-dot"></span>${s.label}`;
+    step.onclick = () => setActiveStage(s.num);
+    strip.appendChild(step);
+    if (i < STAGES.length-1) { const a=document.createElement('span'); a.className='prog-arrow'; a.textContent='›'; strip.appendChild(a); }
+  });
+}
+
+function renderAllStages() {
+  const container = document.getElementById('stagePanels');
+  container.innerHTML = '';
+  STAGES.forEach(s => container.appendChild(buildPanel(s)));
+  document.querySelectorAll('.stage-panel').forEach((p,i) => p.classList.toggle('active', STAGES[i].num===activeStage));
+}
+
+function buildPanel(stage) {
+  const panel = document.createElement('div');
+  panel.className = 'stage-panel';
+  panel.id = `stage-${stage.num}`;
+
+  // Gather condition resources
+  let resources = [];
+  const sourceConditions = activeConditionId==='all' ? CONDITIONS : CONDITIONS.filter(c=>c.id===activeConditionId);
+  const seen = new Set();
+  sourceConditions.forEach(c => {
+    c.resources.filter(r=>r.stage===stage.num).forEach(r => {
+      if (!seen.has(r.url)) {
+        seen.add(r.url);
+        resources.push({...r, conditionName:c.shortName, conditionColor:c.color, conditionColorLight:c.colorLight});
+      }
+    });
+  });
+
+  const sharedResources = (SHARED[stage.num]||[]).map(r=>({...r,shared:true}));
+
+  // Header
+  const header = document.createElement('div');
+  header.className = 'stage-header';
+  header.innerHTML = `
+    <div class="stage-number" style="color:${stage.color}">0${stage.num}</div>
+    <div class="stage-header-text">
+      <div class="stage-tag" style="color:${stage.color}">Stage 0${stage.num}</div>
+      <h2>${stage.label.replace(/(\S+)\s*$/, '<em>$1</em>')}</h2>
+      <p class="stage-desc">${stage.desc}</p>
+    </div>
+    <div class="stage-affirmation" style="color:${stage.color};border-left-color:${stage.color}">
+      
+      <div class="aff-icon">${stage.aff.icon}</div>
+      <p>"${stage.aff.text}"</p>
+    </div>`;
+  panel.appendChild(header);
+
+  // Group by type
+  const grouped = {};
+  TYPE_ORDER.forEach(t => grouped[t]=[]);
+  resources.forEach(r => { if(grouped[r.type]) grouped[r.type].push(r); });
+
+  let first = true;
+  TYPE_ORDER.forEach(type => {
+    if (!grouped[type].length) return;
+    if (!first) { const d=document.createElement('div'); d.className='type-divider'; panel.appendChild(d); }
+    first = false;
+    const tc = TYPE_CONFIG[type];
+    const sec = document.createElement('div');
+    sec.className = 'type-section';
+    sec.innerHTML = `<div class="type-section-header"><span class="type-label ${tc.cls}">${tc.label}</span></div>`;
+    const grid = document.createElement('div');
+    grid.className = 'cards-row';
+    grouped[type].forEach(r => grid.appendChild(buildCard(r)));
+    sec.appendChild(grid);
+    panel.appendChild(sec);
+  });
+
+  // Shared
+  if (sharedResources.length) {
+    const sharedSec = document.createElement('div');
+    sharedSec.className = 'shared-section';
+    sharedSec.innerHTML = '<div class="shared-label">Resources for all conditions</div>';
+    const sg = {};
+    TYPE_ORDER.forEach(t=>sg[t]=[]);
+    sharedResources.forEach(r=>{ if(sg[r.type]) sg[r.type].push(r); });
+    TYPE_ORDER.forEach(type => {
+      if (!sg[type].length) return;
+      const tc = TYPE_CONFIG[type];
+      const sec = document.createElement('div');
+      sec.className = 'type-section';
+      sec.innerHTML = `<div class="type-section-header"><span class="type-label ${tc.cls}">${tc.label}</span></div>`;
+      const grid = document.createElement('div');
+      grid.className = 'cards-row';
+      sg[type].forEach(r => grid.appendChild(buildCard(r)));
+      sec.appendChild(grid);
+      sharedSec.appendChild(sec);
+    });
+    panel.appendChild(sharedSec);
+  }
+
+  // Empty state
+  if (!resources.length && !sharedResources.length) {
+    panel.innerHTML += `<div class="no-results"><p style="font-size:2rem">📭</p><h3>No resources yet for this stage</h3><p>Check back soon — we're adding more regularly.</p></div>`;
+  }
+
+  return panel;
+}
+
+function buildCard(r) {
+  const a = document.createElement('a');
+  a.className = 'res-card'+(r.featured?' featured':'');
+  a.href = r.url; a.target='_blank'; a.rel='noopener noreferrer';
+  a.innerHTML = `
+    ${r.featured?'<div class="featured-crown">⭐ Recommended</div>':''}
+    ${r.conditionName&&!r.shared?`<div class="card-tags"><span class="ctag" style="background:${r.conditionColorLight};color:${r.conditionColor}">${r.conditionName}</span></div>`:''}
+    <h3>${r.title}</h3>
+    <p>${r.description}</p>
+    <div class="res-footer"><span class="res-source">${r.source}</span><span class="res-link">Visit →</span></div>`;
+  return a;
+}
+
+function setActiveStage(num) {
+  activeStage = num;
+  document.querySelectorAll('.stage-nav-btn').forEach(b => b.classList.toggle('active', parseInt(b.dataset.stage)===num));
+  document.querySelectorAll('.stage-panel').forEach(p => p.classList.toggle('active', p.id===`stage-${num}`));
+  document.querySelectorAll('.prog-step').forEach(s => { const n=parseInt(s.dataset.stage); s.classList.toggle('active',n===num); s.classList.toggle('done',n<num); });
+  window.scrollTo({ top:document.getElementById('progressStrip').offsetTop-80, behavior:'smooth' });
+}
+
+init();
+</script>
+</body>
+</html>

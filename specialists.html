@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Care Team — ClearTerm Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c96b6b;
+    --rose-light: #f0d0d0;
+    --rose-pale: #fdf6f6;
+    --mauve: #8b5e6b;
+    --warm-dark: #3d2645;
+    --warm-mid: #6b4a6e;
+    --cream: #faf5f0;
+    --sage: #6b8b78;
+    --gold: #c49a5a;
+    --text: #3a2830;
+    --text-muted: #7a6068;
+    --card-bg: #ffffff;
+    --border: rgba(139,94,107,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--warm-dark);
+    padding: 0 5vw;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 20px rgba(44,30,36,0.4);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--rose-light);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .logo span { color: var(--rose); font-style: italic; }
+
+  nav { display: flex; gap: 2rem; align-items: center; }
+  nav a {
+    color: rgba(240,208,208,0.75);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--rose-light); }
+  .btn-nav {
+    background: var(--rose);
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .btn-nav:hover { background: #b55c5c !important; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: var(--warm-dark);
+    padding: 5rem 8vw 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    right: 0; top: 0;
+    width: 50%; height: 100%;
+    background: radial-gradient(ellipse at 80% 50%, rgba(201,107,107,0.15) 0%, transparent 70%);
+  }
+  .page-hero-inner { position: relative; max-width: 680px; }
+  .page-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(196,154,90,0.3);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+  }
+  .page-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--rose-light);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .page-hero h1 em { color: var(--rose); font-style: italic; }
+  .page-hero p {
+    font-size: 1rem;
+    color: rgba(240,208,208,0.7);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 5rem 8vw;
+  }
+  .section-alt { background: #f4ece8; }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rose);
+    border: 1px solid rgba(201,107,107,0.25);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 0.8rem;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+  }
+  .section-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 620px;
+  }
+
+  /* ── SPECIALISTS GRID ── */
+  .specialists-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .spec-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .spec-card.open { border-color: var(--rose); }
+  .spec-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--spec-color, var(--rose));
+    border-radius: 3px 0 0 3px;
+  }
+  .spec-card:hover { box-shadow: 0 8px 32px rgba(139,94,107,0.12); }
+  .spec-card-trigger {
+    width: 100%;
+    padding: 0.75rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    text-align: left;
+  }
+  .spec-card-trigger:hover { background: rgba(201,107,107,0.03); }
+  .spec-chevron {
+    margin-left: auto;
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted);
+    transition: transform 0.25s ease;
+  }
+  .spec-card.open .spec-chevron { transform: rotate(180deg); }
+  .spec-body {
+    display: none;
+    padding: 0 1.2rem 1.2rem;
+    flex-direction: column;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .spec-card.open .spec-body { display: flex; }
+  .spec-card.open .spec-subtitle { display: block; }
+
+  .spec-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    flex: 1;
+  }
+  .spec-subtitle-full {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 0.2rem;
+  }
+  .spec-icon {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    background: var(--spec-bg, rgba(201,107,107,0.1));
+    border: 1px solid var(--spec-color, rgba(201,107,107,0.2));
+    opacity: 0.9;
+  }
+  .spec-info h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .spec-info .spec-subtitle {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+    margin-top: 0.1rem;
+    display: none;
+  }
+
+  .spec-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .spec-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+  }
+  .spec-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.2rem 0.65rem;
+    border-radius: 20px;
+    background: rgba(139,94,107,0.08);
+    color: var(--mauve);
+    border: 1px solid rgba(139,94,107,0.15);
+  }
+
+  .spec-condition {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 20px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .cond-both { background: rgba(107,139,120,0.12); color: var(--sage); border: 1px solid rgba(107,139,120,0.25); }
+  .cond-accreta { background: rgba(201,107,107,0.1); color: var(--rose); border: 1px solid rgba(201,107,107,0.2); }
+  .cond-previa { background: rgba(196,154,90,0.1); color: var(--gold); border: 1px solid rgba(196,154,90,0.2); }
+
+  /* ── QUESTION TO ASK ── */
+  .spec-questions {
+    background: rgba(201,107,107,0.04);
+    border: 1px solid rgba(201,107,107,0.12);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+  }
+  .spec-questions-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 0.5rem;
+  }
+  .spec-questions ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .spec-questions li {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .spec-questions li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--rose);
+    font-size: 0.7rem;
+  }
+
+  /* ── SEARCH / FILTER ── */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 220px;
+    padding: 0.75rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus { border-color: var(--rose); }
+  .filter-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--rose);
+    color: white;
+    border-color: var(--rose);
+  }
+
+  /* ── CENTER OF EXCELLENCE ── */
+  .coe-section { background: var(--warm-dark); }
+  .coe-section .section-header h2 { color: var(--rose-light); }
+  .coe-section .section-header p { color: rgba(240,208,208,0.65); }
+  .coe-section .section-tag { color: var(--gold); border-color: rgba(196,154,90,0.3); }
+
+  .coe-search-wrap {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .coe-search-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .coe-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem 1.2rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    background: rgba(255,255,255,0.08);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--rose-light);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .coe-input::placeholder { color: rgba(240,208,208,0.35); }
+  .coe-input:focus { border-color: var(--rose); }
+  .coe-btn {
+    background: var(--rose);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.8rem;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .coe-btn:hover { background: #b55c5c; }
+
+  .coe-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .coe-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    transition: background 0.2s;
+  }
+  .coe-card:hover { background: rgba(255,255,255,0.1); }
+  .coe-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--rose-light);
+    margin-bottom: 0.3rem;
+  }
+  .coe-card .coe-location {
+    font-size: 0.78rem;
+    color: rgba(240,208,208,0.5);
+    margin-bottom: 0.6rem;
+  }
+  .coe-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 20px;
+    background: rgba(196,154,90,0.15);
+    color: var(--gold);
+    border: 1px solid rgba(196,154,90,0.25);
+    margin-bottom: 0.6rem;
+  }
+  .coe-card p {
+    font-size: 0.78rem;
+    color: rgba(240,208,208,0.5);
+    line-height: 1.5;
+  }
+  .coe-card a {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--rose);
+    text-decoration: none;
+  }
+  .coe-card a:hover { text-decoration: underline; }
+  .coe-no-results {
+    color: rgba(240,208,208,0.4);
+    font-size: 0.88rem;
+    padding: 1rem 0;
+    display: none;
+  }
+  .coe-note {
+    font-size: 0.78rem;
+    color: rgba(240,208,208,0.4);
+    margin-top: 1.5rem;
+    line-height: 1.6;
+  }
+  .coe-note a { color: var(--rose); text-decoration: none; }
+  .coe-note a:hover { text-decoration: underline; }
+
+  /* ── DISCLAIMER & FOOTER ── */
+  .disclaimer {
+    background: #f0e8e0;
+    border-top: 1px solid rgba(139,94,107,0.12);
+    padding: 1.4rem 8vw;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  footer {
+    background: var(--warm-dark);
+    padding: 3rem 8vw;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    color: rgba(240,208,208,0.55);
+    font-size: 0.82rem;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--rose-light);
+    margin-bottom: 0.8rem;
+  }
+  .footer-logo span { color: var(--rose); font-style: italic; }
+  .footer-desc { line-height: 1.7; max-width: 320px; }
+  footer h5 {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer a { color: rgba(240,208,208,0.55); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--rose-light); }
+  .footer-bottom {
+    background: rgba(0,0,0,0.2);
+    padding: 1rem 8vw;
+    font-size: 0.72rem;
+    color: rgba(240,208,208,0.3);
+    text-align: center;
+  }
+
+  /* ── FADE IN ── */
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .specialists-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; gap: 2rem; }
+    .coe-search-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo"><span>Clear</span>Term Health</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#conditions">Conditions</a>
+    <a href="specialists.html">Specialists</a>
+    <a href="recovery.html">Recovery</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="clearterm-resources.html" class="btn-nav">Resources</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-tag">Your Care Team</div>
+    <h1>The specialists who will <em>guide your care</em></h1>
+    <p>Managing placenta previa or accreta spectrum takes a coordinated team of experts. Here's who they are, what they do, and the questions worth asking each of them.</p>
+  </div>
+</div>
+
+<!-- SPECIALISTS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-tag">Care Team</div>
+    <h2>Specialists involved in your care</h2>
+    <p>Depending on your diagnosis and severity, you may work with some or all of these specialists. Knowing each role helps you ask better questions and advocate for yourself.</p>
+  </div>
+
+  <div class="search-bar">
+    <input class="search-input" placeholder="Search specialists..." oninput="filterSpecs(this.value)" id="spec-search"/>
+    <div class="filter-btns">
+      <button class="filter-btn active" onclick="filterByCondition('all', this)">All</button>
+      <button class="filter-btn" onclick="filterByCondition('previa', this)">Previa</button>
+      <button class="filter-btn" onclick="filterByCondition('accreta', this)">Accreta</button>
+    </div>
+  </div>
+
+  <div class="specialists-grid" id="spec-grid">
+
+    <div class="spec-card" style="--spec-color: var(--rose); --spec-bg: rgba(201,107,107,0.1);" data-condition="both previa accreta">
+      <button class="spec-card-trigger" onclick="toggleSpec(this)">
+        <div class="spec-icon" style="color: var(--spec-color);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6.5a4 4 0 0 0 8 0V4a.5.5 0 0 0-.5-.5h-7A.5.5 0 0 0 4.5 4v2.5z"/><path d="M8.5 10.5V14a5.5 5.5 0 0 0 11 0v-1"/><circle cx="19.5" cy="12.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        <span class="spec-title">Maternal-Fetal Medicine Specialist</span>
+        <span class="spec-condition cond-both">Both</span>
+        <span class="spec-chevron"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="spec-body">
+        <p class="spec-subtitle-full">Also called a perinatologist or high-risk OB</p>
+        <p class="spec-desc">Your primary specialist for high-risk pregnancy. An MFM physician oversees diagnosis, monitoring, and care planning for both previa and accreta spectrum. They coordinate the entire multidisciplinary team and guide delivery decisions. In most cases, you will be referred to an MFM as soon as a placental complication is identified.</p>
+        <div class="spec-questions">
+          <div class="spec-questions-label">Questions to ask</div>
+          <ul>
+            <li>What type and severity of placenta previa or PAS do I have?</li>
+            <li>Will you be the one delivering me, or do I need a PAS Center?</li>
+            <li>How often will I need monitoring and ultrasounds?</li>
+          </ul>
+        </div>
+        <div class="spec-tags">
+          <span class="spec-tag">High-risk OB</span>
+          <span class="spec-tag">Ultrasound diagnosis</span>
+          <span class="spec-tag">Delivery planning</span>
+          <span class="spec-tag">Team coordination</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-card" style="--spec-color: #a04060; --spec-bg: rgba(160,64,96,0.08);" data-condition="accreta">
+      <button class="spec-card-trigger" onclick="toggleSpec(this)">
+        <div class="spec-icon" style="color: var(--spec-color);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="3" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="21"/><line x1="3" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="21" y2="12"/></svg></div>
+        <span class="spec-title">Interventional Radiologist</span>
+        <span class="spec-condition cond-accreta">Accreta</span>
+        <span class="spec-chevron"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="spec-body">
+        <p class="spec-subtitle-full">Vascular & bleeding control specialist</p>
+        <p class="spec-desc">In accreta spectrum cases, an interventional radiologist may place balloon catheters in the uterine or iliac arteries before delivery to reduce blood loss during surgery. They can also perform uterine artery embolization postpartum if hemorrhage occurs. Their involvement is a hallmark of true PAS Center of Excellence care.</p>
+        <div class="spec-questions">
+          <div class="spec-questions-label">Questions to ask</div>
+          <ul>
+            <li>Will balloon catheters be placed before my surgery?</li>
+            <li>What is the plan if I hemorrhage unexpectedly?</li>
+            <li>Will an IR be present or on-call during my delivery?</li>
+          </ul>
+        </div>
+        <div class="spec-tags">
+          <span class="spec-tag">Balloon catheters</span>
+          <span class="spec-tag">Hemorrhage control</span>
+          <span class="spec-tag">Uterine embolization</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-card" style="--spec-color: var(--gold); --spec-bg: rgba(196,154,90,0.1);" data-condition="both previa accreta">
+      <button class="spec-card-trigger" onclick="toggleSpec(this)">
+        <div class="spec-icon" style="color: var(--spec-color);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2l4 4-1.5 1.5-4-4L18 2z"/><path d="M16.5 3.5l4 4"/><path d="M14 6l4 4-8 8H6v-4l8-8z"/><path d="M6 20l-3 3"/><path d="M9 13l-2 2"/><path d="M11 11l-2 2"/></svg></div>
+        <span class="spec-title">Obstetric Anesthesiologist</span>
+        <span class="spec-condition cond-both">Both</span>
+        <span class="spec-chevron"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="spec-body">
+        <p class="spec-subtitle-full">Pain management & critical care</p>
+        <p class="spec-desc">A specialized obstetric anesthesiologist manages pain control and hemodynamic stability during what may be a complex, lengthy surgical delivery. For accreta cases especially, they manage blood transfusions, blood pressure, and recovery from large-volume blood loss. Their experience with high-risk obstetric cases is critical to outcomes.</p>
+        <div class="spec-questions">
+          <div class="spec-questions-label">Questions to ask</div>
+          <ul>
+            <li>Will I have an epidural, spinal, or general anesthesia?</li>
+            <li>What's the plan if I need a blood transfusion during surgery?</li>
+            <li>How do you prepare for a case involving expected blood loss?</li>
+          </ul>
+        </div>
+        <div class="spec-tags">
+          <span class="spec-tag">Epidural / spinal</span>
+          <span class="spec-tag">General anesthesia</span>
+          <span class="spec-tag">Blood management</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-card" style="--spec-color: #7a4a6a; --spec-bg: rgba(122,74,106,0.08);" data-condition="accreta">
+      <button class="spec-card-trigger" onclick="toggleSpec(this)">
+        <div class="spec-icon" style="color: var(--spec-color);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div>
+        <span class="spec-title">Gynecologic Oncologist / Pelvic Surgeon</span>
+        <span class="spec-condition cond-accreta">Accreta</span>
+        <span class="spec-chevron"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="spec-body">
+        <p class="spec-subtitle-full">Advanced surgical expertise</p>
+        <p class="spec-desc">For placenta percreta (Grade 3 PAS), a gynecologic oncologist or pelvic reconstructive surgeon may assist with hysterectomy and repair of adjacent structures such as the bladder or bowel that are involved. Their expertise in complex pelvic dissection is essential when the placenta has invaded beyond the uterine wall.</p>
+        <div class="spec-questions">
+          <div class="spec-questions-label">Questions to ask</div>
+          <ul>
+            <li>Will a gyn-onc or pelvic surgeon be present at my delivery?</li>
+            <li>What organs may be involved in my case?</li>
+            <li>Has your team managed percreta cases before?</li>
+          </ul>
+        </div>
+        <div class="spec-tags">
+          <span class="spec-tag">Hysterectomy</span>
+          <span class="spec-tag">Bladder repair</span>
+          <span class="spec-tag">Percreta management</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-card" style="--spec-color: var(--sage); --spec-bg: rgba(107,139,120,0.1);" data-condition="both previa accreta">
+      <button class="spec-card-trigger" onclick="toggleSpec(this)">
+        <div class="spec-icon" style="color: var(--spec-color);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2l2-6 4 12 3-8 2 4 2-2h3"/></svg></div>
+        <span class="spec-title">Neonatologist</span>
+        <span class="spec-condition cond-both">Both</span>
+        <span class="spec-chevron"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="spec-body">
+        <p class="spec-subtitle-full">Newborn intensive care specialist</p>
+        <p class="spec-desc">Because both previa and accreta often require planned preterm delivery (34–37 weeks), a neonatologist is typically on hand at delivery. They assess and manage your baby immediately after birth, including any breathing support, temperature regulation, or NICU admission.</p>
+        <div class="spec-questions">
+          <div class="spec-questions-label">Questions to ask</div>
+          <ul>
+            <li>Will a neonatologist be in the room at delivery?</li>
+            <li>What gestational age does your NICU typically manage well?</li>
+            <li>Can I tour the NICU before my delivery date?</li>
+          </ul>
+        </div>
+        <div class="spec-tags">
+          <span class="spec-tag">NICU care</span>
+          <span class="spec-tag">Preterm newborn</span>
+          <span class="spec-tag">Breathing support</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-card" style="--spec-color: #5a7494; --spec-bg: rgba(90,116,148,0.08);" data-condition="accreta">
+      <button class="spec-card-trigger" onclick="toggleSpec(this)">
+        <div class="spec-icon" style="color: var(--spec-color);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7L12 2z"/><path d="M12 11v4"/><circle cx="12" cy="9" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <span class="spec-title">Urologist / Urogynecologist</span>
+        <span class="spec-condition cond-accreta">Accreta</span>
+        <span class="spec-chevron"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="spec-body">
+        <p class="spec-subtitle-full">Bladder & urinary tract specialist</p>
+        <p class="spec-desc">In percreta cases where the placenta invades the bladder or ureters, a urologist or urogynecologist joins the surgical team to manage bladder repair and protect urinary structures. They may also place ureteral stents before surgery to reduce the risk of injury.</p>
+        <div class="spec-questions">
+          <div class="spec-questions-label">Questions to ask</div>
+          <ul>
+            <li>Has imaging shown bladder involvement in my case?</li>
+            <li>Will ureteral stents be placed before my surgery?</li>
+            <li>What is the recovery like if my bladder needs repair?</li>
+          </ul>
+        </div>
+        <div class="spec-tags">
+          <span class="spec-tag">Bladder involvement</span>
+          <span class="spec-tag">Ureteral stents</span>
+          <span class="spec-tag">Urinary repair</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-card" style="--spec-color: #8b5e3c; --spec-bg: rgba(139,94,60,0.08);" data-condition="accreta">
+      <button class="spec-card-trigger" onclick="toggleSpec(this)">
+        <div class="spec-icon" style="color: var(--spec-color);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13z"/><path d="M9 17a3 3 0 0 0 6 0"/></svg></div>
+        <span class="spec-title">Hematologist / Transfusion Specialist</span>
+        <span class="spec-condition cond-accreta">Accreta</span>
+        <span class="spec-chevron"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <div class="spec-body">
+        <p class="spec-subtitle-full">Blood management & transfusion medicine</p>
+        <p class="spec-desc">PAS deliveries often involve massive blood loss — sometimes exceeding 3–5 liters. A hematologist or transfusion medicine specialist may be involved in pre-operative optimization (iron infusions, autologous donation) and intraoperative management of transfusion protocols, clotting factors, and cell salvage technology.</p>
+        <div class="spec-questions">
+          <div class="spec-questions-label">Questions to ask</div>
+          <ul>
+            <li>Should I donate my own blood before surgery?</li>
+            <li>Will cell salvage (autotransfusion) be available?</li>
+            <li>Is my iron level optimized before delivery?</li>
+          </ul>
+        </div>
+        <div class="spec-tags">
+          <span class="spec-tag">Transfusion protocol</span>
+          <span class="spec-tag">Cell salvage</span>
+          <span class="spec-tag">Iron optimization</span>
+          <span class="spec-tag">Clotting factors</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- CENTER OF EXCELLENCE -->
+<section class="section coe-section">
+  <div class="section-header">
+    <div class="section-tag">Find Care</div>
+    <h2>Centers of Excellence for PAS</h2>
+    <p>Women with placenta accreta spectrum have significantly better outcomes when they deliver at hospitals with dedicated multidisciplinary PAS teams. Search below to find accredited centers near you.</p>
+  </div>
+  <div class="coe-search-wrap">
+    <div class="coe-search-row">
+      <input class="coe-input" id="coe-search" placeholder="Search by city or state..." oninput="filterCenters(this.value)"/>
+      <button class="coe-btn" onclick="filterCenters(document.getElementById('coe-search').value)">Search Centers</button>
+    </div>
+    <div class="coe-results" id="coe-results"></div>
+    <div class="coe-no-results" id="coe-no-results" style="display:none;">No centers found. Try searching by state abbreviation (e.g. "FL") or a major nearby city.</div>
+    <div class="coe-no-results" id="coe-nearby-note" style="display:none; color: rgba(240,208,208,0.6);">No PAS Center of Excellence in that exact city — showing the nearest centers in your region instead.</div>
+    <p class="coe-note">
+      This directory includes hospitals recognized by the <a href="https://www.preventaccreta.org/find-a-center" target="_blank">National Accreta Foundation</a> and <a href="https://www.smfm.org" target="_blank">SMFM</a> as having dedicated PAS multidisciplinary teams.
+      For the most current list, visit <a href="https://www.preventaccreta.org/find-a-center" target="_blank">preventaccreta.org/find-a-center</a>.
+    </p>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>Medical Disclaimer:</strong> The content on this website is for informational and educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the guidance of your obstetrician, maternal-fetal medicine specialist, or other qualified health provider. In an emergency, call 911 immediately.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo"><span>Clear</span>Term Health</div>
+    <p class="footer-desc">Clarity through complication. ClearTerm helps women understand placenta previa, placenta accreta spectrum, and related maternal conditions — so they can reach term with confidence.</p>
+  </div>
+  <div>
+    <h5>Navigate</h5>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#conditions">Conditions</a></li>
+      <li><a href="specialists.html">Specialists</a></li>
+      <li><a href="clearterm-resources.html">Resources</a></li>
+      <li><a href="recovery.html">Recovery</a>
+    <a href="index.html#faq">FAQ</a></li>
+    </ul>
+  </div>
+  <div>
+    <h5>External Resources</h5>
+    <ul>
+      <li><a href="https://www.preventaccreta.org" target="_blank">National Accreta Foundation</a></li>
+      <li><a href="https://www.smfm.org" target="_blank">SMFM</a></li>
+      <li><a href="https://www.acog.org" target="_blank">ACOG</a></li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed Research</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2025 ClearTerm Health. For informational purposes only. Not medical advice.</div>
+
+<script>
+  function toggleSpec(btn) {
+    const card = btn.closest('.spec-card');
+    card.classList.toggle('open');
+  }
+
+  let activeCondition = 'all';
+
+  function filterSpecs(query) {
+    const q = query.trim().toLowerCase();
+    document.querySelectorAll('.spec-card').forEach(card => {
+      const text = card.innerText.toLowerCase();
+      const cond = card.dataset.condition;
+      const matchesQuery = !q || text.includes(q);
+      const matchesCond = activeCondition === 'all' || cond.includes(activeCondition);
+      card.style.display = (matchesQuery && matchesCond) ? '' : 'none';
+    });
+  }
+
+  function filterByCondition(condition, btn) {
+    activeCondition = condition;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterSpecs(document.getElementById('spec-search').value);
+  }
+
+  const centers = [
+    { name: "Brigham and Women's Hospital", city: "Boston", state: "MA", region: "northeast", badge: "NAF Recognized", url: "https://www.brighamandwomens.org", desc: "Dedicated PAS program with multidisciplinary team including MFM, IR, gyn-onc, and transfusion medicine." },
+    { name: "NYU Langone Health", city: "New York", state: "NY", region: "northeast", badge: "NAF Recognized", url: "https://nyulangone.org", desc: "Specialized maternal-fetal medicine program with PAS surgical expertise and NICU." },
+    { name: "Columbia University Irving Medical Center", city: "New York", state: "NY", region: "northeast", badge: "NAF Recognized", url: "https://www.columbiadoctors.org", desc: "High-volume academic center with dedicated PAS multidisciplinary team and NICU." },
+    { name: "Penn Medicine / Hospital of the University of Pennsylvania", city: "Philadelphia", state: "PA", region: "northeast", badge: "NAF Recognized", url: "https://www.pennmedicine.org", desc: "Academic PAS center with IR, gyn-onc, and maternal-fetal medicine specialists." },
+    { name: "Yale New Haven Hospital", city: "New Haven", state: "CT", region: "northeast", badge: "NAF Recognized", url: "https://www.ynhh.org", desc: "Regional PAS center with MFM, interventional radiology, and surgical support." },
+    { name: "Johns Hopkins Hospital", city: "Baltimore", state: "MD", region: "northeast", badge: "NAF Recognized", url: "https://www.hopkinsmedicine.org", desc: "Dedicated maternal-fetal medicine program with PAS surgical protocols and transfusion medicine." },
+    { name: "MedStar Washington Hospital Center", city: "Washington", state: "DC", region: "northeast", badge: "NAF Recognized", url: "https://www.medstarhealth.org", desc: "High-volume PAS program serving the DC metro area with multidisciplinary surgical team." },
+    { name: "Duke University Hospital", city: "Durham", state: "NC", region: "southeast", badge: "NAF Recognized", url: "https://www.dukehealth.org", desc: "PAS program with MFM, surgical specialists, and NICU support for preterm deliveries." },
+    { name: "University of North Carolina Medical Center", city: "Chapel Hill", state: "NC", region: "southeast", badge: "NAF Recognized", url: "https://www.unchealth.org", desc: "Academic PAS center with dedicated MFM and surgical team." },
+    { name: "Medical University of South Carolina", city: "Charleston", state: "SC", region: "southeast", badge: "NAF Recognized", url: "https://muschealth.org", desc: "Regional PAS center serving the Carolinas with multidisciplinary obstetric care." },
+    { name: "Emory University Hospital Midtown", city: "Atlanta", state: "GA", region: "southeast", badge: "NAF Recognized", url: "https://www.emoryhealthcare.org", desc: "High-volume PAS program with MFM, IR, and gyn-onc team." },
+    { name: "Tampa General Hospital", city: "Tampa", state: "FL", region: "southeast", badge: "NAF Recognized", url: "https://www.tgh.org", desc: "Florida's leading academic PAS center with dedicated multidisciplinary team and Level IV NICU." },
+    { name: "University of Florida Health Shands", city: "Gainesville", state: "FL", region: "southeast", badge: "NAF Recognized", url: "https://ufhealth.org", desc: "Academic PAS center with MFM, IR, and surgical specialists." },
+    { name: "Jackson Memorial Hospital / University of Miami", city: "Miami", state: "FL", region: "southeast", badge: "NAF Recognized", url: "https://jacksonhealth.org", desc: "South Florida's academic PAS center with multidisciplinary surgical team and NICU." },
+    { name: "AdventHealth Orlando", city: "Orlando", state: "FL", region: "southeast", nearby: ["Orlando, FL", "Central Florida"], badge: "High-Risk OB Program", url: "https://www.adventhealth.com", desc: "Orlando-based high-risk obstetric program. For complex PAS cases, Tampa General or UF Health Shands are recommended." },
+    { name: "UAB Medicine", city: "Birmingham", state: "AL", stateName: "Alabama", region: "southeast", badge: "NAF Recognized", url: "https://www.uabmedicine.org", desc: "Alabama's primary academic PAS center with MFM, IR, and transfusion medicine." },
+    { name: "Vanderbilt University Medical Center", city: "Nashville", state: "TN", region: "southeast", badge: "NAF Recognized", url: "https://www.vumc.org", desc: "Regional PAS center for Tennessee and surrounding states." },
+    { name: "Northwestern Memorial Hospital", city: "Chicago", state: "IL", region: "midwest", badge: "NAF Recognized", url: "https://www.nm.org", desc: "High-volume PAS program with cell salvage, massive transfusion protocol, and NICU." },
+    { name: "University of Chicago Medicine", city: "Chicago", state: "IL", region: "midwest", badge: "NAF Recognized", url: "https://www.uchicagomedicine.org", desc: "Academic PAS center with dedicated MFM, IR, and gyn-onc team." },
+    { name: "Cleveland Clinic", city: "Cleveland", state: "OH", region: "midwest", badge: "NAF Recognized", url: "https://my.clevelandclinic.org", desc: "Comprehensive PAS program with dedicated protocols for hemorrhage management." },
+    { name: "University of Michigan Health", city: "Ann Arbor", state: "MI", region: "midwest", badge: "NAF Recognized", url: "https://www.uofmhealth.org", desc: "Academic medical center with dedicated PAS multidisciplinary team." },
+    { name: "Mayo Clinic", city: "Rochester", state: "MN", region: "midwest", badge: "NAF Recognized", url: "https://www.mayoclinic.org", desc: "Multidisciplinary PAS team with experience in complex percreta cases." },
+    { name: "Washington University / Barnes-Jewish Hospital", city: "St. Louis", state: "MO", region: "midwest", badge: "NAF Recognized", url: "https://www.barnesjewish.org", desc: "Academic PAS center serving Missouri and surrounding region." },
+    { name: "University of Wisconsin Hospitals", city: "Madison", state: "WI", region: "midwest", badge: "NAF Recognized", url: "https://www.uwhealth.org", desc: "Regional PAS center with MFM and surgical specialist team." },
+    { name: "University of Texas Southwestern", city: "Dallas", state: "TX", region: "south", badge: "NAF Recognized", url: "https://www.utsouthwestern.edu", desc: "Academic PAS center with high caseload and multidisciplinary team." },
+    { name: "Texas Children's Pavilion for Women / Baylor", city: "Houston", state: "TX", region: "south", badge: "NAF Recognized", url: "https://www.texaschildrens.org", desc: "One of the highest-volume PAS centers in the country with dedicated accreta program." },
+    { name: "UT Health San Antonio", city: "San Antonio", state: "TX", region: "south", badge: "NAF Recognized", url: "https://www.uthscsa.edu", desc: "Regional PAS center serving South Texas with MFM and surgical team." },
+    { name: "University of Oklahoma Medical Center", city: "Oklahoma City", state: "OK", region: "south", badge: "NAF Recognized", url: "https://www.oumedicine.com", desc: "Academic PAS center serving Oklahoma with multidisciplinary obstetric team." },
+    { name: "Banner University Medical Center", city: "Phoenix", state: "AZ", region: "south", badge: "NAF Recognized", url: "https://www.bannerhealth.com", desc: "Arizona's leading academic PAS center with multidisciplinary surgical team." },
+    { name: "UCSF Medical Center", city: "San Francisco", state: "CA", region: "west", badge: "NAF Recognized", url: "https://www.ucsfhealth.org", desc: "Academic PAS center with dedicated interventional radiology and perinatology team." },
+    { name: "Stanford Medicine", city: "Palo Alto", state: "CA", region: "west", badge: "NAF Recognized", url: "https://stanfordhealthcare.org", desc: "High-volume PAS center with experienced surgical team and NICU support." },
+    { name: "Cedars-Sinai Medical Center", city: "Los Angeles", state: "CA", region: "west", badge: "NAF Recognized", url: "https://www.cedars-sinai.org", desc: "High-volume Los Angeles PAS center with dedicated accreta program." },
+    { name: "UC San Diego Health", city: "San Diego", state: "CA", region: "west", badge: "NAF Recognized", url: "https://health.ucsd.edu", desc: "Academic PAS center serving Southern California." },
+    { name: "University of Colorado Hospital", city: "Aurora", state: "CO", region: "west", badge: "NAF Recognized", url: "https://www.uchealth.org", desc: "Regional PAS center with IR, urology, and gyn-onc surgical support." },
+    { name: "University of Utah Health", city: "Salt Lake City", state: "UT", region: "west", badge: "NAF Recognized", url: "https://healthcare.utah.edu", desc: "Mountain West's primary academic PAS center." },
+    { name: "Oregon Health & Science University", city: "Portland", state: "OR", region: "west", badge: "NAF Recognized", url: "https://www.ohsu.edu", desc: "Pacific Northwest PAS center with multidisciplinary team and NICU." },
+    { name: "University of Washington Medical Center", city: "Seattle", state: "WA", region: "west", badge: "NAF Recognized", url: "https://www.uwmedicine.org", desc: "Academic PAS center for the Pacific Northwest." },
+  ];
+
+  const stateRegions = {
+    ME:'northeast',NH:'northeast',VT:'northeast',MA:'northeast',RI:'northeast',CT:'northeast',
+    NY:'northeast',NJ:'northeast',PA:'northeast',MD:'northeast',DC:'northeast',DE:'northeast',
+    VA:'southeast',WV:'southeast',NC:'southeast',SC:'southeast',GA:'southeast',FL:'southeast',
+    AL:'southeast',MS:'southeast',TN:'southeast',KY:'southeast',
+    OH:'midwest',MI:'midwest',IN:'midwest',IL:'midwest',WI:'midwest',MN:'midwest',
+    IA:'midwest',MO:'midwest',ND:'midwest',SD:'midwest',NE:'midwest',KS:'midwest',
+    TX:'south',OK:'south',AR:'south',LA:'south',NM:'south',AZ:'south',
+    CA:'west',OR:'west',WA:'west',NV:'west',UT:'west',CO:'west',ID:'west',MT:'west',WY:'west',AK:'west',HI:'west',
+  };
+
+  const cityStateMap = {
+    'orlando':'FL','miami':'FL','jacksonville':'FL','tallahassee':'FL','fort lauderdale':'FL',
+    'tampa':'FL','naples':'FL','sarasota':'FL','pensacola':'FL','gainesville':'FL',
+    'new york':'NY','brooklyn':'NY','queens':'NY','bronx':'NY','manhattan':'NY','buffalo':'NY',
+    'los angeles':'CA','san francisco':'CA','san diego':'CA','sacramento':'CA','fresno':'CA',
+    'chicago':'IL','houston':'TX','dallas':'TX','austin':'TX','san antonio':'TX',
+    'phoenix':'AZ','denver':'CO','seattle':'WA','portland':'OR','atlanta':'GA',
+    'boston':'MA','philadelphia':'PA','baltimore':'MD','washington':'DC',
+    'nashville':'TN','memphis':'TN','charlotte':'NC','raleigh':'NC',
+    'minneapolis':'MN','detroit':'MI','cleveland':'OH','columbus':'OH','cincinnati':'OH',
+    'las vegas':'NV','salt lake city':'UT','albuquerque':'NM','tucson':'AZ',
+    'alabama':'AL','alaska':'AK','arizona':'AZ','arkansas':'AR','california':'CA',
+    'colorado':'CO','connecticut':'CT','delaware':'DE','florida':'FL','georgia':'GA',
+    'hawaii':'HI','idaho':'ID','illinois':'IL','indiana':'IN','iowa':'IA','kansas':'KS',
+    'kentucky':'KY','louisiana':'LA','maine':'ME','maryland':'MD','massachusetts':'MA',
+    'michigan':'MI','minnesota':'MN','mississippi':'MS','missouri':'MO','montana':'MT',
+    'nebraska':'NE','nevada':'NV','new hampshire':'NH','new jersey':'NJ','new mexico':'NM',
+    'new york state':'NY','north carolina':'NC','north dakota':'ND','ohio':'OH','oklahoma':'OK',
+    'oregon':'OR','pennsylvania':'PA','rhode island':'RI','south carolina':'SC',
+    'south dakota':'SD','tennessee':'TN','texas':'TX','utah':'UT','vermont':'VT',
+    'virginia':'VA','washington state':'WA','west virginia':'WV','wisconsin':'WI','wyoming':'WY',
+  };
+
+  function guessRegion(query) {
+    const q = query.toLowerCase().replace(/[,.]/g, ' ').trim();
+    const words = q.split(/\s+/);
+    for (const word of words) {
+      if (stateRegions[word.toUpperCase()]) return stateRegions[word.toUpperCase()];
+    }
+    for (const [city, state] of Object.entries(cityStateMap)) {
+      if (q.includes(city)) return stateRegions[state];
+    }
+    return null;
+  }
+
+  function renderCards(list, isNearby) {
+    const grid = document.getElementById('coe-results');
+    const noResults = document.getElementById('coe-no-results');
+    const nearbyNote = document.getElementById('coe-nearby-note');
+    if (list.length === 0) {
+      grid.innerHTML = '';
+      noResults.style.display = 'block';
+      nearbyNote.style.display = 'none';
+      return;
+    }
+    noResults.style.display = 'none';
+    nearbyNote.style.display = isNearby ? 'block' : 'none';
+    grid.innerHTML = list.map(c => `
+      <div class="coe-card">
+        <div class="coe-badge">${c.badge}</div>
+        <h4>${c.name}</h4>
+        <div class="coe-location">${c.city}, ${c.state}</div>
+        <p>${c.desc}</p>
+        <a href="${c.url}" target="_blank">Visit website →</a>
+      </div>
+    `).join('');
+  }
+
+  function filterCenters(query) {
+    const q = query.trim().toLowerCase();
+    if (!q) { renderCards(centers, false); return; }
+    const words = q.replace(/[,.]/g, ' ').split(/\s+/).filter(Boolean);
+    const direct = centers.filter(c => {
+      const fullText = [c.name, c.city, c.state, c.stateName || '', ...(c.nearby || [])].join(' ').toLowerCase();
+      return words.every(word => fullText.includes(word));
+    });
+    if (direct.length > 0) { renderCards(direct, false); return; }
+    const region = guessRegion(q);
+    if (region) { renderCards(centers.filter(c => c.region === region), true); return; }
+    renderCards([], false);
+  }
+
+  filterCenters('');
+</script>
+</body>
+</html>
