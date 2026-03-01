@@ -35,7 +35,7 @@
     padding: 0 5vw;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -343,6 +343,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    position: relative;
+    z-index: 1;
   }
 
   .condition-card {
@@ -1093,12 +1095,12 @@
   <div class="logo"><span>Clear</span>Term Health</div>
 
   <nav>
+    <a href="start-here.html">Start Here</a>
     <a href="#conditions">Conditions</a>
-    <a href="clearterm-resources.html">Resources</a>
     <a href="specialists.html">Specialists</a>
     <a href="recovery.html">Recovery</a>
+    <a href="clearterm-resources.html">Resources</a>
     <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
     <a href="#emergency" class="btn-nav">Emergency Signs</a>
   </nav>
 </header>
