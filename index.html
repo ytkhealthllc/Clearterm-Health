@@ -1086,6 +1086,73 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ── HAMBURGER MENU ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+    z-index: 1001;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--rose-light);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--warm-dark);
+    border-top: 1px solid rgba(201,107,107,0.2);
+    padding: 1.2rem 5vw 1.8rem;
+    flex-direction: column;
+    gap: 0;
+    z-index: 999;
+    box-shadow: 0 8px 30px rgba(44,30,36,0.4);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(240,208,208,0.75);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(201,107,107,0.1);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--rose-light); }
+  .mobile-menu .btn-nav {
+    margin-top: 0.8rem;
+    text-align: center;
+    background: var(--rose);
+    color: white !important;
+    padding: 0.7rem 1.2rem;
+    border-radius: 100px;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+    nav { display: none !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -1103,7 +1170,19 @@
     <a href="index.html#faq">FAQ</a>
     <a href="clearterm-resources.html" class="btn-nav">Resources</a>
   </nav>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+<div class="mobile-menu" id="mobile-menu">
+<a href="index.html">Home</a>
+    <a href="start-here.html">Start Here</a>
+    <a href="index.html#conditions">Conditions</a>
+    <a href="specialists.html">Specialists</a>
+    <a href="recovery.html">Recovery</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="clearterm-resources.html" class="btn-nav">Resources</a>
+</div>
 <!-- DISCLAIMER BAR -->
 <div style="background:#f4ece8; border-bottom:1px solid rgba(201,107,107,0.15); padding:0.6rem 5vw; display:flex; align-items:center; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose,#c96b6b)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -1612,6 +1691,21 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+// Close menu when a link is clicked
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>
