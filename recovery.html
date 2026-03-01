@@ -150,10 +150,10 @@
 
   /* ── TIMELINE ── */
   .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
-  .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--rose), var(--mauve), var(--sage)); opacity: 0.3; }
+  .timeline::before { content: ''; position: absolute; left: 30px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--rose), var(--mauve), var(--sage)); opacity: 0.3; }
   .timeline-item { display: flex; gap: 1.4rem; padding: 0 0 2rem 0; position: relative; }
   .timeline-dot {
-    width: 42px; height: 42px;
+    width: 62px; height: 62px;
     border-radius: 50%;
     background: white;
     border: 2px solid var(--tl-color, var(--rose));
@@ -161,8 +161,10 @@
     flex-shrink: 0;
     position: relative;
     z-index: 1;
+    text-align: center;
+    padding: 4px;
   }
-  .timeline-dot span { font-size: 0.7rem; font-weight: 700; color: var(--tl-color, var(--rose)); }
+  .timeline-dot span { font-size: 0.65rem; font-weight: 700; color: var(--tl-color, var(--rose)); line-height: 1.2; }
   .timeline-content { padding-top: 0.5rem; }
   .timeline-content h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--text); margin-bottom: 0.4rem; }
   .timeline-content p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
@@ -279,12 +281,18 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="index.html#conditions">Conditions</a>
+    <a href="start-here.html">Start Here</a>
     <a href="specialists.html">Specialists</a>
     <a href="recovery.html">Recovery</a>
     <a href="index.html#faq">FAQ</a>
     <a href="clearterm-resources.html" class="btn-nav">Resources</a>
   </nav>
 </header>
+<!-- DISCLAIMER BAR -->
+<div style="background:#f4ece8; border-bottom:1px solid rgba(201,107,107,0.15); padding:0.6rem 5vw; display:flex; align-items:center; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose,#c96b6b)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <p style="font-size:0.75rem; color:#7a6068; margin:0; text-align:center;"><strong style="color:#3a2830;">Not medical advice.</strong> ClearTerm Health is an informational resource created by a patient advocate, not a medical professional. Always consult your doctor or MFM specialist for guidance specific to your situation.</p>
+</div>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -367,54 +375,64 @@
 
 <!-- GRIEF & IDENTITY -->
 <section class="section section-alt">
-  <div class="section-header fade-up">
+  <div class="section-header">
     <div class="section-tag">Grief & Identity</div>
-    <h2>Grieving the loss of fertility</h2>
-    <p>Even when a hysterectomy was expected, or even when it saved your life, grief is a natural and valid response. Loss of fertility touches identity, relationships, and a future you may have imagined.</p>
+    <h2>The grief nobody warns you about</h2>
+    <p>Everyone celebrates that you survived. Far fewer people know what to do with what comes after — the quieter, slower grief that doesn't have a name in most conversations.</p>
   </div>
 
-  <div class="grief-cards fade-up">
-    <div class="grief-card">
-      <div class="gc-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+  <div style="display:flex; flex-direction:column; gap:1.5rem;">
+
+    <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:2rem 2.4rem; display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+      <div>
+        <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--rose); margin-bottom:0.8rem;">The grief nobody warns you about</div>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; color:var(--text); margin-bottom:0.8rem; line-height:1.3;">You can grieve something that saved your life.</h3>
+        <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.8;">The hysterectomy kept you here. You know that. And you're grateful — deeply. But gratitude and grief are not opposites. They live side by side, and both are real.</p>
+        <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.8; margin-top:0.6rem;">The grief of fertility loss doesn't always look like crying. Sometimes it looks like scrolling past a pregnancy announcement and feeling your chest tighten. Sometimes it's a due date you still remember, even though you tried not to count. Sometimes it's just a Tuesday afternoon when everything is fine — and then suddenly, it isn't.</p>
+        <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.8; margin-top:0.6rem;">None of this means you aren't healing. It means you lost something real.</p>
       </div>
-      <h4>Grief is not weakness</h4>
-      <p>Mourning the loss of your fertility — even if your family feels complete — is a normal, healthy response. The uterus carries profound symbolic meaning. Allowing yourself to grieve is part of healing.</p>
+      <div style="background:var(--rose-pale); border-radius:12px; padding:1.6rem;">
+        <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:1rem;">What women actually say</div>
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          <div style="border-left:2px solid var(--rose); padding-left:1rem;">
+            <p style="font-family:'Cormorant Garamond',serif; font-size:0.95rem; font-style:italic; color:var(--text); line-height:1.6;">"I kept waiting to feel okay with it. I'm not sure I ever fully did — and I stopped pretending I would."</p>
+          </div>
+          <div style="border-left:2px solid var(--mauve); padding-left:1rem;">
+            <p style="font-family:'Cormorant Garamond',serif; font-size:0.95rem; font-style:italic; color:var(--text); line-height:1.6;">"People kept saying I should be grateful. I was. I also wasn't done yet, and no one wanted to hear that."</p>
+          </div>
+          <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+            <p style="font-family:'Cormorant Garamond',serif; font-size:0.95rem; font-style:italic; color:var(--text); line-height:1.6;">"The hardest part was grieving a person who didn't exist yet. A baby I'd already imagined."</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="grief-card">
-      <div class="gc-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--mauve)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.2rem;">
+
+      <div style="background:white; border:1px solid var(--border); border-radius:14px; padding:1.6rem;">
+        <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--mauve); margin-bottom:0.8rem;">When your body feels like a stranger</div>
+        <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.75;">Your body went through something enormous — and came out different. The scar. The hormones. The absence of something that was always there. Many women describe feeling disconnected from their own body, like it belongs to someone else.</p>
+        <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.75; margin-top:0.6rem;">This is disorienting, and it's real. Pelvic floor therapy, somatic therapy, and peer support have all helped women find their way back. It takes longer than anyone tells you. That's okay.</p>
       </div>
-      <h4>Grief has no timeline</h4>
-      <p>Grief responses can persist for 1–3 years, often resurfacing around milestones — another pregnancy announcement, a due date, a birthday. This is not a sign that something is wrong with you.</p>
-    </div>
-    <div class="grief-card">
-      <div class="gc-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+
+      <div style="background:white; border:1px solid var(--border); border-radius:14px; padding:1.6rem;">
+        <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--rose); margin-bottom:0.8rem;">Grieving pregnancies you won't have</div>
+        <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.75;">If you weren't done — if there was still a child you'd imagined but hadn't had — this grief is layered in a way that's hard to explain to someone who hasn't felt it.</p>
+        <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.75; margin-top:0.6rem;">You may grieve a name you'd thought about. A sibling relationship your child won't have. A version of your family that no longer exists. This is not self-pity. This is love with nowhere to go — and it deserves space and specialized support.</p>
+        <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.75; margin-top:0.6rem; font-style:italic;">Perinatal loss counselors are specifically trained for exactly this kind of grief.</p>
       </div>
-      <h4>Your feelings affect your relationships</h4>
-      <p>Partners, family, and friends may not understand the depth of fertility grief. You may feel isolated even when surrounded by support. Naming what you're experiencing to those closest to you can help bridge the gap.</p>
-    </div>
-    <div class="grief-card">
-      <div class="gc-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+      <div style="background:white; border:1px solid var(--border); border-radius:14px; padding:1.6rem;">
+        <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem;">When people say the wrong thing</div>
+        <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.75;">They will. The people who love you most will say something that lands wrong — because they don't have the words for this, and silence feels worse to them than speaking.</p>
+        <div style="margin-top:0.8rem; display:flex; flex-direction:column; gap:0.5rem;">
+          <div style="background:rgba(196,154,90,0.08); border-radius:8px; padding:0.6rem 0.8rem; font-size:0.78rem; color:var(--text-muted); line-height:1.5;"><span style="color:var(--rose); font-weight:600;">They say:</span> "At least you're both okay."</div>
+          <div style="background:rgba(196,154,90,0.08); border-radius:8px; padding:0.6rem 0.8rem; font-size:0.78rem; color:var(--text-muted); line-height:1.5;"><span style="color:var(--rose); font-weight:600;">They say:</span> "You should be grateful."</div>
+          <div style="background:rgba(196,154,90,0.08); border-radius:8px; padding:0.6rem 0.8rem; font-size:0.78rem; color:var(--text-muted); line-height:1.5;"><span style="color:var(--rose); font-weight:600;">They say:</span> "You already have a beautiful baby."</div>
+          <div style="background:rgba(107,139,120,0.08); border-radius:8px; padding:0.6rem 0.8rem; font-size:0.78rem; color:var(--text-muted); line-height:1.5; margin-top:0.3rem;"><span style="color:var(--sage); font-weight:600;">You can say:</span> "I know you mean well. What I need right now is for someone to just sit with me in this."</div>
+        </div>
       </div>
-      <h4>Resilience is possible</h4>
-      <p>Many women report the experience ultimately deepening their sense of purpose and strength — but rarely without intentional processing. Therapy, community, and time are the most consistent predictors of resilience.</p>
-    </div>
-    <div class="grief-card">
-      <div class="gc-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a04060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <h4>Your story deserves to be told</h4>
-      <p>Peer support communities — particularly the NAF support groups — provide a space where women who've lived this experience truly understand each other. Being heard matters.</p>
-    </div>
-    <div class="grief-card">
-      <div class="gc-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </div>
-      <h4>Women who wanted more children</h4>
-      <p>If your hysterectomy ended a family you hadn't finished building, the grief is compounded. This is a real and significant loss. Women in this situation report higher rates of prolonged grief and benefit most from specialized perinatal loss counseling.</p>
+
     </div>
   </div>
 </section>
@@ -687,7 +705,8 @@
     <h5>Navigate</h5>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#conditions">Conditions</a></li>
+      <li><a href="index.html#conditions">Conditions</a>
+    <a href="start-here.html">Start Here</a></li>
       <li><a href="specialists.html">Specialists</a></li>
       <li><a href="recovery.html">Recovery</a></li>
       <li><a href="clearterm-resources.html">Resources</a></li>
@@ -704,7 +723,7 @@
     </ul>
   </div>
 </footer>
-<div class="footer-bottom">© 2025 ClearTerm Health. For informational purposes only. Not medical advice.</div>
+<div class="footer-bottom">© 2025 ClearTerm Health. Created by a patient advocate, not a medical professional. For informational purposes only — not medical advice. Always consult your healthcare provider.</div>
 
 <script>
   const observer = new IntersectionObserver(entries => {
