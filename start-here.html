@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.ico">
   <meta name="description" content="Just diagnosed with placenta previa or placenta accreta spectrum? Start here. Plain language explanations, immediate next steps, questions to ask your doctor, and when to go to the ER.">
   <meta name="keywords" content="placenta previa diagnosis, placenta accreta diagnosis, what to do after PAS diagnosis, high risk pregnancy next steps, placenta previa what it means">
   <meta name="author" content="ClearTerm Health">
@@ -63,8 +66,8 @@
   }
   .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--rose-light); letter-spacing: 0.04em; text-decoration: none; }
   .logo span { color: var(--rose); font-style: italic; }
-  nav { display: flex; gap: 1.2rem; align-items: center; }
-  nav a { color: rgba(240,208,208,0.75); text-decoration: none; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  nav { display: flex; gap: 0; align-items: center; }
+  nav a { color: rgba(240,208,208,0.75); text-decoration: none; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
   nav a:hover { color: var(--rose-light); }
   nav a.active { color: var(--rose-light); }
   .btn-nav { background: var(--rose); color: white !important; padding: 0.5rem 1.2rem; border-radius: 100px; font-weight: 500 !important; transition: background 0.2s !important; }
@@ -124,7 +127,7 @@
     align-items: center;
     gap: 0.6rem;
     padding: 1rem 1.4rem;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 500;
     color: var(--text-muted);
     text-decoration: none;
@@ -322,13 +325,6 @@
   .footer-bottom { background: rgba(0,0,0,0.2); padding: 1rem 8vw; font-size: 0.72rem; color: rgba(240,208,208,0.3); text-align: center; }
 
   /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    nav { display: none; }
-    .diagnosis-grid, .questions-grid, .two-col { grid-template-columns: 1fr; }
-    footer { grid-template-columns: 1fr; gap: 2rem; }
-    .er-cta { flex-direction: column; gap: 1rem; }
-    .progress-nav { gap: 0; }
-  }
 
   /* ── HAMBURGER MENU ── */
   .hamburger {
@@ -392,8 +388,32 @@
   }
 
   @media (max-width: 768px) {
-    .hamburger { display: flex; }
     nav { display: none !important; }
+    .diagnosis-grid { grid-template-columns: 1fr !important; }
+    .diagnosis-card[style*="grid-column"] { grid-column: auto !important; }
+    .questions-grid { grid-template-columns: 1fr !important; }
+    .emotion-grid { grid-template-columns: 1fr !important; }
+    .er-grid { grid-template-columns: 1fr !important; }
+    .next-steps-grid { grid-template-columns: 1fr 1fr !important; }
+    .two-col { grid-template-columns: 1fr !important; }
+    footer { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .section { padding: 3rem 5vw !important; }
+    div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+    div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+    div[style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+    .progress-nav { gap: 0; overflow-x: auto; }
+    .er-cta { flex-direction: column; }
+  }
+
+  @media (max-width: 768px) {
+    [style*="grid-template-columns: 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr"],
+    [style*="grid-template-columns: 1fr 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr 1fr"],
+    [style*="grid-template-columns: 2fr 1fr 1fr"],
+    [style*="grid-template-columns: 2fr 1fr 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
   }
 
 </style>
@@ -409,7 +429,7 @@
     <a href="index.html#conditions">Conditions</a>
     <a href="specialists.html">Specialists</a>
     <a href="recovery.html">Recovery</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="faq.html">FAQ</a>
     <a href="clearterm-resources.html" class="btn-nav">Resources</a>
   </nav>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -422,7 +442,7 @@
     <a href="index.html#conditions">Conditions</a>
     <a href="specialists.html">Specialists</a>
     <a href="recovery.html">Recovery</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="faq.html">FAQ</a>
     <a href="clearterm-resources.html" class="btn-nav">Resources</a>
 </div>
 <!-- DISCLAIMER BAR -->
@@ -906,7 +926,7 @@
       <li><a href="specialists.html">Specialists</a></li>
       <li><a href="recovery.html">Recovery</a></li>
       <li><a href="clearterm-resources.html">Resources</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="faq.html">FAQ</a></li>
     </ul>
   </div>
   <div>

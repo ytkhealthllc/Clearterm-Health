@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.ico">
   <meta name="description" content="Find Maternal-Fetal Medicine specialists, interventional radiologists, and accredited Centers of Excellence for placenta accreta spectrum. Learn who should be on your care team.">
   <meta name="keywords" content="placenta accreta specialists, MFM specialist placenta accreta, center of excellence PAS, high risk pregnancy doctors, maternal fetal medicine">
   <meta name="author" content="ClearTerm Health">
@@ -64,7 +67,7 @@
 
   .logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 300;
     color: var(--rose-light);
     letter-spacing: 0.04em;
@@ -72,13 +75,13 @@
   }
   .logo span { color: var(--rose); font-style: italic; }
 
-  nav { display: flex; gap: 2rem; align-items: center; }
+  nav { display: flex; gap: 0; align-items: center; }
   nav a {
     color: rgba(240,208,208,0.75);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.72rem;
     font-weight: 400;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     transition: color 0.2s;
   }
@@ -547,12 +550,6 @@
   .fade-up.visible { opacity: 1; transform: translateY(0); }
 
   /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    nav { display: none; }
-    .specialists-grid { grid-template-columns: 1fr; }
-    footer { grid-template-columns: 1fr; gap: 2rem; }
-    .coe-search-row { flex-direction: column; }
-  }
 
   /* ── HAMBURGER MENU ── */
   .hamburger {
@@ -616,8 +613,31 @@
   }
 
   @media (max-width: 768px) {
-    .hamburger { display: flex; }
-    nav { display: none !important; }
+    nav { display: none; }
+    .specialists-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; gap: 2rem; }
+    .coe-search-row { flex-direction: column; }
+    .coe-results { grid-template-columns: 1fr; }
+    .coe-card { padding: 1rem 1.2rem; }
+    .coe-card h4 { font-size: 0.95rem; }
+    .coe-card p { font-size: 0.8rem; }
+    .coe-filters { flex-wrap: wrap; gap: 0.5rem; }
+    .coe-filter-btn { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+    .coe-search-input { width: 100%; box-sizing: border-box; }
+    .coe-btn { width: 100%; text-align: center; }
+    .section { padding: 3rem 5vw; }
+    div[style*="grid-template-columns: 2fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  }
+
+  @media (max-width: 768px) {
+    [style*="grid-template-columns: 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr"],
+    [style*="grid-template-columns: 1fr 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr 1fr"],
+    [style*="grid-template-columns: 2fr 1fr 1fr"],
+    [style*="grid-template-columns: 2fr 1fr 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
   }
 
 </style>
@@ -633,7 +653,7 @@
     <a href="index.html#conditions">Conditions</a>
     <a href="specialists.html">Specialists</a>
     <a href="recovery.html">Recovery</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="faq.html">FAQ</a>
     <a href="clearterm-resources.html" class="btn-nav">Resources</a>
   </nav>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -646,8 +666,13 @@
     <a href="index.html#conditions">Conditions</a>
     <a href="specialists.html">Specialists</a>
     <a href="recovery.html">Recovery</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="faq.html">FAQ</a>
     <a href="clearterm-resources.html" class="btn-nav">Resources</a>
+</div>
+<!-- VASA PREVIA NOTE -->
+<div style="background:rgba(107,139,120,0.08); border-top:1px solid rgba(107,139,120,0.2); border-bottom:1px solid rgba(107,139,120,0.2); padding:0.8rem 8vw; display:flex; align-items:center; gap:0.8rem;">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sage,#6b8b78)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <p style="font-size:0.78rem; color:#6b8b78; margin:0;"><strong style="color:#3a2830;">Vasa previa patients:</strong> While there are no dedicated vasa previa Centers of Excellence, delivery at a hospital with a <strong>Level III or IV NICU</strong> and an experienced high-risk OB team is strongly recommended. Many PAS centers also have the expertise to manage vasa previa. Search below for a center near you.</p>
 </div>
 <!-- DISCLAIMER BAR -->
 <div style="background:#f4ece8; border-bottom:1px solid rgba(201,107,107,0.15); padding:0.6rem 5vw; display:flex; align-items:center; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
@@ -911,7 +936,7 @@
       <li><a href="specialists.html">Specialists</a></li>
       <li><a href="clearterm-resources.html">Resources</a></li>
       <li><a href="recovery.html">Recovery</a>
-    <a href="index.html#faq">FAQ</a></li>
+    <a href="faq.html">FAQ</a></li>
     </ul>
   </div>
   <div>

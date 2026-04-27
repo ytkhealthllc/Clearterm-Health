@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.ico">
   <meta name="description" content="Curated resources for women navigating placenta previa and placenta accreta spectrum — support groups, research, videos, birth planning guides, and more, organized by stage of journey.">
   <meta name="keywords" content="placenta accreta resources, placenta previa support, PAS support groups, National Accreta Foundation, high risk pregnancy resources">
   <meta name="author" content="ClearTerm Health">
@@ -28,7 +31,7 @@
     --mauve: #8b5e6b; --warm-dark: #3d2645; --warm-mid: #6b4a6e;
     --cream: #faf5f0; --sage: #6b8b78; --gold: #c49a5a; --teal: #4a8a8a;
     --text: #3a2830; --text-muted: #7a6068;
-    --s1:#c96b6b; --s2:#8b5e6b; --s3:#c49a5a; --s4:#6b8b78; --s5:#4a8a8a;
+    --s1:#c96b6b; --s2:#8b5e6b; --s3:#c49a5a; --s4:#6b8b78; --s5:#4a8a8a; --s6:#6b8b78;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--text); overflow-x:hidden; }
@@ -61,7 +64,7 @@
   .stage-nav-btn.active { background:var(--cream); color:var(--warm-dark); font-weight:600; }
   .stage-nav-btn .snb-icon { font-size:1.3rem; }
   .snb-num { font-family:'Cormorant Garamond',serif; font-size:0.75rem; opacity:0.4; }
-  .stage-nav-btn[data-stage="1"].active{border-top-color:var(--s1)} .stage-nav-btn[data-stage="2"].active{border-top-color:var(--s2)} .stage-nav-btn[data-stage="3"].active{border-top-color:var(--s3)} .stage-nav-btn[data-stage="4"].active{border-top-color:var(--s4)} .stage-nav-btn[data-stage="5"].active{border-top-color:var(--s5)}
+  .stage-nav-btn[data-stage="1"].active{border-top-color:var(--s1)} .stage-nav-btn[data-stage="2"].active{border-top-color:var(--s2)} .stage-nav-btn[data-stage="3"].active{border-top-color:var(--s3)} .stage-nav-btn[data-stage="4"].active{border-top-color:var(--s4)} .stage-nav-btn[data-stage="5"].active{border-top-color:var(--s5)} .stage-nav-btn[data-stage="6"].active{border-top-color:var(--s6)}
 
   .progress-strip { background:white; border-bottom:1px solid var(--rose-light); padding:0.9rem 8vw; display:flex; align-items:center; gap:0.6rem; font-size:0.78rem; color:var(--text-muted); overflow-x:auto; white-space:nowrap; }
   .prog-step { display:flex; align-items:center; gap:0.5rem; cursor:pointer; transition:color 0.2s; flex-shrink:0; }
@@ -194,8 +197,22 @@
   }
 
   @media (max-width: 768px) {
-    .hamburger { display: flex; }
     nav { display: none !important; }
+    .resources-grid { grid-template-columns: 1fr !important; }
+    footer { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .section { padding: 3rem 5vw !important; }
+    .filter-bar { flex-wrap: wrap; gap: 0.5rem; }
+  }
+
+  @media (max-width: 768px) {
+    [style*="grid-template-columns: 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr"],
+    [style*="grid-template-columns: 1fr 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr 1fr"],
+    [style*="grid-template-columns: 2fr 1fr 1fr"],
+    [style*="grid-template-columns: 2fr 1fr 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
   }
 
 </style>
@@ -210,7 +227,7 @@
     <a href="index.html#conditions">Conditions</a>
     <a href="specialists.html">Specialists</a>
     <a href="recovery.html">Recovery</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="faq.html">FAQ</a>
     <a href="clearterm-resources.html" class="btn-nav">Resources</a>
   </nav>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -223,7 +240,7 @@
     <a href="index.html#conditions">Conditions</a>
     <a href="specialists.html">Specialists</a>
     <a href="recovery.html">Recovery</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="faq.html">FAQ</a>
     <a href="clearterm-resources.html" class="btn-nav">Resources</a>
 </div>
 <!-- DISCLAIMER BAR -->
@@ -256,7 +273,7 @@
     <a href="clearterm-resources.html">Resources</a>
     <a href="index.html#specialists">Specialists</a>
     <a href="recovery.html">Recovery</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="faq.html">FAQ</a>
     <a href="index.html#emergency">Emergency Signs</a>
   </div>
 </footer>
@@ -269,6 +286,7 @@ const STAGES = [
   { num:2, icon:"🔬", label:"Understanding Your Condition", color:"var(--s2)", aff:{ icon:"📚", text:"Understanding your diagnosis is one of the most empowering things you can do." },    desc:"Now that the initial shock has settled, go deeper. Find clinical guides, peer-reviewed research, and diagnostic resources to help you have informed conversations with your care team." },
   { num:3, icon:"🏥", label:"Preparing for Delivery",      color:"var(--s3)", aff:{ icon:"🌟", text:"A planned, prepared delivery is a safer delivery. You are advocating for yourself." }, desc:"Preparation is your greatest ally. These resources help you understand your delivery options, find the right hospital, prepare for a C-section, and know what your surgical team will do to keep you safe." },
   { num:4, icon:"🌱", label:"Postpartum Recovery",          color:"var(--s4)", aff:{ icon:"🌿", text:"Healing isn't linear. Be as gentle with yourself as you would be with anyone you love." }, desc:"Your body has been through something significant. This stage covers physical recovery, mental health support, and how to find professionals to help you heal — body and mind." },
+  { num:6, icon:"🩺", label:"Vasa Previa", color:"var(--s4)", aff:{ icon:"🩺", text:"Early diagnosis changes everything. You found out — that matters." }, desc:"Resources specifically for women diagnosed with vasa previa — covering screening, management, delivery planning, and peer support." },
   { num:5, icon:"🌸", label:"Life After & Fertility",       color:"var(--s5)", aff:{ icon:"🌸", text:"Your story isn't over. It's just beginning a new chapter." },                      desc:"Whether you're grieving fertility loss or exploring new paths to parenthood — you are not alone. These resources address life after hysterectomy, ART options, and moving forward with hope." },
 ];
 
@@ -288,7 +306,18 @@ const SHARED = {
     { type:"support", title:"PSI — Find a Perinatal Mental Health Provider", description:"Directory of therapists specializing in perinatal mental health — find someone who understands birth trauma and postpartum mood disorders.", url:"https://www.postpartum.net/professionals/perinatal-mental-health-provider-directory/", source:"Postpartum.net" },
     { type:"video",   title:"Birth Trauma & PTSD — Therapy Approaches Explained", description:"A clinical psychologist explains evidence-based therapy for birth trauma and perinatal PTSD.", url:"https://www.youtube.com/results?search_query=birth+trauma+PTSD+therapy+perinatal", source:"YouTube / PSI" },
   ],
-  5:[{ type:"article", title:"CDC — Assisted Reproductive Technology", description:"Overview of ART options including gestational surrogacy — available for women who lost their uterus but retained their ovaries.", url:"https://www.cdc.gov/art/index.html", source:"CDC.gov" }],
+  6:[{ type:"org", title:"International Vasa Previa Foundation (IVPF)", description:"The leading patient advocacy organization for vasa previa. Offers peer support, education, provider resources, and a global community for women diagnosed with vasa previa.", url:"https://vasaprevia.org", source:"VasaPrevia.org" }, { type:"article", title:"Vasa Previa — ACOG Practice Bulletin", description:"The American College of Obstetricians and Gynecologists clinical guidance on vasa previa screening, diagnosis, and management.", url:"https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2023/10/vasa-previa", source:"ACOG.org" }, { type:"research", title:"Perinatal Outcomes with Vasa Previa", description:"Research comparing outcomes in prenatally diagnosed vs. undiagnosed vasa previa. Highlights why early screening dramatically improves fetal survival rates.", url:"https://pubmed.ncbi.nlm.nih.gov/35271800/", source:"PubMed" }],
+  "vasa_old": [
+    { type:"org", title:"International Vasa Previa Foundation (IVPF)", description:"The leading patient advocacy organization for vasa previa. Offers peer support, education, provider resources, and a global community for women diagnosed with vasa previa.", url:"https://vasaprevia.org", source:"VasaPrevia.org" },
+    { type:"article", title:"Vasa Previa — ACOG Practice Bulletin", description:"The American College of Obstetricians and Gynecologists clinical guidance on vasa previa screening, diagnosis, and management. Useful for understanding what your care team should be doing.", url:"https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2023/10/vasa-previa", source:"ACOG.org" },
+    { type:"research", title:"Perinatal Outcomes with Vasa Previa — PubMed", description:"Research comparing outcomes in prenatally diagnosed vs. undiagnosed vasa previa. Highlights why early screening dramatically improves fetal survival rates.", url:"https://pubmed.ncbi.nlm.nih.gov/35271800/", source:"PubMed" },
+  ],
+  5:[
+    { type:"article", title:"CDC — Assisted Reproductive Technology", description:"Overview of ART options including gestational surrogacy — available for women who lost their uterus but retained their ovaries.", url:"https://www.cdc.gov/art/index.html", source:"CDC.gov" },
+    { type:"article", title:"Office on Women's Health — Life After Hysterectomy", description:"A clear, patient-friendly guide from the U.S. Department of Health covering what to expect physically and emotionally after hysterectomy — including hormonal changes, surgical menopause, and follow-up care.", url:"https://womenshealth.gov/a-z-topics/hysterectomy", source:"WomensHealth.gov" },
+    { type:"research", title:"Hysterectomy and Loss of Fertility — Psychological Impact Study", description:"Peer-reviewed research showing that women who desired more children before hysterectomy experience significantly higher rates of depression, anxiety, and grief over a 2-year follow-up. Supports the case for specialized counseling support.", url:"https://pubmed.ncbi.nlm.nih.gov/17719364/", source:"PubMed / BJOG" },
+    { type:"support", title:"RESOLVE — The National Infertility Association", description:"Support, advocacy, and community for those navigating infertility and family-building after reproductive loss — including resources on surrogacy, adoption, and living childfree after infertility.", url:"https://resolve.org", source:"Resolve.org" },
+  ],
 };
 
 let activeConditionId = CONDITIONS[0].id;

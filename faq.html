@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — ClearTerm Health</title>
+<meta name="description" content="Frequently asked questions about placenta previa, placenta accreta spectrum, and vasa previa. Plain language answers for newly diagnosed patients.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cleartermhealth.com/faq.html">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c96b6b;
+    --rose-light: #f0d0d0;
+    --rose-pale: #fdf6f6;
+    --mauve: #8b5e6b;
+    --warm-dark: #3d2645;
+    --cream: #faf5f0;
+    --sage: #6b8b78;
+    --gold: #c49a5a;
+    --text: #3a2830;
+    --text-muted: #7a6068;
+    --border: rgba(139,94,107,0.15);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); }
+
+  header {
+    background: var(--warm-dark);
+    padding: 0 5vw;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 20px rgba(44,30,36,0.4);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--rose-light); letter-spacing: 0.04em; text-decoration: none; }
+  .logo span { color: var(--rose); font-style: italic; }
+  nav { display: flex; gap: 0; align-items: center; }
+  nav a { color: rgba(240,208,208,0.7); text-decoration: none; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s, background 0.2s; padding: 0.4rem 0.7rem; border-radius: 6px; white-space: nowrap; }
+  nav a:hover { color: var(--rose-light); background: rgba(255,255,255,0.06); }
+  nav a.active { color: var(--rose-light); }
+  .btn-nav { background: var(--rose); color: white !important; padding: 0.5rem 1.2rem; border-radius: 100px; font-weight: 500 !important; }
+  .btn-nav:hover { background: #b55c5c !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 1001; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--rose-light); border-radius: 2px; transition: all 0.3s ease; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--warm-dark); border-top: 1px solid rgba(201,107,107,0.2); padding: 1.2rem 5vw 1.8rem; flex-direction: column; gap: 0; z-index: 999; box-shadow: 0 8px 30px rgba(44,30,36,0.4); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: rgba(240,208,208,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.9rem 0; border-bottom: 1px solid rgba(201,107,107,0.1); transition: color 0.2s; }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu .btn-nav { margin-top: 0.8rem; text-align: center; background: var(--rose); color: white !important; padding: 0.7rem 1.2rem; border-radius: 100px; border-bottom: none !important; }
+
+  .disclaimer-bar { background:#f4ece8; border-bottom:1px solid rgba(201,107,107,0.15); padding:0.6rem 5vw; display:flex; align-items:center; gap:0.8rem; justify-content:center; flex-wrap:wrap; }
+  .disclaimer-bar p { font-size:0.75rem; color:#7a6068; margin:0; text-align:center; }
+
+  .page-hero {
+    background: var(--warm-dark);
+    padding: 4rem 8vw;
+    position: relative;
+  }
+  .page-hero::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(201,107,107,0.3), transparent); }
+  .hero-tag { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,154,90,0.3); padding: 0.3rem 0.9rem; border-radius: 20px; margin-bottom: 1.2rem; }
+  .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--rose-light); margin-bottom: 0.8rem; }
+  .page-hero p { font-size: 0.95rem; color: rgba(240,208,208,0.65); max-width: 560px; line-height: 1.75; }
+
+  .section { padding: 4rem 8vw; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.8rem; max-width: 780px; margin: 0 auto; }
+  .faq-item { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 1.1rem 1.4rem; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 500; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: background 0.2s, color 0.2s; }
+  .faq-question:hover { background: var(--rose-pale); }
+  .faq-question.open { background: var(--rose-pale); color: var(--rose); }
+  .faq-chevron { font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-question.open .faq-chevron { transform: rotate(180deg); }
+  .faq-answer { display: none; padding: 0 1.4rem 1.2rem; font-size: 0.86rem; color: var(--text-muted); line-height: 1.8; }
+  .faq-answer.open { display: block; }
+
+  .faq-category { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin: 2.5rem 0 1rem; max-width: 780px; margin-left: auto; margin-right: auto; }
+  .faq-category:first-child { margin-top: 0; }
+
+  footer { background: var(--warm-dark); padding: 3rem 8vw; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; color: rgba(240,208,208,0.55); font-size: 0.82rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--rose-light); margin-bottom: 0.8rem; }
+  .footer-logo span { color: var(--rose); font-style: italic; }
+  footer h5 { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  footer a { color: rgba(240,208,208,0.55); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--rose-light); }
+  .footer-bottom { background: rgba(0,0,0,0.2); padding: 1rem 8vw; font-size: 0.72rem; color: rgba(240,208,208,0.3); text-align: center; }
+  .disclaimer { background: #f0e8e0; border-top: 1px solid rgba(139,94,107,0.12); padding: 1.4rem 8vw; font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    nav { display: none !important; }
+    .hamburger { display: flex; }
+    footer { grid-template-columns: 1fr; gap: 2rem; }
+    .section { padding: 3rem 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo"><span>Clear</span>Term Health</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="start-here.html">Start Here</a>
+    <a href="index.html#conditions">Conditions</a>
+    <a href="specialists.html">Specialists</a>
+    <a href="recovery.html">Recovery</a>
+    <a href="faq.html" class="active">FAQ</a>
+    <a href="clearterm-resources.html" class="btn-nav">Resources</a>
+  </nav>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="start-here.html">Start Here</a>
+    <a href="index.html#conditions">Conditions</a>
+    <a href="specialists.html">Specialists</a>
+    <a href="recovery.html">Recovery</a>
+    <a href="faq.html">FAQ</a>
+    <a href="clearterm-resources.html" class="btn-nav">Resources</a>
+</div>
+
+<div class="disclaimer-bar">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <p><strong style="color:#3a2830;">Not medical advice.</strong> ClearTerm Health is an informational resource created by a patient advocate, not a medical professional. Always consult your doctor or MFM specialist for guidance specific to your situation.</p>
+</div>
+
+<div class="page-hero">
+  <div class="hero-tag">Common questions</div>
+  <h1>Frequently asked questions</h1>
+  <p>Plain language answers to the questions women ask most after a placenta previa or accreta diagnosis.</p>
+</div>
+
+<section class="section">
+
+  <div class="faq-category">About your diagnosis</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">Can placenta previa resolve on its own?<span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Yes — in many cases, particularly when diagnosed early in the second trimester. As the uterus grows, the placenta can appear to "migrate" upward and away from the cervix. Studies suggest that the majority of low-lying placentas identified at the 20-week anatomy scan will resolve by 36 weeks. However, a complete previa detected late in pregnancy is far less likely to resolve and usually requires cesarean delivery. Follow-up ultrasounds at 32–36 weeks are standard to assess whether resolution has occurred.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">What is the difference between placenta accreta, increta, and percreta?<span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">These three terms describe increasing depths of abnormal placental attachment. In placenta accreta, the placenta attaches too firmly to the uterine wall but does not penetrate the muscle layer. In placenta increta, the placenta grows into the uterine muscle. In placenta percreta — the most severe form — the placenta penetrates entirely through the uterine wall and may attach to adjacent organs such as the bladder or bowel. Together, these are called the Placenta Accreta Spectrum (PAS).</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">What are placental lakes and what do they mean?<span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Placental lakes — also called lacunae — are irregular pools of blood visible on ultrasound within the placenta. They appear as dark, irregular spaces and are one of the earliest and most significant ultrasound signs of placenta accreta spectrum. In a normal placenta, the tissue appears uniform and solid. When lacunae are present, particularly multiple large ones, it suggests the placenta has grown abnormally into or through the uterine wall. The more lacunae present, and the larger they are, the higher the suspicion for PAS. A "Swiss cheese" appearance on ultrasound — multiple dark holes scattered through the placenta — is a term commonly used to describe this finding. If your ultrasound report mentions lacunae, placental lakes, or a loss of the clear zone between the placenta and uterus, ask your provider directly about PAS screening and whether a referral to a Maternal-Fetal Medicine specialist or MRI is warranted. This finding alone does not confirm PAS, but it should always be taken seriously and investigated further.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">If I've had a C-section, am I at higher risk?<span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Yes. Uterine scarring from prior cesarean delivery significantly increases the risk of both placenta previa and placenta accreta spectrum in future pregnancies. The risk is cumulative — with one prior C-section, the PAS risk is approximately 0.3%; with two it rises to around 0.6%; with three or more the risk can exceed 2%. Other uterine surgeries — including myomectomy, D&C, and endometrial ablation — also create scar tissue that raises PAS risk, even without a prior C-section.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">Does IVF increase the risk of placenta accreta?<span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Yes — research increasingly shows that IVF pregnancies, particularly those using frozen embryo transfer (FET) in a hormone replacement cycle, carry a significantly elevated risk of placenta accreta spectrum. One large study found that women who underwent IVF had more than 5 times the risk of PAS compared to non-IVF pregnancies. If you conceived via IVF, particularly through frozen embryo transfer, speak with your OB or MFM about targeted PAS screening even if you have no prior uterine scars.</div>
+    </div>
+  </div>
+
+  <div class="faq-category">Delivery & care</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">Can I still have a vaginal delivery with placenta previa?<span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">For complete or major placenta previa, vaginal delivery is not safe and cesarean section is required. For a low-lying placenta where the edge is within 2 cm of the cervical os, vaginal delivery may sometimes be possible under close monitoring, but this depends on individual circumstances and should be thoroughly discussed with your MFM specialist. A marginal previa at the edge of the os is typically still managed with cesarean delivery at most institutions.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">What does delivery at a Center of Excellence mean for PAS?<span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">A PAS Center of Excellence is a hospital that has a dedicated multidisciplinary team experienced in managing placenta accreta spectrum deliveries. These centers have protocols in place for high blood loss, including cell salvage, massive transfusion protocols, interventional radiology support, and surgical specialists. The Accreta Foundation and SMFM both advocate for women with PAS to deliver at such centers, as outcomes are significantly better compared to institutions without this specialized experience.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">What questions should I ask my doctor after a previa or PAS diagnosis?<span class="faq-chevron">▾</span></button>
+      <div class="faq-answer">Key questions to consider: What type of previa or PAS do I have, and how confident are you in the diagnosis? Should I be referred to a Maternal-Fetal Medicine specialist? Will I need additional imaging (MRI)? What activity restrictions do I need to follow? Where should I deliver, and does that facility have a multidisciplinary PAS team? What are the warning signs I should watch for at home? When would you recommend early delivery, and will my baby need NICU support? If hysterectomy is a possibility, what are my options for discussing fertility preservation?</div>
+    </div>
+  </div>
+
+</section>
+
+<div class="disclaimer"><strong>Medical Disclaimer:</strong> The content on this page is for informational and educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the guidance of your obstetrician, MFM specialist, or other qualified health provider. In an emergency, call 911 immediately.</div>
+
+<footer>
+  <div>
+    <div class="footer-logo"><span>Clear</span>Term Health</div>
+    <p>Clarity through complication. Created by a patient advocate, not a medical professional. For informational purposes only — not medical advice. Always consult your healthcare provider.</p>
+  </div>
+  <div>
+    <h5>Navigate</h5>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="start-here.html">Start Here</a></li>
+      <li><a href="index.html#conditions">Conditions</a></li>
+      <li><a href="specialists.html">Specialists</a></li>
+      <li><a href="recovery.html">Recovery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="clearterm-resources.html">Resources</a></li>
+    </ul>
+  </div>
+  <div>
+    <h5>External Resources</h5>
+    <ul>
+      <li><a href="https://www.preventaccreta.org" target="_blank">National Accreta Foundation</a></li>
+      <li><a href="https://www.postpartum.net" target="_blank">Postpartum Support International</a></li>
+      <li><a href="https://www.smfm.org" target="_blank">SMFM</a></li>
+      <li><a href="https://www.acog.org" target="_blank">ACOG</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2025 ClearTerm Health. Created by a patient advocate, not a medical professional. For informational purposes only — not medical advice.</div>
+
+<script>
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-question.open').forEach(q => { q.classList.remove('open'); q.nextElementSibling.classList.remove('open'); });
+  if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+}
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
