@@ -58,11 +58,11 @@
   .cond-pill.active { background:white; color:var(--warm-dark); border-color:white; font-weight:600; }
   .cond-pill .pill-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
 
-  .stage-nav { display:flex; position:relative; z-index:1; }
-  .stage-nav-btn { flex:1; padding:1rem 0.5rem 1.2rem; border:none; background:rgba(255,255,255,0.04); border-top:3px solid transparent; font-family:'DM Sans',sans-serif; font-size:0.85rem; font-weight:500; color:rgba(240,208,208,0.45); cursor:pointer; transition:all 0.22s; display:flex; flex-direction:column; align-items:center; gap:0.4rem; }
-  .stage-nav-btn:hover { background:rgba(255,255,255,0.07); color:rgba(240,208,208,0.8); }
-  .stage-nav-btn.active { background:var(--cream); color:var(--warm-dark); font-weight:600; }
-  .stage-nav-btn .snb-icon { font-size:1.3rem; }
+  .stage-nav { display:flex; flex-wrap:wrap; gap:0.5rem; padding:1.2rem 0; }
+  .stage-nav-btn { padding:0.5rem 1rem; border:1.5px solid rgba(240,208,208,0.2); background:transparent; font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:400; color:rgba(240,208,208,0.55); cursor:pointer; transition:all 0.2s; border-radius:100px; }
+  .stage-nav-btn:hover { border-color:rgba(240,208,208,0.4); color:rgba(240,208,208,0.8); }
+  .stage-nav-btn.active { background:var(--rose); border-color:var(--rose); color:white; font-weight:500; }
+  .stage-nav-btn .snb-icon { display:none; }
   .snb-num { font-family:'Cormorant Garamond',serif; font-size:0.85rem; opacity:0.4; }
   .stage-nav-btn[data-stage="1"].active{border-top-color:var(--s1)} .stage-nav-btn[data-stage="2"].active{border-top-color:var(--s2)} .stage-nav-btn[data-stage="3"].active{border-top-color:var(--s3)} .stage-nav-btn[data-stage="4"].active{border-top-color:var(--s4)} .stage-nav-btn[data-stage="5"].active{border-top-color:var(--s5)} .stage-nav-btn[data-stage="6"].active{border-top-color:var(--s6)}
 
@@ -88,9 +88,7 @@
   .stage-header h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3vw,2.5rem); font-weight:300; color:var(--warm-dark); line-height:1.15; margin-bottom:0.7rem; }
   .stage-header h2 em { font-style:italic; }
   .stage-desc { font-size:0.95rem; color:var(--text-muted); line-height:1.75; max-width:620px; }
-  .stage-affirmation { margin-left:auto; flex-shrink:0; max-width:220px; background:white; border-radius:16px; padding:1.4rem; box-shadow:0 4px 20px rgba(44,30,36,0.07); border-left:3px solid; text-align:center; }
-  .stage-affirmation .aff-icon { font-size:1.6rem; margin-bottom:0.5rem; }
-  .stage-affirmation p { font-family:'Cormorant Garamond',serif; font-size:1rem; font-style:italic; color:var(--warm-dark); line-height:1.5; }
+  .stage-affirmation { display:none; }
 
   .type-section { margin-bottom:2.8rem; }
   .type-section-header { display:flex; align-items:center; gap:0.7rem; margin-bottom:1.2rem; }
@@ -343,10 +341,19 @@ const TYPE_CONFIG = {
 };
 
 const SHARED = {
-  1:[{ type:"support", title:"Postpartum Support International", description:"PSI's helpline supports women experiencing anxiety during high-risk pregnancies — not just postpartum. You don't have to wait until after delivery.", url:"https://www.postpartum.net", source:"Postpartum.net" }],
-  2:[{ type:"article", title:"RadiologyInfo — Obstetric Ultrasound Guide", description:"Patient-facing explanation of obstetric ultrasound and transvaginal scans — what to expect and how placental location is determined.", url:"https://www.radiologyinfo.org/en/info/obstetrical-us", source:"RadiologyInfo.org" }],
-  3:[{ type:"article", title:"Mayo Clinic — What to Expect: C-Section", description:"Step-by-step guide to what happens before, during, and after a cesarean delivery — great for first-time C-section patients.", url:"https://www.mayoclinic.org/tests-procedures/c-section/about/pac-20393655", source:"MayoClinic.org" }],
+  1:[
+    { type:"org", title:"National Accreta Foundation — Patient Resources", description:"The leading patient advocacy organization for PAS. Offers support groups, survivor stories, educational guides, and a provider directory — all specifically for accreta patients and their families.", url:"https://www.preventaccreta.org/for-patients/", source:"PreventAccreta.org" },
+    { type:"article", title:"ACOG — Placenta Accreta Spectrum: What Patients Need to Know", description:"Plain-language patient education from the American College of Obstetricians and Gynecologists explaining what PAS is, how it is diagnosed, and what treatment involves.", url:"https://www.acog.org/womens-health/faqs/placenta-accreta-spectrum", source:"ACOG.org" },
+    { type:"article", title:"ACOG — Placenta Previa: Patient FAQ", description:"A clear, plain-language overview of placenta previa from ACOG — covering symptoms, diagnosis, management, and what to expect at delivery.", url:"https://www.acog.org/womens-health/faqs/placenta-previa", source:"ACOG.org" },{ type:"support", title:"Postpartum Support International", description:"PSI's helpline supports women experiencing anxiety during high-risk pregnancies — not just postpartum. You don't have to wait until after delivery.", url:"https://www.postpartum.net", source:"Postpartum.net" }],
+  2:[
+    { type:"research", title:"ACOG/SMFM Obstetric Care Consensus #7 — Placenta Accreta Spectrum", description:"The definitive clinical guidance document on PAS from ACOG and SMFM. Covers diagnosis, risk factors, imaging, delivery planning, and multidisciplinary management. Useful for understanding what your care team should be doing.", url:"https://www.acog.org/clinical/clinical-guidance/obstetric-care-consensus/articles/2018/12/placenta-accreta-spectrum", source:"ACOG.org" },
+    { type:"research", title:"Placenta Accreta Spectrum — Obstetrics & Gynecology 2023 Review", description:"A comprehensive peer-reviewed review of PAS published in 2023 covering incidence, risk factors, ultrasound diagnosis, surgical management, and outcomes at specialized centers.", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC10491415/", source:"PubMed / PMC" },{ type:"article", title:"RadiologyInfo — Obstetric Ultrasound Guide", description:"Patient-facing explanation of obstetric ultrasound and transvaginal scans — what to expect and how placental location is determined.", url:"https://www.radiologyinfo.org/en/info/obstetrical-us", source:"RadiologyInfo.org" }],
+  3:[
+    { type:"article", title:"SMFM Emergency Checklist & Planning Worksheet for PAS", description:"The Society for Maternal-Fetal Medicine's planning tools for PAS delivery — originally designed for care teams but valuable for patients to understand what a prepared delivery looks like.", url:"https://www.ajog.org/article/S0002-9378(23)00606-3/fulltext", source:"AJOG / SMFM" },
+    { type:"article", title:"National Accreta Foundation — Questions to Ask Your Care Team", description:"A practical guide from NAF on what to ask your MFM specialist, surgeon, and hospital before your PAS delivery. Helps ensure you're delivering at the right place with the right team.", url:"https://www.preventaccreta.org/for-patients/", source:"PreventAccreta.org" },{ type:"article", title:"Mayo Clinic — What to Expect: C-Section", description:"Step-by-step guide to what happens before, during, and after a cesarean delivery — great for first-time C-section patients.", url:"https://www.mayoclinic.org/tests-procedures/c-section/about/pac-20393655", source:"MayoClinic.org" }],
   4:[
+    { type:"article", title:"Birth Trauma Association — What is Birth Trauma?", description:"A clear, compassionate guide to birth trauma — what it is, how it differs from general postpartum distress, and how to find support. Particularly relevant for women who experienced emergency procedures.", url:"https://www.birthtraumaassociation.org.uk/for-parents/what-is-birth-trauma", source:"BirthTraumaAssociation.org.uk" },
+    { type:"article", title:"Postpartum Support International — Postpartum PTSD", description:"PSI's patient-facing guide to PTSD after childbirth — symptoms, how it differs from PPD, and how to find a perinatal mental health provider trained in birth trauma.", url:"https://www.postpartum.net/learn-more/postpartum-post-traumatic-stress-disorder/", source:"Postpartum.net" },
     { type:"support", title:"PSI — Find a Perinatal Mental Health Provider", description:"Directory of therapists specializing in perinatal mental health — find someone who understands birth trauma and postpartum mood disorders.", url:"https://www.postpartum.net/professionals/perinatal-mental-health-provider-directory/", source:"Postpartum.net" },
     { type:"video",   title:"Birth Trauma & PTSD — Therapy Approaches Explained", description:"A clinical psychologist explains evidence-based therapy for birth trauma and perinatal PTSD.", url:"https://www.youtube.com/results?search_query=birth+trauma+PTSD+therapy+perinatal", source:"YouTube / PSI" },
   ],

@@ -675,11 +675,7 @@
     <a href="faq.html">FAQ</a>
     <a href="clearterm-resources.html" class="btn-nav">Resources</a>
 </div>
-<!-- VASA PREVIA NOTE -->
-<div style="background:rgba(107,139,120,0.08); border-top:1px solid rgba(107,139,120,0.2); border-bottom:1px solid rgba(107,139,120,0.2); padding:0.8rem 8vw; display:flex; align-items:center; gap:0.8rem;">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sage,#6b8b78)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-  <p style="font-size:0.85rem; color:#6b8b78; margin:0;"><strong style="color:#3a2830;">Vasa previa patients:</strong> While there are no dedicated vasa previa Centers of Excellence, delivery at a hospital with a <strong>Level III or IV NICU</strong> and an experienced high-risk OB team is strongly recommended. Many PAS centers also have the expertise to manage vasa previa. Search below for a center near you.</p>
-</div>
+
 <!-- DISCLAIMER BAR -->
 <div style="background:#f4ece8; border-bottom:1px solid rgba(201,107,107,0.15); padding:0.6rem 5vw; display:flex; align-items:center; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose,#c96b6b)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -951,7 +947,15 @@
       <input class="coe-input" id="coe-search" placeholder="Search by city or state..." oninput="filterCenters(this.value)"/>
       <button class="coe-btn" onclick="filterCenters(document.getElementById('coe-search').value)">Search Centers</button>
     </div>
-    <div class="coe-results" id="coe-results"></div>
+    <div style="background:rgba(107,139,120,0.08); border:1px solid rgba(107,139,120,0.2); border-radius:10px; padding:0.8rem 1.2rem; margin-bottom:1.2rem; display:flex; align-items:center; gap:0.8rem;">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b8b78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <p style="font-size:0.78rem; color:#6b8b78; margin:0;"><strong style="color:#3a2830;">Vasa previa patients:</strong> There are no dedicated vasa previa Centers of Excellence, but delivery at a hospital with a Level III or IV NICU and an experienced high-risk OB team is strongly recommended. Many PAS centers also manage vasa previa.</p>
+</div>
+<div id="coe-prompt" style="text-align:center; padding:3rem 1rem; color:var(--text-muted);">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(201,107,107,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:1rem;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  <p style="font-size:0.95rem; color:var(--text-muted);">Enter your city, state, or zip code to find a center near you.</p>
+</div>
+<div class="coe-results" id="coe-results"></div>
     <div class="coe-no-results" id="coe-no-results" style="display:none;">No centers found. Try searching by state abbreviation (e.g. "FL") or a major nearby city.</div>
     <div class="coe-no-results" id="coe-nearby-note" style="display:none; color: rgba(240,208,208,0.6);">No PAS Center of Excellence in that exact city — showing the nearest centers in your region instead.</div>
     <p class="coe-note">
@@ -1138,7 +1142,15 @@
 
   function filterCenters(query) {
     const q = query.trim().toLowerCase();
-    if (!q) { renderCards(centers, false); return; }
+    if (!q) { 
+      const grid = document.getElementById('coe-results');
+      grid.innerHTML = '';
+      document.getElementById('coe-no-results').style.display = 'none';
+      document.getElementById('coe-nearby-note').style.display = 'none';
+      document.getElementById('coe-prompt').style.display = 'block';
+      return; 
+    }
+    document.getElementById('coe-prompt').style.display = 'none';
     const words = q.replace(/[,.]/g, ' ').split(/\s+/).filter(Boolean);
     const direct = centers.filter(c => {
       const fullText = [c.name, c.city, c.state, c.stateName || '', ...(c.nearby || [])].join(' ').toLowerCase();
