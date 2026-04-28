@@ -41,8 +41,8 @@
   }
   .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--rose-light); letter-spacing: 0.04em; text-decoration: none; }
   .logo span { color: var(--rose); font-style: italic; }
-  nav { display: flex; gap: 0.2rem; align-items: center; }
-  nav a { color: rgba(240,208,208,0.7); text-decoration: none; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s, background 0.2s; padding: 0.4rem 0.7rem; border-radius: 6px; white-space: nowrap; }
+  nav { display: flex; gap: 0.4rem; align-items: center; }
+  nav a { color: rgba(240,208,208,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s, background 0.2s; padding: 0.4rem 0.7rem; border-radius: 6px; white-space: nowrap; }
   nav a:hover { color: var(--rose-light); background: rgba(255,255,255,0.06); }
   nav a.active { color: var(--rose-light); }
   .btn-nav { background: var(--rose); color: white !important; padding: 0.5rem 1.2rem; border-radius: 100px; font-weight: 500 !important; }
@@ -60,7 +60,7 @@
   .mobile-menu .btn-nav { margin-top: 0.8rem; text-align: center; background: var(--rose); color: white !important; padding: 0.7rem 1.2rem; border-radius: 100px; border-bottom: none !important; }
 
   .disclaimer-bar { background:#f4ece8; border-bottom:1px solid rgba(201,107,107,0.15); padding:0.6rem 5vw; display:flex; align-items:center; gap:0.8rem; justify-content:center; flex-wrap:wrap; }
-  .disclaimer-bar p { font-size:0.75rem; color:#7a6068; margin:0; text-align:center; }
+  .disclaimer-bar p { font-size:0.85rem; color:#7a6068; margin:0; text-align:center; }
 
   .page-hero {
     background: var(--warm-dark);
@@ -68,7 +68,7 @@
     position: relative;
   }
   .page-hero::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(201,107,107,0.3), transparent); }
-  .hero-tag { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,154,90,0.3); padding: 0.3rem 0.9rem; border-radius: 20px; margin-bottom: 1.2rem; }
+  .hero-tag { display: inline-block; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,154,90,0.3); padding: 0.3rem 0.9rem; border-radius: 20px; margin-bottom: 1.2rem; }
   .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--rose-light); margin-bottom: 0.8rem; }
   .page-hero p { font-size: 0.95rem; color: rgba(240,208,208,0.65); max-width: 560px; line-height: 1.75; }
 
@@ -80,21 +80,21 @@
   .faq-question.open { background: var(--rose-pale); color: var(--rose); }
   .faq-chevron { font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; }
   .faq-question.open .faq-chevron { transform: rotate(180deg); }
-  .faq-answer { display: none; padding: 0 1.4rem 1.2rem; font-size: 0.86rem; color: var(--text-muted); line-height: 1.8; }
+  .faq-answer { display: none; padding: 0 1.4rem 1.2rem; font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; }
   .faq-answer.open { display: block; }
 
-  .faq-category { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin: 2.5rem 0 1rem; max-width: 780px; margin-left: auto; margin-right: auto; }
+  .faq-category { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin: 2.5rem 0 1rem; max-width: 780px; margin-left: auto; margin-right: auto; }
   .faq-category:first-child { margin-top: 0; }
 
-  footer { background: var(--warm-dark); padding: 3rem 8vw; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; color: rgba(240,208,208,0.55); font-size: 0.82rem; }
+  footer { background: var(--warm-dark); padding: 3rem 8vw; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; color: rgba(240,208,208,0.55); font-size: 0.92rem; }
   .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--rose-light); margin-bottom: 0.8rem; }
   .footer-logo span { color: var(--rose); font-style: italic; }
   footer h5 { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
   footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
   footer a { color: rgba(240,208,208,0.55); text-decoration: none; transition: color 0.2s; }
   footer a:hover { color: var(--rose-light); }
-  .footer-bottom { background: rgba(0,0,0,0.2); padding: 1rem 8vw; font-size: 0.72rem; color: rgba(240,208,208,0.3); text-align: center; }
-  .disclaimer { background: #f0e8e0; border-top: 1px solid rgba(139,94,107,0.12); padding: 1.4rem 8vw; font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+  .footer-bottom { background: rgba(0,0,0,0.2); padding: 1rem 8vw; font-size: 0.85rem; color: rgba(240,208,208,0.3); text-align: center; }
+  .disclaimer { background: #f0e8e0; border-top: 1px solid rgba(139,94,107,0.12); padding: 1.4rem 8vw; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
 
   @media (max-width: 768px) {
     nav { display: none !important; }

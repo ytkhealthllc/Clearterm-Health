@@ -39,14 +39,14 @@
   header { background:var(--warm-dark); padding:0 5vw; position:sticky; top:0; z-index:200; display:flex; align-items:center; justify-content:space-between; height:72px; box-shadow:0 2px 20px rgba(44,30,36,0.4); }
   .logo { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:var(--rose-light); text-decoration:none; letter-spacing:0.04em; }
   .logo span { color:var(--rose); font-style:italic; }
-  nav { display:flex; gap:2rem; align-items:center; }
-  nav a { color:rgba(240,208,208,0.7); text-decoration:none; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; transition:color 0.2s; }
+  nav { display:flex; gap:0.4rem; align-items:center; }
+  nav a { color:rgba(240,208,208,0.7); text-decoration:none; font-size:0.92rem; text-transform:uppercase; letter-spacing:0.06em; transition:color 0.2s; }
   nav a:hover, nav a.active { color:var(--rose-light); }
   .btn-nav { background:var(--rose)!important; color:white!important; padding:0.5rem 1.2rem; border-radius:100px; }
 
   .page-intro { background:var(--warm-dark); padding:4rem 8vw 0; position:relative; overflow:hidden; }
   .page-intro::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 80% 50%,rgba(201,107,107,0.13) 0%,transparent 65%); pointer-events:none; }
-  .intro-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.16em; color:var(--rose); font-weight:600; margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+  .intro-label { font-size:0.85rem; text-transform:uppercase; letter-spacing:0.16em; color:var(--rose); font-weight:600; margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
   .intro-label::before { content:''; display:inline-block; width:24px; height:1px; background:var(--rose); }
   .page-intro h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3rem); font-weight:300; color:var(--rose-light); line-height:1.15; max-width:660px; margin-bottom:0.9rem; }
   .page-intro h1 em { font-style:italic; color:var(--rose); }
@@ -59,14 +59,14 @@
   .cond-pill .pill-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
 
   .stage-nav { display:flex; position:relative; z-index:1; }
-  .stage-nav-btn { flex:1; padding:1rem 0.5rem 1.2rem; border:none; background:rgba(255,255,255,0.04); border-top:3px solid transparent; font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:500; color:rgba(240,208,208,0.45); cursor:pointer; transition:all 0.22s; display:flex; flex-direction:column; align-items:center; gap:0.4rem; }
+  .stage-nav-btn { flex:1; padding:1rem 0.5rem 1.2rem; border:none; background:rgba(255,255,255,0.04); border-top:3px solid transparent; font-family:'DM Sans',sans-serif; font-size:0.85rem; font-weight:500; color:rgba(240,208,208,0.45); cursor:pointer; transition:all 0.22s; display:flex; flex-direction:column; align-items:center; gap:0.4rem; }
   .stage-nav-btn:hover { background:rgba(255,255,255,0.07); color:rgba(240,208,208,0.8); }
   .stage-nav-btn.active { background:var(--cream); color:var(--warm-dark); font-weight:600; }
   .stage-nav-btn .snb-icon { font-size:1.3rem; }
-  .snb-num { font-family:'Cormorant Garamond',serif; font-size:0.75rem; opacity:0.4; }
+  .snb-num { font-family:'Cormorant Garamond',serif; font-size:0.85rem; opacity:0.4; }
   .stage-nav-btn[data-stage="1"].active{border-top-color:var(--s1)} .stage-nav-btn[data-stage="2"].active{border-top-color:var(--s2)} .stage-nav-btn[data-stage="3"].active{border-top-color:var(--s3)} .stage-nav-btn[data-stage="4"].active{border-top-color:var(--s4)} .stage-nav-btn[data-stage="5"].active{border-top-color:var(--s5)} .stage-nav-btn[data-stage="6"].active{border-top-color:var(--s6)}
 
-  .progress-strip { background:white; border-bottom:1px solid var(--rose-light); padding:0.9rem 8vw; display:flex; align-items:center; gap:0.6rem; font-size:0.78rem; color:var(--text-muted); overflow-x:auto; white-space:nowrap; }
+  .progress-strip { background:white; border-bottom:1px solid var(--rose-light); padding:0.9rem 8vw; display:flex; align-items:center; gap:0.6rem; font-size:0.85rem; color:var(--text-muted); overflow-x:auto; white-space:nowrap; }
   .prog-step { display:flex; align-items:center; gap:0.5rem; cursor:pointer; transition:color 0.2s; flex-shrink:0; }
   .prog-step:hover { color:var(--text); }
   .prog-step.active { color:var(--rose); font-weight:600; }
@@ -94,7 +94,7 @@
 
   .type-section { margin-bottom:2.8rem; }
   .type-section-header { display:flex; align-items:center; gap:0.7rem; margin-bottom:1.2rem; }
-  .type-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; font-weight:700; padding:0.28rem 0.8rem; border-radius:100px; }
+  .type-label { font-size:0.85rem; text-transform:uppercase; letter-spacing:0.12em; font-weight:700; padding:0.28rem 0.8rem; border-radius:100px; }
   .lbl-video    { background:rgba(196,154,90,0.14);  color:#a07a30; }
   .lbl-article  { background:rgba(107,139,120,0.12); color:var(--sage); }
   .lbl-support  { background:rgba(139,94,107,0.12);  color:var(--mauve); }
@@ -109,21 +109,21 @@
   .card-tags { display:flex; flex-wrap:wrap; gap:0.35rem; }
   .ctag { font-size:0.63rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:700; padding:0.18rem 0.55rem; border-radius:100px; }
   .res-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.06rem; font-weight:600; color:var(--warm-dark); line-height:1.3; }
-  .res-card p { font-size:0.81rem; color:var(--text-muted); line-height:1.65; flex:1; }
-  .res-footer { display:flex; align-items:center; justify-content:space-between; padding-top:0.7rem; border-top:1px solid var(--rose-pale); font-size:0.73rem; }
+  .res-card p { font-size:0.92rem; color:var(--text-muted); line-height:1.65; flex:1; }
+  .res-footer { display:flex; align-items:center; justify-content:space-between; padding-top:0.7rem; border-top:1px solid var(--rose-pale); font-size:0.85rem; }
   .res-source { color:var(--text-muted); font-weight:500; }
   .res-link { color:var(--rose); font-weight:600; display:flex; align-items:center; gap:0.2rem; transition:gap 0.15s; }
   .res-card:hover .res-link { gap:0.4rem; }
 
   .shared-section { margin-top:3rem; padding-top:2rem; border-top:2px dashed var(--rose-light); }
-  .shared-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); font-weight:600; margin-bottom:1.2rem; display:flex; align-items:center; gap:0.8rem; }
+  .shared-label { font-size:0.85rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); font-weight:600; margin-bottom:1.2rem; display:flex; align-items:center; gap:0.8rem; }
   .shared-label::before,.shared-label::after { content:''; flex:1; height:1px; background:var(--rose-light); }
 
   .no-results { text-align:center; padding:4rem 2rem; }
   .no-results h3 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--warm-dark); margin-bottom:0.5rem; }
   .no-results p { color:var(--text-muted); font-size:0.9rem; }
 
-  .disclaimer { background:var(--warm-dark); padding:1.4rem 8vw; text-align:center; font-size:0.76rem; color:rgba(240,208,208,0.42); line-height:1.6; }
+  .disclaimer { background:var(--warm-dark); padding:1.4rem 8vw; text-align:center; font-size:0.85rem; color:rgba(240,208,208,0.42); line-height:1.6; }
   .disclaimer strong { color:rgba(240,208,208,0.68); }
   footer { background:#271830; padding:2.5rem 8vw 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
   .footer-logo { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; color:var(--rose-light); text-decoration:none; }
@@ -131,7 +131,7 @@
   .footer-links { display:flex; gap:1.8rem; flex-wrap:wrap; }
   .footer-links a { font-size:0.8rem; color:rgba(240,208,208,0.38); text-decoration:none; transition:color 0.2s; }
   .footer-links a:hover { color:var(--rose-light); }
-  .footer-copy { background:#271830; padding:1rem 8vw; border-top:1px solid rgba(240,208,208,0.12); font-size:0.72rem; color:rgba(240,208,208,0.22); text-align:center; }
+  .footer-copy { background:#271830; padding:1rem 8vw; border-top:1px solid rgba(240,208,208,0.12); font-size:0.85rem; color:rgba(240,208,208,0.22); text-align:center; }
 
   @media(max-width:860px){nav{display:none} .stage-nav-btn{font-size:0.68rem} .stage-header{flex-direction:column;gap:1.2rem} .stage-affirmation{margin-left:0;max-width:100%}}
 
@@ -215,6 +215,11 @@
     }
   }
 
+
+  @media (max-width: 768px) {
+    .journey-bar-label { display: none; }
+  }
+
 </style>
 </head>
 <body>
@@ -246,8 +251,47 @@
 <!-- DISCLAIMER BAR -->
 <div style="background:#f4ece8; border-bottom:1px solid rgba(201,107,107,0.15); padding:0.6rem 5vw; display:flex; align-items:center; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose,#c96b6b)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-  <p style="font-size:0.75rem; color:#7a6068; margin:0; text-align:center;"><strong style="color:#3a2830;">Not medical advice.</strong> ClearTerm Health is an informational resource created by a patient advocate, not a medical professional. Always consult your doctor or MFM specialist for guidance specific to your situation.</p>
+  <p style="font-size:0.85rem; color:#7a6068; margin:0; text-align:center;"><strong style="color:#3a2830;">Not medical advice.</strong> ClearTerm Health is an informational resource created by a patient advocate, not a medical professional. Always consult your doctor or MFM specialist for guidance specific to your situation.</p>
 </div>
+<!-- JOURNEY BAR -->
+<div style="background:#3d2645; padding:14px 8vw; display:flex; align-items:flex-start; gap:0; border-bottom:1px solid rgba(201,107,107,0.15);">
+  <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+    <div style="display:flex;align-items:center;width:100%;">
+      <a href="start-here.html" style="width:28px;height:28px;border-radius:50%;background:rgba(201,107,107,0.25);border:1.5px solid rgba(201,107,107,0.35);display:flex;align-items:center;justify-content:center;font-size:11px;color:#f0d0d0;flex-shrink:0;text-decoration:none;">✓</a>
+      <div style="flex:1;height:1px;background:rgba(201,107,107,0.35);margin-top:14px;"></div>
+    </div>
+    <div style="font-size:10px;color:rgba(240,208,208,0.55);text-align:center;margin-top:5px;font-family:'DM Sans',sans-serif;white-space:nowrap;">Just Diagnosed</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+    <div style="display:flex;align-items:center;width:100%;">
+      <a href="index.html#conditions" style="width:28px;height:28px;border-radius:50%;background:rgba(201,107,107,0.25);border:1.5px solid rgba(201,107,107,0.35);display:flex;align-items:center;justify-content:center;font-size:11px;color:#f0d0d0;flex-shrink:0;text-decoration:none;">✓</a>
+      <div style="flex:1;height:1px;background:rgba(201,107,107,0.35);margin-top:14px;"></div>
+    </div>
+    <div style="font-size:10px;color:rgba(240,208,208,0.55);text-align:center;margin-top:5px;font-family:'DM Sans',sans-serif;white-space:nowrap;">During Pregnancy</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+    <div style="display:flex;align-items:center;width:100%;">
+      <a href="specialists.html" style="width:28px;height:28px;border-radius:50%;background:rgba(201,107,107,0.25);border:1.5px solid rgba(201,107,107,0.35);display:flex;align-items:center;justify-content:center;font-size:11px;color:#f0d0d0;flex-shrink:0;text-decoration:none;">✓</a>
+      <div style="flex:1;height:1px;background:rgba(201,107,107,0.35);margin-top:14px;"></div>
+    </div>
+    <div style="font-size:10px;color:rgba(240,208,208,0.55);text-align:center;margin-top:5px;font-family:'DM Sans',sans-serif;white-space:nowrap;">Preparing for Delivery</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+    <div style="display:flex;align-items:center;width:100%;">
+      <a href="recovery.html" style="width:28px;height:28px;border-radius:50%;background:rgba(201,107,107,0.25);border:1.5px solid rgba(201,107,107,0.35);display:flex;align-items:center;justify-content:center;font-size:11px;color:#f0d0d0;flex-shrink:0;text-decoration:none;">✓</a>
+      <div style="flex:1;height:1px;background:rgba(201,107,107,0.35);margin-top:14px;"></div>
+    </div>
+    <div style="font-size:10px;color:rgba(240,208,208,0.55);text-align:center;margin-top:5px;font-family:'DM Sans',sans-serif;white-space:nowrap;">After Delivery</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+    <div style="display:flex;align-items:center;width:100%;">
+      <a href="clearterm-resources.html" style="width:28px;height:28px;border-radius:50%;background:#c96b6b;border:1.5px solid #c96b6b;display:flex;align-items:center;justify-content:center;font-size:11px;color:white;flex-shrink:0;box-shadow:0 0 0 3px rgba(201,107,107,0.2);text-decoration:none;">5</a>
+      
+    </div>
+    <div style="font-size:10px;color:#c96b6b;font-weight:500;text-align:center;margin-top:5px;font-family:'DM Sans',sans-serif;white-space:nowrap;">Life After</div>
+  </div>
+</div>
+<!-- END JOURNEY BAR -->
 
 <div class="page-intro">
   <div class="intro-label">Resource Library</div>
