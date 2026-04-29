@@ -374,6 +374,15 @@ const SHARED = {
 let activeConditionId = CONDITIONS[0].id;
 let activeStage = 1;
 
+// Check URL hash on load to jump to correct stage
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#stage-')) {
+    const num = parseInt(hash.replace('#stage-', ''));
+    if (!isNaN(num)) setTimeout(() => setActiveStage(num), 100);
+  }
+});
+
 function init() {
   renderConditionFilter();
   renderStageNav();
