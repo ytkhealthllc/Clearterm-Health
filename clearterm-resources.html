@@ -381,18 +381,14 @@ let activeConditionId = CONDITIONS[0].id;
 let activeStage = 1;
 
 function init() {
-  // Check for stage query param
   const urlParams = new URLSearchParams(window.location.search);
   const stageParam = urlParams.get('stage');
-  if (stageParam) {
-    const num = parseInt(stageParam);
-    if (!isNaN(num)) setTimeout(() => setActiveStage(num), 200);
-  }
+  const startStage = stageParam ? parseInt(stageParam) : 1;
   renderConditionFilter();
   renderStageNav();
   renderProgressStrip();
   renderAllStages();
-  setActiveStage(1);
+  setActiveStage(isNaN(startStage) ? 1 : startStage);
 }
 
 function renderConditionFilter() {
