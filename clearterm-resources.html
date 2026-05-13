@@ -100,6 +100,9 @@
   .type-divider { height:1px; background:var(--rose-pale); margin:2.2rem 0; }
 
   .cards-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:1.1rem; }
+  .res-card.quote-card { background: linear-gradient(135deg, #fdf6f6, white); border-color: rgba(201,107,107,0.2); }
+  .res-card.quote-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; font-weight: 300; color: var(--warm-dark); line-height: 1.6; }
+  .res-card.quote-card .res-footer { display: none; }
   .res-card { background:white; border-radius:14px; padding:1.4rem; box-shadow:0 2px 10px rgba(44,30,36,0.055); border:1.5px solid rgba(201,107,107,0.12); transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:0.6rem; }
   .res-card:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(44,30,36,0.11); border-color:var(--rose-light); }
   .res-card.featured { border-color:var(--rose-light); background:linear-gradient(135deg,white 60%,var(--rose-pale)); }
@@ -342,7 +345,7 @@ const TYPE_CONFIG = {
 
 const SHARED = {
   1:[
-    { type:"org", title:"National Accreta Foundation — Patient Resources", description:"The leading patient advocacy organization for PAS. Offers support groups, survivor stories, educational guides, and a provider directory — all specifically for accreta patients and their families.", url:"https://www.preventaccreta.org/for-patients/", source:"PreventAccreta.org" },
+    { type:"org", title:"National Accreta Foundation — Patient Resources", description:"The leading patient advocacy organization for PAS. Offers support groups, survivor stories, educational guides, and a provider directory — all specifically for accreta patients and their families.", url:"https://www.preventaccreta.org/accreta-resources", source:"PreventAccreta.org" },
     { type:"article", title:"ACOG — Placenta Accreta Spectrum: What Patients Need to Know", description:"Plain-language patient education from the American College of Obstetricians and Gynecologists explaining what PAS is, how it is diagnosed, and what treatment involves.", url:"https://www.acog.org/womens-health/faqs/placenta-accreta-spectrum", source:"ACOG.org" },
     { type:"article", title:"ACOG — Placenta Previa: Patient FAQ", description:"A clear, plain-language overview of placenta previa from ACOG — covering symptoms, diagnosis, management, and what to expect at delivery.", url:"https://www.acog.org/womens-health/faqs/placenta-previa", source:"ACOG.org" },{ type:"support", title:"Postpartum Support International", description:"PSI's helpline supports women experiencing anxiety during high-risk pregnancies — not just postpartum. You don't have to wait until after delivery.", url:"https://www.postpartum.net", source:"Postpartum.net" }],
   2:[
@@ -350,7 +353,7 @@ const SHARED = {
     { type:"research", title:"Placenta Accreta Spectrum — Obstetrics & Gynecology 2023 Review", description:"A comprehensive peer-reviewed review of PAS published in 2023 covering incidence, risk factors, ultrasound diagnosis, surgical management, and outcomes at specialized centers.", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC10491415/", source:"PubMed / PMC" },{ type:"article", title:"RadiologyInfo — Obstetric Ultrasound Guide", description:"Patient-facing explanation of obstetric ultrasound and transvaginal scans — what to expect and how placental location is determined.", url:"https://www.radiologyinfo.org/en/info/obstetrical-us", source:"RadiologyInfo.org" }],
   3:[
     { type:"article", title:"SMFM Emergency Checklist & Planning Worksheet for PAS", description:"The Society for Maternal-Fetal Medicine's planning tools for PAS delivery — originally designed for care teams but valuable for patients to understand what a prepared delivery looks like.", url:"https://www.ajog.org/article/S0002-9378(23)00606-3/fulltext", source:"AJOG / SMFM" },
-    { type:"article", title:"National Accreta Foundation — Questions to Ask Your Care Team", description:"A practical guide from NAF on what to ask your MFM specialist, surgeon, and hospital before your PAS delivery. Helps ensure you're delivering at the right place with the right team.", url:"https://www.preventaccreta.org/for-patients/", source:"PreventAccreta.org" },{ type:"article", title:"Mayo Clinic — What to Expect: C-Section", description:"Step-by-step guide to what happens before, during, and after a cesarean delivery — great for first-time C-section patients.", url:"https://www.mayoclinic.org/tests-procedures/c-section/about/pac-20393655", source:"MayoClinic.org" }],
+    { type:"article", title:"National Accreta Foundation — Questions to Ask Your Care Team", description:"A practical guide from NAF on what to ask your MFM specialist, surgeon, and hospital before your PAS delivery. Helps ensure you're delivering at the right place with the right team.", url:"https://www.preventaccreta.org/accreta-resources", source:"PreventAccreta.org" },{ type:"article", title:"Mayo Clinic — What to Expect: C-Section", description:"Step-by-step guide to what happens before, during, and after a cesarean delivery — great for first-time C-section patients.", url:"https://www.mayoclinic.org/tests-procedures/c-section/about/pac-20393655", source:"MayoClinic.org" }],
   4:[
     { type:"article", title:"Birth Trauma Association — What is Birth Trauma?", description:"A clear, compassionate guide to birth trauma — what it is, how it differs from general postpartum distress, and how to find support. Particularly relevant for women who experienced emergency procedures.", url:"https://www.birthtraumaassociation.org.uk/for-parents/what-is-birth-trauma", source:"BirthTraumaAssociation.org.uk" },
     { type:"article", title:"Postpartum Support International — Postpartum PTSD", description:"PSI's patient-facing guide to PTSD after childbirth — symptoms, how it differs from PPD, and how to find a perinatal mental health provider trained in birth trauma.", url:"https://www.postpartum.net/learn-more/postpartum-post-traumatic-stress-disorder/", source:"Postpartum.net" },
@@ -364,7 +367,10 @@ const SHARED = {
     { type:"research", title:"Perinatal Outcomes with Vasa Previa — PubMed", description:"Research comparing outcomes in prenatally diagnosed vs. undiagnosed vasa previa. Highlights why early screening dramatically improves fetal survival rates.", url:"https://pubmed.ncbi.nlm.nih.gov/35271800/", source:"PubMed" },
   ],
   5:[
-    { type:"article", title:"CDC — Assisted Reproductive Technology", description:"Overview of ART options including gestational surrogacy — available for women who lost their uterus but retained their ovaries.", url:"https://www.cdc.gov/art/index.html", source:"CDC.gov" },
+    { type:"support", title:"NAF Support Groups — You Are Not Alone", description:"Connect with women who have lived this. NAF runs closed Facebook support groups for accreta survivors, women who required hysterectomy, those navigating PTSD, and those who lost a baby. Finding your community can change everything.", url:"https://www.preventaccreta.org/support", source:"PreventAccreta.org" },
+    { type:"quote", title:"\"I had to grieve a future I\'d imagined before I could build the one I actually have. That took longer than anyone told me it would.\"", description:"", url:"", source:"PAS survivor" },
+    { type:"quote", title:"\"The hardest part wasn\'t the surgery. It was the silence after — when everyone moved on and I was still trying to figure out who I was now.\"", description:"", url:"", source:"PAS survivor" },
+    { type:"quote", title:"\"I found my people in a support group. Women who just got it. That changed everything.\"", description:"", url:"", source:"PAS survivor" },    { type:"article", title:"CDC — Assisted Reproductive Technology", description:"Overview of ART options including gestational surrogacy — available for women who lost their uterus but retained their ovaries.", url:"https://www.cdc.gov/art/index.html", source:"CDC.gov" },
     { type:"article", title:"Office on Women's Health — Life After Hysterectomy", description:"A clear, patient-friendly guide from the U.S. Department of Health covering what to expect physically and emotionally after hysterectomy — including hormonal changes, surgical menopause, and follow-up care.", url:"https://womenshealth.gov/a-z-topics/hysterectomy", source:"WomensHealth.gov" },
     { type:"research", title:"Hysterectomy and Loss of Fertility — Psychological Impact Study", description:"Peer-reviewed research showing that women who desired more children before hysterectomy experience significantly higher rates of depression, anxiety, and grief over a 2-year follow-up. Supports the case for specialized counseling support.", url:"https://pubmed.ncbi.nlm.nih.gov/17719364/", source:"PubMed / BJOG" },
     { type:"support", title:"RESOLVE — The National Infertility Association", description:"Support, advocacy, and community for those navigating infertility and family-building after reproductive loss — including resources on surrogacy, adoption, and living childfree after infertility.", url:"https://resolve.org", source:"Resolve.org" },
@@ -531,8 +537,8 @@ function buildPanel(stage) {
 
 function buildCard(r) {
   const a = document.createElement('a');
-  a.className = 'res-card'+(r.featured?' featured':'');
-  a.href = r.url; a.target='_blank'; a.rel='noopener noreferrer';
+  a.className = 'res-card'+(r.featured?' featured':'')+(r.type==='quote'?' quote-card':'');
+  if(r.url) { a.href = r.url; a.target='_blank'; a.rel='noopener noreferrer'; } else { a.style.cursor='default'; }
   a.innerHTML = `
     ${r.featured?'<div class="featured-crown">⭐ Recommended</div>':''}
     ${r.conditionName&&!r.shared?`<div class="card-tags"><span class="ctag" style="background:${r.conditionColorLight};color:${r.conditionColor}">${r.conditionName}</span></div>`:''}
